@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 
 class AppConstants {
   static const myAppName = "YallaWash";
@@ -14,6 +13,7 @@ class AppConstants {
   static const continueHere = "Continue";
   static const remainingDeals = "Remaining Deals";
   static const totalPointsValue = "580";
+  static const photoUrl = "https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
 
 
   //Font Sizes

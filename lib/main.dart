@@ -14,17 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.grey.shade50,
-        textTheme: const TextTheme(
-            headline5: TextStyle(color: Colors.white),
-            headline6: TextStyle(color: Colors.white),
-            headline4: TextStyle(color: Colors.white),
-            subtitle1: TextStyle(color: Colors.white),
-            bodyText2: TextStyle(color: Colors.white))
-      ),
+          primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Colors.grey.shade50,
+          textTheme: Theme.of(context).textTheme.apply(
+                bodyColor: Colors.white,
+                displayColor: Colors.white,
+              )),
       home: const HomeScreen(),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/extensions.dart';
@@ -25,7 +26,7 @@ class MyCardDetailed extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: context.paddingSmallWidth),
       child: SizedBox(
-        height: context.dynamicHeight(0.2),
+        height: context.dynamicHeight(0.3),
         width: context.dynamicWidth(1),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -34,55 +35,110 @@ class MyCardDetailed extends StatelessWidget {
             return Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: context.paddingExtraSmallWidth),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(AppConstants.extraSmallRadius),
-                ),
-                elevation: 5,
-                child: SizedBox(
-                  height: height,
-                  width: width,
-                  child: Stack(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(context.paddingSmallWidth),
-                        child: buildImageAndText(context),
-                      ),
-                      Positioned(
-                        left: 15,
-                        top: 90,
-                        child: buildIconAndText(
-                            context, AppConstants.likesCount, Icons.favorite),
-                      ),
-                      Positioned(
-                        right: 15,
-                        bottom: 40,
-                        child: buildIconAndText(
-                            context, AppConstants.daysLeft, Icons.update),
-                      ),
-                      Positioned(
-                        right: 10,
-                        bottom: 10,
-                        child: buildCardsButton(context,AppConstants.shopNow),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          height: 5,
-                          width: context.dynamicWidth(0.5),
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(
-                              AppConstants.extraSmallRadius,
+              child: Stack(
+                children: [
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                          AppConstants.extraSmallRadius),
+                    ),
+                    elevation: 5,
+                    child: SizedBox(
+                      height: height,
+                      width: width,
+                      child: Stack(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(context.dynamicWidth(0.03)),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: 70,
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                        imageUrl,
+                                      ),
+                                    ),
+                                    borderRadius: BorderRadius.circular(
+                                        AppConstants.extraSmallRadius),
+                                  ),
+                                ),
+                                context.sizedBoxWidthExtraSmall,
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      buildCardsText(context, offerName, 15,
+                                          FontWeight.bold),
+                                      context.sizedBoxHeightUltraSmall,
+                                      buildCardsText(
+                                          context, offerDetail, 13.0),
+                                      context.sizedBoxHeightUltraSmall,
+                                      buildCardsText(
+                                          context, AppConstants.viewMore, 11)
+                                    ],
+                                  ),
+                                )
+                              ],
                             ),
                           ),
-                        ),
+                          Positioned(
+                            left: 15,
+                            top: 90,
+                            child: buildTextIconRow(context,
+                                AppConstants.likesCount, Icons.favorite),
+                          ),
+                          Positioned(
+                            right: 15,
+                            bottom: 40,
+                            child: buildTextIconRow(
+                                context, AppConstants.daysLeft, Icons.update),
+                          ),
+                          Positioned(
+                            right: 10,
+                            bottom: 10,
+                            child: SizedBox(
+                              height: context.dynamicHeight(0.03),
+                              width: context.dynamicWidth(0.4),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          AppConstants.smallRadius),
+                                    ),
+                                  ),
+                                ),
+                                child: const Text(AppConstants.shopNow),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              height: 5,
+                              width: context.dynamicWidth(0.5),
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(
+                                  AppConstants.extraSmallRadius,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
             );
           },
@@ -91,59 +147,7 @@ class MyCardDetailed extends StatelessWidget {
     );
   }
 
-  SizedBox buildCardsButton(BuildContext context,String title) {
-    return SizedBox(
-      height: context.dynamicHeight(0.03),
-      width: context.dynamicWidth(0.4),
-      child: ElevatedButton(
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppConstants.smallRadius),
-            ),
-          ),
-        ),
-        child:  Text(title),
-        onPressed: () {},
-      ),
-    );
-  }
-
-  Row buildImageAndText(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: 70,
-          width: 70,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                imageUrl,
-              ),
-            ),
-            borderRadius: BorderRadius.circular(AppConstants.extraSmallRadius),
-          ),
-        ),
-        context.sizedBoxWidthExtraSmall,
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buildCardsText(context, offerName, 15, FontWeight.bold),
-              context.sizedBoxHeightUltraSmall,
-              buildCardsText(context, offerDetail, 13.0),
-              context.sizedBoxHeightUltraSmall,
-              buildCardsText(context, AppConstants.viewMore, 11)
-            ],
-          ),
-        )
-      ],
-    );
-  }
-
-  Row buildIconAndText(BuildContext context, String title, IconData icon) {
+  Row buildTextIconRow(BuildContext context, String title, IconData icon) {
     return Row(
       children: [
         Icon(

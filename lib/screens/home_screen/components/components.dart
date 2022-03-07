@@ -31,7 +31,7 @@ AppBar buildAppBar(BuildContext context) {
     ),
     centerTitle: true,
     actions: [
-      const Icon(
+       const Icon(
         Icons.shopping_bag,
         size: AppConstants.defaultFont,
       ),
@@ -43,10 +43,10 @@ AppBar buildAppBar(BuildContext context) {
 }
 
 CircleAvatar buildCircleAvatar() {
-  return CircleAvatar(
+  return const CircleAvatar(
     radius: 22,
     backgroundColor: Colors.white,
-    child: CircleAvatar(radius: 20, backgroundColor: Colors.blue.shade300),
+    child: CircleAvatar(radius: 20, backgroundImage: NetworkImage(AppConstants.profilePhotoUrl)),
   );
 }
 

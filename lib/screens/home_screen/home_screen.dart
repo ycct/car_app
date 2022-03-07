@@ -1,10 +1,11 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/controller/bottom_bar_controller.dart';
 import 'package:yallawashtest/extensions.dart';
 import 'package:yallawashtest/widgets/detailed_card.dart';
-import '../../widgets/card.dart';
+import '../../widgets/remaining_card.dart';
 import 'components/components.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -68,8 +69,29 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
+                Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: context.paddingLargeWidth),
+                  child: CarouselSlider.builder(
+                    itemCount: 5,
+                    itemBuilder: (context, index, realIndex) {
+                      return Text(
+                        "Text 2-3 Lines to Find the hot deals & offers around youtext 2-3 lines to Find the hot deals offers",
+                        textAlign: TextAlign.center,
+                        style: context.textTheme.subtitle2!
+                            .copyWith(color: Colors.blue,),
+                      );
+                    },
+                    options: CarouselOptions(
+                      height: 50,
+                      autoPlay: true,
+                      viewportFraction: 1,
+                    )
+                  ),
+                ),
                 buildCategoryTitle(context, AppConstants.remainingDeals),
-                MyCard(
+                RemainingCardsListView(
+                  title: "Deal",
+                  details: "Details Here",
                   myWidth: context.dynamicWidth(0.7),
                   myHeight: context.dynamicHeight(0.14),
                 ),

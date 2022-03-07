@@ -18,7 +18,7 @@ class BottomNavController extends GetxController {
       elevation: 20,
       activeColor: Colors.blue,
       icons: iconList,
-      iconSize: AppConstants.myDefaultFont,
+      iconSize: AppConstants.defaultFont,
       inactiveColor: Colors.grey.shade400,
       activeIndex: _initialIndex,
       gapLocation: GapLocation.center,

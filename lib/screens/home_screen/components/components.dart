@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yallawashtest/extensions.dart';
-
 import '../../../constants/app_constants.dart';
 
 Padding buildCategoryTitle(BuildContext context,String title) {
@@ -20,7 +19,7 @@ AppBar buildAppBar(BuildContext context) {
     leadingWidth: context.paddingExtraLargeWidth * 1.5,
     leading: const Icon(
       Icons.wrap_text_sharp,
-      size: AppConstants.myDefaultFont,
+      size: AppConstants.defaultFont,
     ),
     elevation: 0,
     title: Text(
@@ -34,11 +33,11 @@ AppBar buildAppBar(BuildContext context) {
     actions: [
       const Icon(
         Icons.shopping_bag,
-        size: AppConstants.myDefaultFont,
+        size: AppConstants.defaultFont,
       ),
-      context.mySizedBoxWidthExtraSmall,
+      context.sizedBoxWidthExtraSmall,
       buildCircleAvatar(),
-      context.mySizedBoxWidthSmall,
+      context.sizedBoxWidthSmall,
     ],
   );
 }
@@ -53,7 +52,7 @@ CircleAvatar buildCircleAvatar() {
 
 Padding buildFloating() {
   return Padding(
-    padding: const EdgeInsets.all(AppConstants.myExtraSmallPadding),
+    padding:  const EdgeInsets.all(AppConstants.extraSmallPadding),
     child: SizedBox(
       height: 70,
       width: 70,
@@ -61,7 +60,7 @@ Padding buildFloating() {
         child: const Icon(
           Icons.workspaces_filled,
           color: Colors.blue,
-          size: AppConstants.myLargeFont,
+          size: AppConstants.largeFont,
         ),
         elevation: 5,
         backgroundColor: Colors.white,

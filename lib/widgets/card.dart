@@ -31,7 +31,7 @@ class MyCard extends StatelessWidget {
                   Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(AppConstants.extraSmallRadius),
                     ),
                     elevation: 5,
                     child: SizedBox(

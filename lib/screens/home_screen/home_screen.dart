@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/controller/bottom_bar_controller.dart';
 import 'package:yallawashtest/extensions.dart';
-import 'package:yallawashtest/widgets/small_card.dart';
+import 'package:yallawashtest/widgets/detailed_card.dart';
 import '../../widgets/card.dart';
 import 'components/components.dart';
 
@@ -56,11 +56,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: context.textTheme.headline5!
                                   .copyWith(fontWeight: FontWeight.bold),
                             ),
-                            context.mySizedBoxHeightMicro,
+                            context.sizedBoxHeightMicro,
                             const Text(
                               AppConstants.yourBalance,
                             ),
-                            context.mySizedBoxHeightUltraSmall,
+                            context.sizedBoxHeightUltraSmall,
                             buildRichText(context),
                           ],
                         ),
@@ -73,11 +73,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   myWidth: context.dynamicWidth(0.7),
                   myHeight: context.dynamicHeight(0.14),
                 ),
-                context.mySizedBoxHeightExtraSmall,
+                context.sizedBoxHeightExtraSmall,
                 buildCategoryTitle(context, AppConstants.placeHolder),
                 MyCardDetailed(
-                  myWidth: context.dynamicWidth(0.7),
-                  myHeight: context.dynamicHeight(0.22),
+                  dayLeft: AppConstants.daysLeft,
+                  offerName: AppConstants.theOfferName,
+                  offerDetail: AppConstants.theOffersDetails,
+                  imageUrl: AppConstants.photoUrl,
+                  width: context.dynamicWidth(0.75),
+                  height: context.dynamicHeight(0.2),
                 ),
               ],
             ),

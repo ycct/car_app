@@ -26,61 +26,62 @@ extension PaddingValues on BuildContext {
   double get paddingExtraLargeWidth => dynamicWidth(0.1);
 
   /// Height
+  double get paddingUltraSmallHeight => dynamicHeight(0.005);
   double get paddingExtraSmallHeight => dynamicHeight(0.01);
-  double get paddingSmallHeight => dynamicHeight(0.01);
-  double get paddingDefaultHeight => dynamicHeight(0.01);
-  double get paddingLargeHeight => dynamicHeight(0.01);
-  double get paddingExtraLargeHeight => dynamicHeight(0.01);
+  double get paddingSmallHeight => dynamicHeight(0.02);
+  double get paddingDefaultHeight => dynamicHeight(0.04);
+  double get paddingLargeHeight => dynamicHeight(0.08);
+  double get paddingExtraLargeHeight => dynamicHeight(0.08);
 }
 
 extension EmptyWidget on BuildContext {
-  Widget get mySizedBoxHeightMicro =>
+  Widget get sizedBoxHeightMicro =>
       SizedBox(
         height: dynamicHeight(0.005),
       );
-  Widget get mySizedBoxHeightUltraSmall =>
+  Widget get sizedBoxHeightUltraSmall =>
       SizedBox(
         height: dynamicHeight(0.01),
       );
-  Widget get mySizedBoxHeightExtraSmall =>
+  Widget get sizedBoxHeightExtraSmall =>
       SizedBox(
         height: dynamicHeight(0.02),
       );
-  Widget get mySizedBoxHeightSmall =>
+  Widget get sizedBoxHeightSmall =>
       SizedBox(
         height: dynamicHeight(0.04),
       );
-  Widget get mySizedBoxHeightDefault =>
+  Widget get sizedBoxHeightDefault =>
       SizedBox(
         height: dynamicHeight(0.06),
       );
-  Widget get mySizedBoxHeightLarge =>
+  Widget get sizedBoxHeightLarge =>
       SizedBox(
         width: dynamicHeight(0.08),
       );
-  Widget get mySizedBoxHeightExtraLarge =>
+  Widget get sizedBoxHeightExtraLarge =>
       SizedBox(
         width: dynamicHeight(0.1),
       );
 
-  Widget get mySizedBoxWidthExtraSmall =>
+  Widget get sizedBoxWidthExtraSmall =>
       SizedBox(
         width: dynamicWidth(0.02),
       );
-  Widget get mySizedBoxWidthSmall =>
+  Widget get sizedBoxWidthSmall =>
       SizedBox(
         width: dynamicWidth(0.04),
       );
 
-  Widget get mySizedBoxWidthDefault =>
+  Widget get sizedBoxWidthDefault =>
       SizedBox(
         width: dynamicWidth(0.06),
       );
-  Widget get mySizedBoxWidthLarge =>
+  Widget get sizedBoxWidthLarge =>
       SizedBox(
         width: dynamicWidth(0.08),
       );
-  Widget get mySizedBoxWidthExtraLarge =>
+  Widget get sizedBoxWidthExtraLarge =>
       SizedBox(
         width: dynamicWidth(0.1),
       );

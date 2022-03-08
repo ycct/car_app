@@ -21,6 +21,8 @@ class AppConstants {
   static const totalPointsValue = "580";
   static const photoUrl = "https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
   static const profilePhotoUrl = "https://images.pexels.com/photos/5550397/pexels-photo-5550397.jpeg?cs=srgb&dl=pexels-agafonova-photo-5550397.jpg&fm=jpg";
+  static const bodyText = "Text 2-3 Lines to Find the hot deals & offers around you text 2-3 lines to Find the hot deals offers";
+
 
   //Font Sizes
   static const largeFont = 35.0;

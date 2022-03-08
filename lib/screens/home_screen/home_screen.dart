@@ -4,11 +4,12 @@ import 'package:get/get.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/controller/bottom_bar_controller.dart';
 import 'package:yallawashtest/extensions.dart';
-import 'package:yallawashtest/widgets/detailed_card.dart';
-import '../../widgets/remaining_card.dart';
 import 'components/components.dart';
+import 'components/place_holder_listview.dart';
+import 'components/remainin_deals_listview.dart';
 
 class HomeScreen extends StatefulWidget {
+
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -22,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
         init: BottomNavController(),
         builder: (BottomNavController b) {
           return Scaffold(
+
             appBar: buildAppBar(context),
             body: ListView(
               children: [
@@ -70,24 +72,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: context.paddingLargeWidth),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: context.paddingLargeWidth),
                   child: CarouselSlider.builder(
-                    itemCount: 5,
-                    itemBuilder: (context, index, realIndex) {
-                      return Text(
-                        "Text 2-3 Lines to Find the hot deals & offers around youtext 2-3 lines to Find the hot deals offers",
-                        textAlign: TextAlign.center,
-                        style: context.textTheme.subtitle2!
-                            .copyWith(color: Colors.blue,),
-                      );
-                    },
-                    options: CarouselOptions(
-                      height: 50,
-                      autoPlay: true,
-                      viewportFraction: 1,
-                    )
-                  ),
+                      itemCount: 5,
+                      itemBuilder: (context, index, realIndex) {
+                        return Text(
+                          AppConstants.bodyText,
+                          textAlign: TextAlign.center,
+                          style: context.textTheme.subtitle2!.copyWith(
+                            color: Colors.blue,
+                          ),
+                        );
+                      },
+                      options: CarouselOptions(
+                        height: 50,
+                        autoPlay: true,
+                        viewportFraction: 1,
+                      )),
                 ),
+                context.sizedBoxHeightUltraSmall,
                 buildCategoryTitle(context, AppConstants.remainingDeals),
                 RemainingCardsListView(
                   title: "Deal",
@@ -97,7 +101,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 context.sizedBoxHeightExtraSmall,
                 buildCategoryTitle(context, AppConstants.placeHolder),
-                MyCardDetailed(
+                PlaceHolderCardsListView(
+                  dayLeft: AppConstants.daysLeft,
+                  offerName: AppConstants.theOfferName,
+                  offerDetail: AppConstants.theOffersDetails,
+                  imageUrl: AppConstants.photoUrl,
+                  width: context.dynamicWidth(0.75),
+                  height: context.dynamicHeight(0.2),
+                ),
+                context.sizedBoxHeightExtraSmall,
+                buildCategoryTitle(context, AppConstants.placeHolder),
+                PlaceHolderCardsListView(
                   dayLeft: AppConstants.daysLeft,
                   offerName: AppConstants.theOfferName,
                   offerDetail: AppConstants.theOffersDetails,

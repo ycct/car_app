@@ -6,7 +6,7 @@ class AppConstants {
   static const yourBalance = "Your balance";
   static const remainingBalance = "Remaining balance";
   static const someText =
-      "Text 2-3 Lines  to find the hot deals & offers around you Text 2-3 Lines  to find the hot deals & offers around you  ";
+      "Text 2-3 Lines  to find the hot deals & offers around you Text 2-3 Lines  to find the hot deals & offers around you";
   static const placeHolder = "Place Holder";
   static const totalPoints = "Total Points";
   static const detailsHere = "Details Here";
@@ -22,6 +22,13 @@ class AppConstants {
   static const photoUrl = "https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
   static const profilePhotoUrl = "https://images.pexels.com/photos/5550397/pexels-photo-5550397.jpeg?cs=srgb&dl=pexels-agafonova-photo-5550397.jpg&fm=jpg";
   static const bodyText = "Text 2-3 Lines to Find the hot deals & offers around you text 2-3 lines to Find the hot deals offers";
+
+  //Image, Icon, Svg Paths
+  static const splash = "assets/images/splash.svg";
+  static const backgroundImage = "assets/images/background.svg";
+  static const buttonShadow = "assets/images/buttonshadow.svg";
+  static const verification = "assets/images/verification.svg";
+  static const verified = "assets/images/verified.svg";
 
 
   //Font Sizes
@@ -47,6 +54,5 @@ class AppConstants {
   static const smallRadius = 15.0;
   static const extraSmallRadius = 10.0;
   static const ultraSmallRadius = 5.0;
-
 
 }

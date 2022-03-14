@@ -23,13 +23,6 @@ class AppConstants {
   static const profilePhotoUrl = "https://images.pexels.com/photos/5550397/pexels-photo-5550397.jpeg?cs=srgb&dl=pexels-agafonova-photo-5550397.jpg&fm=jpg";
   static const bodyText = "Text 2-3 Lines to Find the hot deals & offers around you text 2-3 lines to Find the hot deals offers";
 
-  //Image, Icon, Svg Paths
-  static const splash = "assets/images/splash.svg";
-  static const backgroundImage = "assets/images/background.svg";
-  static const buttonShadow = "assets/images/buttonshadow.svg";
-  static const verification = "assets/images/verification.svg";
-  static const verified = "assets/images/verified.svg";
-
 
   //Font Sizes
   static const largeFont = 35.0;

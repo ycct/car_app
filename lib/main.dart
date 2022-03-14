@@ -19,14 +19,18 @@ class MyApp extends StatelessWidget {
       initialBinding: MainBinding(),
       getPages: AppRoutes.routes,
       home: const HomeScreen(),
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.grey.shade50,
-        textTheme: Theme.of(context).textTheme.apply(
-              bodyColor: Colors.white,
-              displayColor: Colors.white,
-            ),
-      ),
+      theme: buildThemeData(context),
+    );
+  }
+
+  ThemeData buildThemeData(BuildContext context) {
+    return ThemeData(
+      primarySwatch: Colors.blue,
+      scaffoldBackgroundColor: Colors.grey.shade50,
+      textTheme: Theme.of(context).textTheme.apply(
+            bodyColor: Colors.blue,
+          ),
+
     );
   }
 }

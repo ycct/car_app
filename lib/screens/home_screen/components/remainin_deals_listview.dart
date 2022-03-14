@@ -33,7 +33,7 @@ class RemainingCardsListView extends StatelessWidget {
               myHeight: myHeight,
               myWidth: myWidth,
               title: title,
-              detail: 'Details Here',
+              detail: AppConstants.detailsHere,
             );
           },
         ),

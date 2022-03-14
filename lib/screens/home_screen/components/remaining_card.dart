@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/extensions.dart';
 
-
 class RemainingCard extends StatelessWidget {
   final String detail;
   final String photoUrl;
@@ -44,22 +43,27 @@ class RemainingCard extends StatelessWidget {
               left: -70,
               top: -12,
               child: CircleAvatar(
-                backgroundColor: Colors.blue,
+                backgroundColor: context.theme.primaryColor,
                 radius: 95,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 60.0, top: 25),
+                  padding: const EdgeInsets.only(
+                      left: AppConstants.extraLargePadding * 1.5,
+                      top: AppConstants.defaultPadding),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         title!,
                         style: context.theme.textTheme.subtitle1!.copyWith(
-                            fontSize: 22, fontWeight: FontWeight.bold),
+                            color: Colors.white,
+                            fontSize: AppConstants.smallFont,
+                            fontWeight: FontWeight.bold),
                       ),
                       Text(
                         detail,
                         style: context.theme.textTheme.subtitle1!.copyWith(
-                          fontSize: 10,
+                          color: Colors.white,
+                          fontSize: AppConstants.ultraSmallFont,
                         ),
                       ),
                       context.sizedBoxHeightExtraSmall,
@@ -74,7 +78,8 @@ class RemainingCard extends StatelessWidget {
                             child: Text(
                               AppConstants.continueHere,
                               style: context.theme.textTheme.subtitle1!
-                                  .copyWith(color: Colors.blue, fontSize: 11),
+                                  .copyWith(
+                                      fontSize: AppConstants.ultraSmallFont),
                             )),
                       )
                     ],

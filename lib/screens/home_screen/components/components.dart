@@ -9,7 +9,7 @@ Padding buildCategoryTitle(BuildContext context,String title) {
     child: Text(
       title,
       style: context.textTheme.headline5!
-          .copyWith(color: Colors.blue, fontWeight: FontWeight.bold),
+          .copyWith( fontWeight: FontWeight.bold),
     ),
   );
 }
@@ -76,7 +76,7 @@ RichText buildRichText(BuildContext context) {
       children: [
         TextSpan(
           text: "0.",
-          style: context.textTheme.headline4!,
+          style: context.textTheme.headline4!.copyWith(color: Colors.white),
         ),
         const TextSpan(
           text: "00",

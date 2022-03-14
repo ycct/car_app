@@ -111,7 +111,7 @@ class DetailedCard extends StatelessWidget {
                       height: 5,
                       width: context.dynamicWidth(0.5),
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: context.theme.primaryColor,
                         borderRadius: BorderRadius.circular(
                           AppConstants.extraSmallRadius,
                         ),
@@ -133,12 +133,13 @@ class DetailedCard extends StatelessWidget {
         Icon(
           icon,
           color: Colors.blue,
-          size: 17,
+          size: AppConstants.extraSmallFont,
         ),
         Text(
           title,
           style: context.theme.textTheme.subtitle1!.copyWith(
-              color: Colors.blue, fontSize: 12, fontWeight: FontWeight.bold),
+              fontSize: AppConstants.extraSmallFont,
+              fontWeight: FontWeight.bold),
         ),
       ],
     );
@@ -149,8 +150,8 @@ class DetailedCard extends StatelessWidget {
     return Text(
       title,
       overflow: TextOverflow.ellipsis,
-      style: context.theme.textTheme.subtitle1!.copyWith(
-          color: Colors.blue, fontWeight: FontWeight.bold, fontSize: fontSize),
+      style: context.theme.textTheme.subtitle1!
+          .copyWith(fontWeight: FontWeight.bold, fontSize: fontSize),
     );
   }
 }

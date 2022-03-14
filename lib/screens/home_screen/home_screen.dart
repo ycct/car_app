@@ -9,7 +9,6 @@ import 'components/place_holder_listview.dart';
 import 'components/remainin_deals_listview.dart';
 
 class HomeScreen extends StatefulWidget {
-
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -23,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
         init: BottomNavController(),
         builder: (BottomNavController b) {
           return Scaffold(
-
             appBar: buildAppBar(context),
             body: ListView(
               children: [
@@ -32,20 +30,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Stack(
                     children: [
                       Container(
-                        color: Colors.blue,
                         width: context.dynamicWidth(1),
                         height: context.dynamicHeight(0.22),
+                        color: Theme.of(context).primaryColor,
                       ),
                       Positioned(
                           top: context.paddingExtraLargeWidth,
                           right: context.paddingSmallWidth,
                           child: Column(
                             children: [
-                              const Text(
+                              Text(
                                 AppConstants.totalPoints,
+                                style: context.textTheme.bodyText1
+                                    ?.copyWith(color: Colors.white),
                               ),
                               Text(AppConstants.totalPointsValue,
-                                  style: context.textTheme.headline4!),
+                                  style: context.textTheme.headline4!
+                                      .copyWith(color: Colors.white)),
                             ],
                           )),
                       Padding(
@@ -56,12 +57,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Text(
                               AppConstants.hiJaneDoe,
-                              style: context.textTheme.headline5!
-                                  .copyWith(fontWeight: FontWeight.bold),
+                              style: context.textTheme.headline5!.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
                             ),
                             context.sizedBoxHeightMicro,
-                            const Text(
+                            Text(
                               AppConstants.yourBalance,
+                              style: context.textTheme.bodyText2
+                                  ?.copyWith(color: Colors.white),
                             ),
                             context.sizedBoxHeightUltraSmall,
                             buildRichText(context),
@@ -80,9 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Text(
                           AppConstants.bodyText,
                           textAlign: TextAlign.center,
-                          style: context.textTheme.subtitle2!.copyWith(
-                            color: Colors.blue,
-                          ),
+                          style: context.textTheme.subtitle2!.copyWith(),
                         );
                       },
                       options: CarouselOptions(

@@ -22,6 +22,11 @@ class AppConstants {
   static const photoUrl = "https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
   static const profilePhotoUrl = "https://images.pexels.com/photos/5550397/pexels-photo-5550397.jpeg?cs=srgb&dl=pexels-agafonova-photo-5550397.jpg&fm=jpg";
   static const bodyText = "Text 2-3 Lines to Find the hot deals & offers around you text 2-3 lines to Find the hot deals offers";
+  static const welcomeToYallaWash = "Welcome to YallaWash";
+  static const getTheUltimateOffers = "Get the ultimate offers and deals \n of carwashes";
+  static const verifyYourNumber = "Verify Your Number";
+  static const pleaseEnterYourNumber = "Please enter your number to verify \n your account";
+  static const verify = "Verify";
 
 
   //Font Sizes
@@ -29,7 +34,7 @@ class AppConstants {
   static const defaultFont = 30.0;
   static const smallFont = 20.0;
   static const extraSmallFont = 15.0;
-  static const ultraSmallFont = 8.0;
+  static const ultraSmallFont = 10.0;
   static const extraLargeFont = 60.0;
 
   //Paddings

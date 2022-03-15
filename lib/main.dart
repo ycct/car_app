@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:yallawashtest/bindings/bindings.dart';
+import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/routes/app_routes.dart';
 import 'package:yallawashtest/screens/home_screen/home_screen.dart';
 
@@ -25,12 +26,17 @@ class MyApp extends StatelessWidget {
 
   ThemeData buildThemeData(BuildContext context) {
     return ThemeData(
+      inputDecorationTheme: const InputDecorationTheme(
+        hintStyle: TextStyle(
+          color: primaryColor,
+        ),
+      ),
       primarySwatch: Colors.blue,
       scaffoldBackgroundColor: Colors.grey.shade50,
       textTheme: Theme.of(context).textTheme.apply(
-            bodyColor: Colors.blue,
+            bodyColor: primaryColor,
           ),
-
+      iconTheme: const IconThemeData(color: primaryColor),
     );
   }
 }

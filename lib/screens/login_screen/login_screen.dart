@@ -24,21 +24,24 @@ class LoginScreen extends StatelessWidget {
           ),
           Positioned(
             top: context.dynamicHeight(0.3),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: buildText(context, AppConstants.welcomeToYallaWash,
-                  Theme.of(context).textTheme.headline5?.copyWith(fontSize: AppConstants.defaultFont), FontWeight.bold),
-            ),
+            child: buildText(
+                context,
+                AppConstants.welcomeToYallaWash,
+                Theme.of(context)
+                    .textTheme
+                    .headline5
+                    ?.copyWith(fontSize: AppConstants.defaultFont),
+                FontWeight.bold),
           ),
           Positioned(
             top: context.dynamicHeight(0.36),
             child: buildText(context, AppConstants.getTheUltimateOffers,
-               Theme.of(context).textTheme.subtitle1, FontWeight.normal),
+                Theme.of(context).textTheme.subtitle1, FontWeight.normal),
           ),
           Positioned(
             top: context.dynamicHeight(0.5),
             child: buildText(context, AppConstants.verifyYourNumber,
-               Theme.of(context).textTheme.headline5, FontWeight.bold),
+                Theme.of(context).textTheme.headline5, FontWeight.bold),
           ),
           Positioned(
             top: context.dynamicHeight(0.55),
@@ -47,56 +50,70 @@ class LoginScreen extends StatelessWidget {
           ),
           Positioned(
             top: context.dynamicHeight(0.65),
-            child: SizedBox(
-              width: context.dynamicWidth(0.72),
-              height: context.dynamicWidth(0.12),
-              child: TextFormField(
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                ],
-                decoration: InputDecoration(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: AppConstants.largePadding),
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.blue),
-                        borderRadius: BorderRadius.circular(
-                          AppConstants.largeRadius,
-                        )),
-                    labelText: "+ 971 | Phone Number",
-                    labelStyle: const TextStyle(color: Colors.blue)),
-              ),
-            ),
+            child: buildTextField(context),
           ),
           Positioned(
               top: context.dynamicHeight(0.73),
-              child: Stack(
-                children: [
-                  SizedBox(
-                    width: context.dynamicWidth(0.72),
-                    height: context.dynamicWidth(0.12),
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(35.0),
-                      ))),
-                      onPressed: () {
-                        Get.offAllNamed("/home");
-                      },
-                      child: const Text(
-                        AppConstants.verify,
-                        style: TextStyle(fontSize: AppConstants.smallFont),
-                      ),
-                    ),
-                  ),
-                  Positioned(child: SvgPicture.asset(ImagePaths.buttonShadow)),
-                ],
-              ))
+              child: buildElevatedButton(context))
         ],
       ),
     ));
+  }
+
+  Stack buildElevatedButton(BuildContext context) {
+    return Stack(
+      children: [
+        SizedBox(
+          width: context.dynamicWidth(0.72),
+          height: context.dynamicWidth(0.12),
+          child: ElevatedButton(
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(35.0),
+            ))),
+            onPressed: () {
+              Get.offAllNamed("/home");
+            },
+            child: const Text(
+              AppConstants.verify,
+              style: TextStyle(fontSize: AppConstants.smallFont),
+            ),
+          ),
+        ),
+        Expanded(
+            child: SvgPicture.asset(
+          ImagePaths.buttonShadow,
+        )),
+      ],
+    );
+  }
+
+  SizedBox buildTextField(BuildContext context) {
+    return SizedBox(
+      width: context.dynamicWidth(0.72),
+      height: context.dynamicWidth(0.12),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+        ],
+        decoration: InputDecoration(
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: AppConstants.largePadding),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(AppConstants.largePadding)),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.blue),
+            borderRadius: BorderRadius.circular(
+              AppConstants.largeRadius,
+            ),
+          ),
+          // labelText: "+ 971 | Phone Number",
+          hintText: "+ 971 | Phone Number",
+        ),
+      ),
+    );
   }
 
   Text buildText(BuildContext context, String title, TextStyle? style,
@@ -104,7 +121,7 @@ class LoginScreen extends StatelessWidget {
     return Text(
       title,
       textAlign: TextAlign.center,
-      style: style?.copyWith(color: Colors.blue, fontWeight: fontWeight),
+      style: style?.copyWith(fontWeight: fontWeight),
     );
   }
 }

@@ -36,34 +36,10 @@ class DetailedCard extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          height: 70,
-                          width: 70,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                imageUrl,
-                              ),
-                            ),
-                            borderRadius: BorderRadius.circular(
-                                AppConstants.extraSmallRadius),
-                          ),
-                        ),
+                        buildImage(context),
                         context.sizedBoxWidthExtraSmall,
                         Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              buildCardsText(context, AppConstants.theOfferName,
-                                  15, FontWeight.bold),
-                              context.sizedBoxHeightUltraSmall,
-                              buildCardsText(
-                                  context, AppConstants.theOffersDetails, 13.0),
-                              context.sizedBoxHeightUltraSmall,
-                              buildCardsText(context, AppConstants.viewMore, 11)
-                            ],
-                          ),
+                          child: buildTextColumn(context),
                         )
                       ],
                     ),
@@ -86,37 +62,12 @@ class DetailedCard extends StatelessWidget {
                   Positioned(
                     right: 10,
                     bottom: 10,
-                    child: SizedBox(
-                      height: context.dynamicHeight(0.03),
-                      width: context.dynamicWidth(0.4),
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  AppConstants.smallRadius),
-                            ),
-                          ),
-                        ),
-                        child: const Text(AppConstants.shopNow),
-                        onPressed: () {},
-                      ),
-                    ),
+                    child: buildElevatedButton(context),
                   ),
                   Positioned(
                     bottom: 0,
                     right: 0,
-                    child: Container(
-                      height: 5,
-                      width: context.dynamicWidth(0.5),
-                      decoration: BoxDecoration(
-                        color: context.theme.primaryColor,
-                        borderRadius: BorderRadius.circular(
-                          AppConstants.extraSmallRadius,
-                        ),
-                      ),
-                    ),
+                    child: buildUnderline(context),
                   ),
                 ],
               ),
@@ -127,12 +78,74 @@ class DetailedCard extends StatelessWidget {
     );
   }
 
+  Container buildImage(BuildContext context) {
+    return Container(
+      height: context.dynamicWidth(0.18),
+      width: context.dynamicWidth(0.18),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: NetworkImage(
+            imageUrl,
+          ),
+        ),
+        borderRadius: BorderRadius.circular(AppConstants.extraSmallRadius),
+      ),
+    );
+  }
+
+  Column buildTextColumn(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        buildCardsText(context, AppConstants.theOfferName,
+            AppConstants.extraSmallFont, FontWeight.bold),
+        context.sizedBoxHeightUltraSmall,
+        buildCardsText(context, AppConstants.theOffersDetails,
+            AppConstants.extraSmallFont - 2),
+        context.sizedBoxHeightUltraSmall,
+        buildCardsText(
+            context, AppConstants.viewMore, AppConstants.extraSmallFont - 4)
+      ],
+    );
+  }
+
+  SizedBox buildElevatedButton(BuildContext context) {
+    return SizedBox(
+      height: context.dynamicHeight(0.03),
+      width: context.dynamicWidth(0.4),
+      child: ElevatedButton(
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppConstants.smallRadius),
+            ),
+          ),
+        ),
+        child: const Text(AppConstants.shopNow),
+        onPressed: () {},
+      ),
+    );
+  }
+
+  Container buildUnderline(BuildContext context) {
+    return Container(
+      height: context.dynamicHeight(0.004),
+      width: context.dynamicWidth(0.5),
+      decoration: BoxDecoration(
+        color: context.theme.primaryColor,
+        borderRadius: BorderRadius.circular(
+          AppConstants.extraSmallRadius,
+        ),
+      ),
+    );
+  }
+
   Row buildTextIconRow(BuildContext context, String title, IconData icon) {
     return Row(
       children: [
         Icon(
           icon,
-          color: Colors.blue,
           size: AppConstants.extraSmallFont,
         ),
         Text(

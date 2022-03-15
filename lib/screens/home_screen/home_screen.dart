@@ -41,12 +41,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Text(
                                 AppConstants.totalPoints,
-                                style: context.textTheme.bodyText1
-                                    ?.copyWith(color: Colors.white),
+                                style: context.textTheme.bodyText1?.copyWith(
+                                    color: Theme.of(context).disabledColor),
                               ),
-                              Text(AppConstants.totalPointsValue,
-                                  style: context.textTheme.headline4!
-                                      .copyWith(color: Colors.white)),
+                              Text(
+                                AppConstants.totalPointsValue,
+                                style: context.textTheme.headline4!.copyWith(
+                                  color: Theme.of(context).disabledColor,
+                                ),
+                              ),
                             ],
                           )),
                       Padding(
@@ -59,13 +62,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               AppConstants.hiJaneDoe,
                               style: context.textTheme.headline5!.copyWith(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                                  color: Theme.of(context).disabledColor),
                             ),
                             context.sizedBoxHeightMicro,
                             Text(
                               AppConstants.yourBalance,
-                              style: context.textTheme.bodyText2
-                                  ?.copyWith(color: Colors.white),
+                              style: context.textTheme.bodyText2?.copyWith(
+                                  color: Theme.of(context).disabledColor),
                             ),
                             context.sizedBoxHeightUltraSmall,
                             buildRichText(context),
@@ -123,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            floatingActionButton: buildFloating(),
+            floatingActionButton: buildFloating(context),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: b.buildAnimatedBottomNavigationBar(),

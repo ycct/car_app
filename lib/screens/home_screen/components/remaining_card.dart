@@ -55,14 +55,14 @@ class RemainingCard extends StatelessWidget {
                       Text(
                         title!,
                         style: context.theme.textTheme.subtitle1!.copyWith(
-                            color: Colors.white,
+                            color: context.theme.disabledColor,
                             fontSize: AppConstants.smallFont,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
                         detail,
                         style: context.theme.textTheme.subtitle1!.copyWith(
-                          color: Colors.white,
+                          color: context.theme.disabledColor,
                           fontSize: AppConstants.ultraSmallFont,
                         ),
                       ),
@@ -71,16 +71,18 @@ class RemainingCard extends StatelessWidget {
                         width: context.dynamicWidth(0.22),
                         height: context.dynamicHeight(0.025),
                         child: ElevatedButton(
-                            style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.white)),
-                            onPressed: () {},
-                            child: Text(
-                              AppConstants.continueHere,
-                              style: context.theme.textTheme.subtitle1!
-                                  .copyWith(
-                                      fontSize: AppConstants.ultraSmallFont),
-                            )),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              Theme.of(context).disabledColor,
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            AppConstants.continueHere,
+                            style: context.theme.textTheme.subtitle1!.copyWith(
+                                fontSize: AppConstants.ultraSmallFont),
+                          ),
+                        ),
                       )
                     ],
                   ),

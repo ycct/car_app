@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-
-const Color primaryColor = Colors.blue ;
 
 class AppConstants {
   static const myAppName = "YallaWash";
@@ -30,6 +27,7 @@ class AppConstants {
   static const verifyYourNumber = "Verify Your Number";
   static const pleaseEnterYourNumber = "Please enter your number to verify \n your account";
   static const verify = "Verify";
+  static const phoneNumber = "Phone Number";
 
 
   //Font Sizes

@@ -3,13 +3,12 @@ import 'package:get/get.dart';
 import 'package:yallawashtest/extensions.dart';
 import '../../../constants/app_constants.dart';
 
-Padding buildCategoryTitle(BuildContext context,String title) {
+Padding buildCategoryTitle(BuildContext context, String title) {
   return Padding(
     padding: EdgeInsets.only(left: context.paddingDefaultWidth),
     child: Text(
       title,
-      style: context.textTheme.headline5!
-          .copyWith( fontWeight: FontWeight.bold),
+      style: context.textTheme.headline5!.copyWith(fontWeight: FontWeight.bold),
     ),
   );
 }
@@ -24,35 +23,37 @@ AppBar buildAppBar(BuildContext context) {
     elevation: 0,
     title: Text(
       AppConstants.home,
-      style: Theme.of(context)
-          .textTheme
-          .headline5!
-          .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+      style: Theme.of(context).textTheme.headline5!.copyWith(
+          color: Theme.of(context).colorScheme.secondary,
+          fontWeight: FontWeight.bold),
     ),
     centerTitle: true,
     actions: [
-       const Icon(
+      const Icon(
         Icons.shopping_bag,
         size: AppConstants.defaultFont,
       ),
       context.sizedBoxWidthExtraSmall,
-      buildCircleAvatar(),
+      buildCircleAvatar(context),
       context.sizedBoxWidthSmall,
     ],
   );
 }
 
-CircleAvatar buildCircleAvatar() {
-  return const CircleAvatar(
+CircleAvatar buildCircleAvatar(BuildContext context) {
+  return CircleAvatar(
     radius: 22,
-    backgroundColor: Colors.white,
-    child: CircleAvatar(radius: 20, backgroundImage: NetworkImage(AppConstants.profilePhotoUrl)),
+    backgroundColor: Theme.of(context).disabledColor,
+    child: const CircleAvatar(
+      radius: 20,
+      backgroundImage: NetworkImage(AppConstants.profilePhotoUrl),
+    ),
   );
 }
 
-Padding buildFloating() {
+Padding buildFloating(BuildContext context) {
   return Padding(
-    padding:  const EdgeInsets.all(AppConstants.extraSmallPadding),
+    padding: const EdgeInsets.all(AppConstants.extraSmallPadding),
     child: SizedBox(
       height: 70,
       width: 70,
@@ -63,7 +64,7 @@ Padding buildFloating() {
           size: AppConstants.largeFont,
         ),
         elevation: 5,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).disabledColor,
         onPressed: () {},
       ),
     ),

@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:yallawashtest/controller/bottom_bar_controller.dart';
 import '../controller/auth_controller.dart';
 import '../controller/login_controller.dart';
-import '../controller/verification.dart';
+import '../controller/verification_controller.dart';
 
 class MainBinding implements Bindings {
   @override
@@ -24,6 +24,8 @@ class VerificationBinding implements Bindings {
 class LoginBinding implements Bindings {
   @override
   void dependencies() {
-    Get.put(LoginController());
+    Get.put(
+      LoginController(),
+    );
   }
 }

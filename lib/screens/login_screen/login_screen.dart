@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -50,7 +51,66 @@ class LoginScreen extends StatelessWidget {
           ),
           Positioned(
             top: context.dynamicHeight(0.65),
-            child: buildTextField(context),
+            //
+            child: SizedBox(
+              width: context.dynamicWidth(0.73),
+              child: Row(
+                children: [
+                  Container(
+                    width: context.dynamicWidth(0.18),
+                    height: context.dynamicWidth(0.12),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Theme.of(context).primaryColor),
+                      borderRadius: BorderRadius.circular(
+                        35,
+                      ),
+                    ),
+                    child: CountryCodePicker(
+
+                      textStyle: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      padding: const EdgeInsets.all(0),
+                      backgroundColor: Theme.of(context).disabledColor,
+                      showCountryOnly: false,
+                      showFlag: false,
+                      boxDecoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          15,
+                        ),
+                      ),
+                      initialSelection: "IN",
+                    ),
+                  ),
+                  context.sizedBoxWidthExtraSmall,
+                  SizedBox(
+                    width: context.dynamicWidth(0.52),
+                    height: context.dynamicWidth(0.12),
+                    child: TextFormField(
+                        decoration: InputDecoration(
+                      labelText: AppConstants.phoneNumber,
+                      labelStyle:
+                          TextStyle(color: Theme.of(context).primaryColor),
+                      fillColor: Theme.of(context).disabledColor,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius:
+                            BorderRadius.circular(AppConstants.largeRadius),
+                        borderSide:
+                            BorderSide(color: Theme.of(context).primaryColor),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius:
+                            BorderRadius.circular(AppConstants.largeRadius),
+                        borderSide: BorderSide(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                    )),
+                  )
+                ],
+              ),
+            ),
           ),
           Positioned(
               top: context.dynamicHeight(0.73),
@@ -70,10 +130,10 @@ class LoginScreen extends StatelessWidget {
             style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(35.0),
+              borderRadius: BorderRadius.circular(AppConstants.largeRadius),
             ))),
             onPressed: () {
-              Get.offAllNamed("/home");
+              Get.toNamed("/home");
             },
             child: const Text(
               AppConstants.verify,
@@ -81,10 +141,9 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-            child: SvgPicture.asset(
+        SvgPicture.asset(
           ImagePaths.buttonShadow,
-        )),
+        ),
       ],
     );
   }

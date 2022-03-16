@@ -27,24 +27,26 @@ class AppConstants {
   static const verifyYourNumber = "Verify Your Number";
   static const pleaseEnterYourNumber = "Please enter your number to verify \n your account";
   static const verify = "Verify";
+  static const verificationCode = "Verification Code";
   static const phoneNumber = "Phone Number";
+  static const reSend = "Re-send (30s)";
 
 
   //Font Sizes
+  static const extraLargeFont = 40.0;
   static const largeFont = 35.0;
   static const defaultFont = 30.0;
   static const smallFont = 20.0;
   static const extraSmallFont = 15.0;
   static const ultraSmallFont = 10.0;
-  static const extraLargeFont = 60.0;
 
   //Paddings
+  static const extraLargePadding = 40.0;
   static const largePadding = 30.0;
   static const defaultPadding = 20.0;
   static const smallPadding = 15.0;
-  static const extraLargePadding = 40.0;
   static const extraSmallPadding = 10.0;
-  static const ultraSmallPadding = 10.0;
+  static const ultraSmallPadding = 5.0;
 
   //Radius
   static const extraLargeRadius = 40.0;

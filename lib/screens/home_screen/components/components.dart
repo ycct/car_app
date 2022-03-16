@@ -24,8 +24,7 @@ AppBar buildAppBar(BuildContext context) {
     title: Text(
       AppConstants.home,
       style: Theme.of(context).textTheme.headline5!.copyWith(
-          color: Theme.of(context).colorScheme.secondary,
-          fontWeight: FontWeight.bold),
+          color: Theme.of(context).disabledColor, fontWeight: FontWeight.bold),
     ),
     centerTitle: true,
     actions: [

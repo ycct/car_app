@@ -83,7 +83,7 @@ class RemainingCard extends StatelessWidget {
                                 fontSize: AppConstants.ultraSmallFont),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

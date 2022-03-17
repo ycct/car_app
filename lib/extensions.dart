@@ -57,11 +57,11 @@ extension EmptyWidget on BuildContext {
       );
   Widget get sizedBoxHeightLarge =>
       SizedBox(
-        width: dynamicHeight(0.08),
+        height: dynamicHeight(0.08),
       );
   Widget get sizedBoxHeightExtraLarge =>
       SizedBox(
-        width: dynamicHeight(0.1),
+        height: dynamicHeight(0.1),
       );
 
   Widget get sizedBoxWidthExtraSmall =>

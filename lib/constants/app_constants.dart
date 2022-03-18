@@ -27,10 +27,11 @@ class AppConstants {
   static const verifyYourNumber = "Verify Your Number";
   static const pleaseEnterYourNumber = "Please enter your number to verify \n your account";
   static const verify = "Verify";
+  static const next = "Next";
   static const verificationCode = "Verification Code";
   static const phoneNumber = "Phone Number";
   static const reSend = "Re-send (30s)";
-
+  static const codeVerifiedSuccessfully = "Code Verified \n Successfully";
 
   //Font Sizes
   static const extraLargeFont = 40.0;

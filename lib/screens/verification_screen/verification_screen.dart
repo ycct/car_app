@@ -13,53 +13,54 @@ class VerificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            SizedBox(
-              height: context.dynamicHeight(1),
-              width: context.dynamicHeight(1),
-              child: SvgPicture.asset(ImagePaths.backgroundImage,
-                  fit: BoxFit.cover),
-            ),
-            Positioned(
-              top: context.paddingLargeHeight * 3,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  buildSvgPicture(context),
-                  context.sizedBoxHeightSmall,
-                  buildText(context),
-                  context.sizedBoxHeightExtraSmall,
+      resizeToAvoidBottomInset: true,
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          SizedBox(
+            height: context.dynamicHeight(1),
+            width: context.dynamicHeight(1),
+            child: SvgPicture.asset(ImagePaths.backgroundImage,
+                fit: BoxFit.cover),
+          ),
+          Positioned(
 
-                  Row(
-                    children: [
-                      buildTextField(context),
-                      buildTextField(context),
-                      buildTextField(context),
-                      buildTextField(context),
-                    ],
-                  ),
-                  context.sizedBoxHeightSmall,
-                  Text(
-                    AppConstants.reSend,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  context.sizedBoxHeightUltraSmall,
-                  CustomElevatedButton(
-                    onTap: () {
-                      Get.offAllNamed("/home");
-                    },
-                    title: AppConstants.verify,
-                    width: context.dynamicWidth(0.72),
-                    height: context.dynamicWidth(0.12),
-                  ),
-                ],
-              ),
+            bottom: context.dynamicHeight(0.25),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                buildSvgPicture(context),
+                context.sizedBoxHeightSmall,
+                buildText(context),
+                context.sizedBoxHeightExtraSmall,
+                Row(
+                  children: [
+                    buildTextField(context),
+                    buildTextField(context),
+                    buildTextField(context),
+                    buildTextField(context),
+                  ],
+                ),
+                context.sizedBoxHeightDefault,
+                // Text(
+                //   AppConstants.reSend,
+                //   style: Theme.of(context).textTheme.bodyText1,
+                // ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Positioned(
+            bottom: context.dynamicHeight(0.16),
+            child: CustomElevatedButton(
+              onTap: () {
+                Get.toNamed("/verified");
+              },
+              title: AppConstants.verify,
+              width: context.dynamicWidth(0.72),
+              height: context.dynamicWidth(0.12),
+            ),
+          ),
+        ],
       ),
     );
   }

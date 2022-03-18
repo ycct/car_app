@@ -13,9 +13,11 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
+    return GestureDetector(
+      onTap: ()=>Focus.of(context).unfocus(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: Stack(
           alignment: Alignment.center,
           children: [
             SizedBox(
@@ -25,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                   fit: BoxFit.cover),
             ),
             Positioned(
-              top: context.paddingLargeHeight * 3.5,
+              bottom: context.dynamicHeight(0.38),
               child: Column(
                 children: [
                   buildText(
@@ -37,7 +39,6 @@ class LoginScreen extends StatelessWidget {
                           ?.copyWith(fontSize: AppConstants.defaultFont),
                       FontWeight.bold),
                   context.sizedBoxHeightUltraSmall,
-
                   buildText(context, AppConstants.getTheUltimateOffers,
                       Theme.of(context).textTheme.subtitle1, FontWeight.normal),
                   context.sizedBoxHeightLarge,
@@ -47,39 +48,40 @@ class LoginScreen extends StatelessWidget {
                   buildText(context, AppConstants.pleaseEnterYourNumber,
                       Theme.of(context).textTheme.subtitle1, FontWeight.normal),
                   context.sizedBoxHeightSmall,
-
-
-
-                  SizedBox(
-                    width: context.dynamicWidth(0.73),
-                    child: Row(
-                      children: [
-                        Expanded(
-                            flex:1,
-                            child: buildCountryCode(context)),
-                        context.sizedBoxWidthExtraSmall,
-                        Expanded(flex: 3,
-                          child: SizedBox(
-                            width: context.dynamicWidth(0.52),
-                            height: context.dynamicWidth(0.12),
-                            child: buildTextFormField(context),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
                   context.sizedBoxHeightExtraSmall,
-                  CustomElevatedButton(
-                    width: context.dynamicWidth(0.72),
-                    height: context.dynamicWidth(0.12),
-                    title: AppConstants.verify,
-                    onTap: () {
-                      Get.toNamed("/verification");
-                    },
-                  ),
                 ],
               ),
             ),
+            Positioned(
+              bottom: context.dynamicHeight(0.24),
+              child: SizedBox(
+                width: context.dynamicWidth(0.73),
+                child: Row(
+                  children: [
+                    Expanded(flex: 1, child: buildCountryCode(context)),
+                    context.sizedBoxWidthExtraSmall,
+                    Expanded(
+                      flex: 3,
+                      child: SizedBox(
+                        width: context.dynamicWidth(0.52),
+                        height: context.dynamicWidth(0.12),
+                        child: buildTextFormField(context),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+                bottom: context.dynamicHeight(0.16),
+                child: CustomElevatedButton(
+                  width: context.dynamicWidth(0.72),
+                  height: context.dynamicWidth(0.12),
+                  title: AppConstants.verify,
+                  onTap: () {
+                    Get.toNamed("/verification");
+                  },
+                ))
           ],
         ),
       ),

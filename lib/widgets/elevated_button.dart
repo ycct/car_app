@@ -40,7 +40,6 @@ class CustomElevatedButton extends StatelessWidget {
           ),
         ),
         SvgPicture.asset(
-
           ImagePaths.buttonShadow,
         ),
       ],

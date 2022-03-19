@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:yallawashtest/extensions.dart';
 import '../constants/app_constants.dart';
-import '../constants/images_paths.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final double? width;
@@ -13,36 +12,29 @@ class CustomElevatedButton extends StatelessWidget {
     Key? key,
     this.width,
     this.height,
-    this.title, required this.onTap,
+    this.title,
+    required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SizedBox(
-          width: width,
-          height: height,
-          child: ElevatedButton(
-            style: ButtonStyle(
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(AppConstants.largeRadius),
-                ),
-              ),
-            ),
-            onPressed: onTap,
-            child: Text(
-              title ?? "",
-              style: const TextStyle(fontSize: AppConstants.smallFont),
+    return SizedBox(
+      width: width ?? context.dynamicWidth(0.72),
+      height: height??context.dynamicHeight(0.06),
+      child: ElevatedButton(
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppConstants.largeRadius),
             ),
           ),
         ),
-        SvgPicture.asset(
-          ImagePaths.buttonShadow,
+        onPressed: onTap,
+        child: Text(
+          title ?? "",
+          style: const TextStyle(fontSize: AppConstants.smallFont),
         ),
-      ],
+      ),
     );
   }
 }

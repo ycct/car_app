@@ -14,20 +14,21 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>Focus.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         body: Stack(
           alignment: Alignment.center,
           children: [
-            SizedBox(
-              height: context.dynamicHeight(1),
-              width: context.dynamicHeight(1),
+            Positioned.fill(
+              bottom: -100,
               child: SvgPicture.asset(ImagePaths.backgroundImage,
-                  fit: BoxFit.cover),
+                  fit: BoxFit.fitWidth),
             ),
             Positioned(
-              bottom: context.dynamicHeight(0.38),
+              bottom: context.dynamicHeight(0.3),
               child: Column(
                 children: [
                   buildText(
@@ -42,6 +43,7 @@ class LoginScreen extends StatelessWidget {
                   buildText(context, AppConstants.getTheUltimateOffers,
                       Theme.of(context).textTheme.subtitle1, FontWeight.normal),
                   context.sizedBoxHeightLarge,
+                  context.sizedBoxHeightLarge,
                   buildText(context, AppConstants.verifyYourNumber,
                       Theme.of(context).textTheme.headline5, FontWeight.bold),
                   context.sizedBoxHeightUltraSmall,
@@ -53,35 +55,37 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: context.dynamicHeight(0.24),
-              child: SizedBox(
-                width: context.dynamicWidth(0.73),
-                child: Row(
-                  children: [
-                    Expanded(flex: 1, child: buildCountryCode(context)),
-                    context.sizedBoxWidthExtraSmall,
-                    Expanded(
-                      flex: 3,
-                      child: SizedBox(
-                        width: context.dynamicWidth(0.52),
-                        height: context.dynamicWidth(0.12),
-                        child: buildTextFormField(context),
-                      ),
-                    )
-                  ],
-                ),
+              bottom: context.dynamicHeight(0.1),
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: context.dynamicWidth(0.73),
+                    height: context.dynamicHeight(0.06),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
+                          flex: 10,
+                          child: buildCountryCode(context),
+                        ),
+                        const Spacer(),
+                        Expanded(
+                          flex: 30,
+                          child: buildTextFormField(context),
+                        )
+                      ],
+                    ),
+                  ),
+                  context.sizedBoxHeightExtraSmall,
+                  CustomElevatedButton(
+                    title: AppConstants.verify,
+                    onTap: () {
+                      Get.toNamed("/verification");
+                    },
+                  ),
+                ],
               ),
             ),
-            Positioned(
-                bottom: context.dynamicHeight(0.16),
-                child: CustomElevatedButton(
-                  width: context.dynamicWidth(0.72),
-                  height: context.dynamicWidth(0.12),
-                  title: AppConstants.verify,
-                  onTap: () {
-                    Get.toNamed("/verification");
-                  },
-                ))
           ],
         ),
       ),
@@ -90,8 +94,6 @@ class LoginScreen extends StatelessWidget {
 
   Container buildCountryCode(BuildContext context) {
     return Container(
-      width: context.dynamicWidth(0.18),
-      height: context.dynamicWidth(0.12),
       decoration: BoxDecoration(
         border: Border.all(color: Theme.of(context).primaryColor),
         borderRadius: BorderRadius.circular(
@@ -117,8 +119,10 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  TextFormField buildTextFormField(BuildContext context) {
+  Widget buildTextFormField(BuildContext context) {
     return TextFormField(
+        expands: true,
+        maxLines: null,
         keyboardType: TextInputType.number,
         inputFormatters: <TextInputFormatter>[
           LengthLimitingTextInputFormatter(9),

@@ -13,23 +13,24 @@ class VerificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: Stack(
         alignment: Alignment.center,
         children: [
-          SizedBox(
-            height: context.dynamicHeight(1),
-            width: context.dynamicHeight(1),
+          Positioned.fill(
+            bottom: -context.dynamicHeight(0.12),
             child: SvgPicture.asset(ImagePaths.backgroundImage,
-                fit: BoxFit.cover),
+                fit: BoxFit.fitWidth),
           ),
           Positioned(
-
-            bottom: context.dynamicHeight(0.25),
+            bottom: context.dynamicHeight(0.55),
+            child: buildSvgPicture(context),
+          ),
+          Positioned(
+            bottom: context.dynamicHeight(0.28),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                buildSvgPicture(context),
                 context.sizedBoxHeightSmall,
                 buildText(context),
                 context.sizedBoxHeightExtraSmall,
@@ -41,23 +42,16 @@ class VerificationScreen extends StatelessWidget {
                     buildTextField(context),
                   ],
                 ),
-                context.sizedBoxHeightDefault,
-                // Text(
-                //   AppConstants.reSend,
-                //   style: Theme.of(context).textTheme.bodyText1,
-                // ),
               ],
             ),
           ),
           Positioned(
-            bottom: context.dynamicHeight(0.16),
+            bottom: context.dynamicHeight(0.1),
             child: CustomElevatedButton(
               onTap: () {
                 Get.toNamed("/verified");
               },
               title: AppConstants.verify,
-              width: context.dynamicWidth(0.72),
-              height: context.dynamicWidth(0.12),
             ),
           ),
         ],
@@ -67,8 +61,8 @@ class VerificationScreen extends StatelessWidget {
 
   SizedBox buildSvgPicture(BuildContext context) {
     return SizedBox(
-      height: context.dynamicHeight(0.25),
-      width: context.dynamicWidth(1),
+      height: context.dynamicHeight(0.3),
+      width: context.dynamicHeight(1),
       child: SvgPicture.asset(
         ImagePaths.verification,
       ),

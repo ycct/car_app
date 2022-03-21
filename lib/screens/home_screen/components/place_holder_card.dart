@@ -21,6 +21,7 @@ class DetailedCard extends StatelessWidget {
       child: Stack(
         children: [
           Card(
+            color: Theme.of(context).disabledColor,
             shape: RoundedRectangleBorder(
               borderRadius:
                   BorderRadius.circular(AppConstants.extraSmallRadius),
@@ -32,7 +33,7 @@ class DetailedCard extends StatelessWidget {
               child: Stack(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(context.dynamicWidth(0.03)),
+                    padding: EdgeInsets.all(context.paddingSmallWidth),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -48,7 +49,10 @@ class DetailedCard extends StatelessWidget {
                     left: 15,
                     top: 90,
                     child: buildTextIconRow(
-                        context, AppConstants.likesCount, Icons.favorite),
+                      context,
+                      AppConstants.likesCount,
+                      Icons.favorite,
+                    ),
                   ),
                   Positioned(
                     right: 15,
@@ -122,7 +126,10 @@ class DetailedCard extends StatelessWidget {
             ),
           ),
         ),
-        child: const Text(AppConstants.shopNow),
+        child: Text(
+          AppConstants.shopNow,
+          style: TextStyle(color: Theme.of(context).disabledColor),
+        ),
         onPressed: () {},
       ),
     );
@@ -148,12 +155,7 @@ class DetailedCard extends StatelessWidget {
           icon,
           size: AppConstants.extraSmallFont,
         ),
-        Text(
-          title,
-          style: context.theme.textTheme.subtitle1!.copyWith(
-              fontSize: AppConstants.extraSmallFont,
-              fontWeight: FontWeight.bold),
-        ),
+        Text(title, style: context.theme.textTheme.subtitle2),
       ],
     );
   }

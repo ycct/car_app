@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class LightTheme {
   static const Color primaryColor = Colors.blue;
   static const Color secondaryColor = Colors.white;
+  static  Color backgroundColor = Colors.grey.shade50;
 
   static ThemeData lightTheme = ThemeData(
     inputDecorationTheme: const InputDecorationTheme(
@@ -13,15 +14,17 @@ class LightTheme {
     primarySwatch: Colors.blue,
     primaryColor: primaryColor,
     disabledColor: secondaryColor,
-    scaffoldBackgroundColor: Colors.grey.shade50,
+    scaffoldBackgroundColor: backgroundColor,
     textTheme: const TextTheme(
-      bodyText1: TextStyle(),
-      bodyText2: TextStyle(),
-      headline4: TextStyle(),
-      headline5: TextStyle(),
-      headline6: TextStyle(),
-      subtitle1: TextStyle(),
-      subtitle2: TextStyle(),
+      headline4: TextStyle(fontWeight: FontWeight.bold),
+      headline5: TextStyle(fontWeight: FontWeight.bold),
+      headline6: TextStyle(fontWeight: FontWeight.bold),
+      subtitle1: TextStyle(letterSpacing: 0),
+      subtitle2: TextStyle(letterSpacing: 0),
+      bodyText1: TextStyle(letterSpacing: 0),
+      bodyText2: TextStyle(letterSpacing: 0),
+      caption: TextStyle(letterSpacing: 0),
+      overline: TextStyle(letterSpacing: 0),
     ).apply(
       bodyColor: primaryColor,
       displayColor: primaryColor,

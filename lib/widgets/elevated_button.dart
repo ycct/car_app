@@ -32,7 +32,7 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed: onTap,
         child: Text(
           title ?? "",
-          style: const TextStyle(fontSize: AppConstants.smallFont),
+          style: Theme.of(context).textTheme.headline6?.copyWith(color: Theme.of(context).disabledColor),
         ),
       ),
     );

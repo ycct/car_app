@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Text(
                               AppConstants.hiJaneDoe,
-                              style: context.textTheme.headline5!.copyWith(
+                              style: context.textTheme.headline5?.copyWith(
                                   fontWeight: FontWeight.bold,
                                   color: Theme.of(context).disabledColor),
                             ),
@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Text(
                           AppConstants.bodyText,
                           textAlign: TextAlign.center,
-                          style: context.textTheme.subtitle2!.copyWith(),
+                          style: context.textTheme.subtitle2
                         );
                       },
                       options: CarouselOptions(

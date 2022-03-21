@@ -53,17 +53,15 @@ class RemainingCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        title!,
-                        style: context.theme.textTheme.subtitle1!.copyWith(
-                            color: context.theme.disabledColor,
-                            fontSize: AppConstants.smallFont,
-                            fontWeight: FontWeight.bold),
+                        title??"",
+                        style: context.theme.textTheme.headline6?.copyWith(
+                            color: Theme.of(context).disabledColor
+                            ),
                       ),
                       Text(
                         detail,
-                        style: context.theme.textTheme.subtitle1!.copyWith(
+                        style: context.theme.textTheme.overline?.copyWith(
                           color: context.theme.disabledColor,
-                          fontSize: AppConstants.ultraSmallFont,
                         ),
                       ),
                       context.sizedBoxHeightExtraSmall,
@@ -79,8 +77,7 @@ class RemainingCard extends StatelessWidget {
                           onPressed: () {},
                           child: Text(
                             AppConstants.continueHere,
-                            style: context.theme.textTheme.subtitle1!.copyWith(
-                                fontSize: AppConstants.ultraSmallFont),
+                            style: context.theme.textTheme.overline
                           ),
                         ),
                       ),

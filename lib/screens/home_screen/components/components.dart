@@ -8,7 +8,7 @@ Padding buildCategoryTitle(BuildContext context, String title) {
     padding: EdgeInsets.only(left: context.paddingDefaultWidth),
     child: Text(
       title,
-      style: context.textTheme.headline5!.copyWith(fontWeight: FontWeight.bold),
+      style: context.textTheme.headline5?.copyWith(fontWeight: FontWeight.bold),
     ),
   );
 }
@@ -16,21 +16,25 @@ Padding buildCategoryTitle(BuildContext context, String title) {
 AppBar buildAppBar(BuildContext context) {
   return AppBar(
     leadingWidth: context.paddingExtraLargeWidth * 1.5,
-    leading: const Icon(
+    leading: Icon(
       Icons.wrap_text_sharp,
       size: AppConstants.defaultFont,
+      color: Theme.of(context).disabledColor,
     ),
     elevation: 0,
     title: Text(
       AppConstants.home,
-      style: Theme.of(context).textTheme.headline5!.copyWith(
-          color: Theme.of(context).disabledColor, fontWeight: FontWeight.bold),
+      style: Theme.of(context)
+          .textTheme
+          .headline5
+          ?.copyWith(color: Theme.of(context).disabledColor),
     ),
     centerTitle: true,
     actions: [
-      const Icon(
+      Icon(
         Icons.shopping_bag,
         size: AppConstants.defaultFont,
+        color: Theme.of(context).disabledColor,
       ),
       context.sizedBoxWidthExtraSmall,
       buildCircleAvatar(context),
@@ -76,13 +80,16 @@ RichText buildRichText(BuildContext context) {
       children: [
         TextSpan(
           text: "0.",
-          style: context.textTheme.headline4!.copyWith(color: Colors.white),
+          style: context.textTheme.headline4
+              ?.copyWith(color: Theme.of(context).disabledColor),
         ),
-        const TextSpan(
+        TextSpan(
           text: "00",
+          style: TextStyle(color: Theme.of(context).disabledColor),
         ),
-        const TextSpan(
+        TextSpan(
           text: " AED",
+          style: TextStyle(color: Theme.of(context).disabledColor),
         ),
       ],
     ),

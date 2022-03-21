@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get.dart';
 import 'package:yallawashtest/bindings/bindings.dart';
 import 'package:yallawashtest/routes/app_routes.dart';
 import 'package:yallawashtest/screens/home_screen/home_screen.dart';
@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
+        defaultTransition: Transition.cupertino,
         initialRoute: "/splash",
         initialBinding: MainBinding(),
         getPages: AppRoutes.routes,

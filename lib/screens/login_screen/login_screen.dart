@@ -23,32 +23,43 @@ class LoginScreen extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Positioned.fill(
-              bottom: -100,
-              child: SvgPicture.asset(ImagePaths.backgroundImage,
-                  fit: BoxFit.fitWidth),
+              bottom: -context.dynamicHeight(0.12),
+              child: SvgPicture.asset(
+                ImagePaths.backgroundImage,
+                fit: BoxFit.fitWidth,
+              ),
             ),
             Positioned(
               bottom: context.dynamicHeight(0.3),
               child: Column(
                 children: [
                   buildText(
-                      context,
-                      AppConstants.welcomeToYallaWash,
-                      Theme.of(context)
-                          .textTheme
-                          .headline5
-                          ?.copyWith(fontSize: AppConstants.defaultFont),
-                      FontWeight.bold),
+                    context,
+                    AppConstants.welcomeToYallaWash,
+                    Theme.of(context)
+                        .textTheme
+                        .headline5
+                        ?.copyWith(fontSize: AppConstants.defaultFont),
+                  ),
                   context.sizedBoxHeightUltraSmall,
-                  buildText(context, AppConstants.getTheUltimateOffers,
-                      Theme.of(context).textTheme.subtitle1, FontWeight.normal),
+                  buildText(
+                    context,
+                    AppConstants.getTheUltimateOffers,
+                    Theme.of(context).textTheme.subtitle1,
+                  ),
                   context.sizedBoxHeightLarge,
                   context.sizedBoxHeightLarge,
-                  buildText(context, AppConstants.verifyYourNumber,
-                      Theme.of(context).textTheme.headline5, FontWeight.bold),
+                  buildText(
+                    context,
+                    AppConstants.verifyYourNumber,
+                    Theme.of(context).textTheme.headline5,
+                  ),
                   context.sizedBoxHeightUltraSmall,
-                  buildText(context, AppConstants.pleaseEnterYourNumber,
-                      Theme.of(context).textTheme.subtitle1, FontWeight.normal),
+                  buildText(
+                    context,
+                    AppConstants.pleaseEnterYourNumber,
+                    Theme.of(context).textTheme.subtitle1,
+                  ),
                   context.sizedBoxHeightSmall,
                   context.sizedBoxHeightExtraSmall,
                 ],
@@ -121,39 +132,43 @@ class LoginScreen extends StatelessWidget {
 
   Widget buildTextFormField(BuildContext context) {
     return TextFormField(
-        expands: true,
-        maxLines: null,
-        keyboardType: TextInputType.number,
-        inputFormatters: <TextInputFormatter>[
-          LengthLimitingTextInputFormatter(9),
-          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-        ],
-        decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: AppConstants.defaultPadding,
+      expands: true,
+      maxLines: null,
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        LengthLimitingTextInputFormatter(9),
+        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+      ],
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: AppConstants.defaultPadding,
+        ),
+        labelText: AppConstants.phoneNumber,
+        labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+        fillColor: Theme.of(context).disabledColor,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppConstants.largeRadius),
+          borderSide: BorderSide(color: Theme.of(context).primaryColor),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppConstants.largeRadius),
+          borderSide: BorderSide(
+            color: Theme.of(context).primaryColor,
           ),
-          labelText: AppConstants.phoneNumber,
-          labelStyle: TextStyle(color: Theme.of(context).primaryColor),
-          fillColor: Theme.of(context).disabledColor,
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(AppConstants.largeRadius),
-            borderSide: BorderSide(color: Theme.of(context).primaryColor),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(AppConstants.largeRadius),
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-            ),
-          ),
-        ));
+        ),
+      ),
+    );
   }
 
-  Text buildText(BuildContext context, String title, TextStyle? style,
-      FontWeight fontWeight) {
+  Text buildText(
+    BuildContext context,
+    String title,
+    TextStyle? style,
+  ) {
     return Text(
       title,
       textAlign: TextAlign.center,
-      style: style?.copyWith(fontWeight: fontWeight),
+      style: style,
     );
   }
 }

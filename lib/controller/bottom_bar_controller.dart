@@ -12,11 +12,11 @@ class BottomNavController extends GetxController {
     Icons.person,
   ];
 
-  AnimatedBottomNavigationBar buildAnimatedBottomNavigationBar() {
+  AnimatedBottomNavigationBar buildAnimatedBottomNavigationBar(BuildContext context) {
     return AnimatedBottomNavigationBar(
       height: Get.height * 0.12,
       elevation: 20,
-      activeColor: Colors.blue,
+      activeColor: Theme.of(context).primaryColor,
       icons: iconList,
       iconSize: AppConstants.defaultFont,
       inactiveColor: Colors.grey.shade400,

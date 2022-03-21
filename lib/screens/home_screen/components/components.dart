@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yallawashtest/extensions.dart';
@@ -70,6 +72,23 @@ Padding buildFloating(BuildContext context) {
         backgroundColor: Theme.of(context).disabledColor,
         onPressed: () {},
       ),
+    ),
+  );
+}
+
+CarouselSlider buildCarouselSlider() {
+  return CarouselSlider.builder(
+    itemCount: 5,
+    itemBuilder: (context, index, realIndex) {
+      return const Text(
+        AppConstants.bodyText,
+        textAlign: TextAlign.center,
+      );
+    },
+    options: CarouselOptions(
+      height: 50,
+      autoPlay: true,
+      viewportFraction: 1,
     ),
   );
 }

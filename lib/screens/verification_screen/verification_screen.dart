@@ -49,7 +49,7 @@ class VerificationScreen extends StatelessWidget {
             bottom: context.dynamicHeight(0.1),
             child: CustomElevatedButton(
               onTap: () {
-                Get.toNamed("/verified");
+                Get.offAllNamed("/verified");
               },
               title: AppConstants.verify,
             ),

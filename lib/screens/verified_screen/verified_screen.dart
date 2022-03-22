@@ -34,7 +34,7 @@ class VerifiedScreen extends StatelessWidget {
             bottom: context.dynamicHeight(0.10),
             child: CustomElevatedButton(
               onTap: () {
-                Get.toNamed("/home");
+                Get.offAllNamed("/home");
               },
               title: AppConstants.next,
             ),

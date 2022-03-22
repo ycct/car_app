@@ -32,22 +32,23 @@ class DetailedCard extends StatelessWidget {
               width: width,
               child: Stack(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(context.paddingSmallWidth),
+                  Positioned(
+                    left: context.dynamicWidth(0.02),
+                    top: context.dynamicHeight(0.01),
+
+
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         buildImage(context),
                         context.sizedBoxWidthExtraSmall,
-                        Expanded(
-                          child: buildTextColumn(context),
-                        )
+                        buildTextColumn(context)
                       ],
                     ),
                   ),
                   Positioned(
-                    left: 15,
-                    top: 90,
+                    left: context.dynamicWidth(0.02),
+                    top: context.dynamicHeight(0.11),
                     child: buildTextIconRow(
                       context,
                       AppConstants.likesCount,
@@ -70,7 +71,7 @@ class DetailedCard extends StatelessWidget {
                   ),
                   Positioned(
                     bottom: 0,
-                    right: 0,
+                    right: 5,
                     child: buildUnderline(context),
                   ),
                 ],
@@ -114,6 +115,17 @@ class DetailedCard extends StatelessWidget {
     );
   }
 
+  Text buildCardsText(BuildContext context, String title, double fontSize,
+      [FontWeight? fontWeight]) {
+    return Text(
+      title,
+      overflow: TextOverflow.ellipsis,
+      style: context.theme.textTheme.subtitle1!
+          .copyWith(fontWeight: FontWeight.bold, fontSize: fontSize),
+    );
+  }
+
+
   SizedBox buildElevatedButton(BuildContext context) {
     return SizedBox(
       height: context.dynamicHeight(0.03),
@@ -137,7 +149,7 @@ class DetailedCard extends StatelessWidget {
 
   Container buildUnderline(BuildContext context) {
     return Container(
-      height: context.dynamicHeight(0.004),
+      height: 3,
       width: context.dynamicWidth(0.5),
       decoration: BoxDecoration(
         color: context.theme.primaryColor,
@@ -160,13 +172,4 @@ class DetailedCard extends StatelessWidget {
     );
   }
 
-  Text buildCardsText(BuildContext context, String title, double fontSize,
-      [FontWeight? fontWeight]) {
-    return Text(
-      title,
-      overflow: TextOverflow.ellipsis,
-      style: context.theme.textTheme.subtitle1!
-          .copyWith(fontWeight: FontWeight.bold, fontSize: fontSize),
-    );
-  }
 }

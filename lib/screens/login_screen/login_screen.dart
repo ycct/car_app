@@ -2,6 +2,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/constants/images_paths.dart';
@@ -25,48 +26,10 @@ class LoginScreen extends StatelessWidget {
             body: Stack(
               alignment: Alignment.center,
               children: [
-                Positioned.fill(
-                  bottom: -context.dynamicHeight(0.12),
-                  child: SvgPicture.asset(
-                    ImagePaths.backgroundImage,
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
+                buildPositioned(context),
                 Positioned(
                   bottom: context.dynamicHeight(0.3),
-                  child: Column(
-                    children: [
-                      buildText(
-                        context,
-                        AppConstants.welcomeToYallaWash,
-                        Theme.of(context)
-                            .textTheme
-                            .headline5
-                            ?.copyWith(fontSize: AppConstants.defaultFont),
-                      ),
-                      context.sizedBoxHeightUltraSmall,
-                      buildText(
-                        context,
-                        AppConstants.getTheUltimateOffers,
-                        Theme.of(context).textTheme.subtitle1,
-                      ),
-                      context.sizedBoxHeightLarge,
-                      context.sizedBoxHeightLarge,
-                      buildText(
-                        context,
-                        AppConstants.verifyYourNumber,
-                        Theme.of(context).textTheme.headline5,
-                      ),
-                      context.sizedBoxHeightUltraSmall,
-                      buildText(
-                        context,
-                        AppConstants.pleaseEnterYourNumber,
-                        Theme.of(context).textTheme.subtitle1,
-                      ),
-                      context.sizedBoxHeightSmall,
-                      context.sizedBoxHeightExtraSmall,
-                    ],
-                  ),
+                  child: buildTextColumn(context),
                 ),
                 Positioned(
                   bottom: context.dynamicHeight(0.1),
@@ -85,7 +48,8 @@ class LoginScreen extends StatelessWidget {
                             const Spacer(),
                             Expanded(
                               flex: 30,
-                              child: buildTextFormField(context),
+                              child: buildTextFormField(
+                                  context, loginController.numberController),
                             )
                           ],
                         ),
@@ -93,9 +57,9 @@ class LoginScreen extends StatelessWidget {
                       context.sizedBoxHeightExtraSmall,
                       CustomElevatedButton(
                         title: AppConstants.verify,
-                        onTap: () {
-                          loginController.login();
-                          // Get.toNamed("/verification");
+                        onTap: () async {
+                          await loginController.login();
+                           loginController.loginResponseChecker();
                         },
                       ),
                     ],
@@ -105,7 +69,52 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
         );
-      }
+      },
+    );
+  }
+
+  Column buildTextColumn(BuildContext context) {
+    return Column(
+      children: [
+        buildText(
+          context,
+          AppConstants.welcomeToYallaWash,
+          Theme.of(context).textTheme.headline5?.copyWith(
+                fontSize: AppConstants.defaultFont,
+              ),
+        ),
+        context.sizedBoxHeightUltraSmall,
+        buildText(
+          context,
+          AppConstants.getTheUltimateOffers,
+          Theme.of(context).textTheme.subtitle1,
+        ),
+        context.sizedBoxHeightLarge,
+        context.sizedBoxHeightLarge,
+        buildText(
+          context,
+          AppConstants.verifyYourNumber,
+          Theme.of(context).textTheme.headline5,
+        ),
+        context.sizedBoxHeightUltraSmall,
+        buildText(
+          context,
+          AppConstants.pleaseEnterYourNumber,
+          Theme.of(context).textTheme.subtitle1,
+        ),
+        context.sizedBoxHeightSmall,
+        context.sizedBoxHeightExtraSmall,
+      ],
+    );
+  }
+
+  Positioned buildPositioned(BuildContext context) {
+    return Positioned.fill(
+      bottom: -context.dynamicHeight(0.12),
+      child: SvgPicture.asset(
+        ImagePaths.backgroundImage,
+        fit: BoxFit.fitWidth,
+      ),
     );
   }
 
@@ -118,8 +127,7 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       child: CountryCodePicker(
-        onChanged: (value) {
-        },
+        onChanged: (value) {},
         textStyle: TextStyle(
           fontWeight: FontWeight.normal,
           color: Theme.of(context).primaryColor,
@@ -138,8 +146,10 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget buildTextFormField(BuildContext context) {
+  Widget buildTextFormField(
+      BuildContext context, TextEditingController controller) {
     return TextFormField(
+      controller: controller,
       expands: true,
       maxLines: null,
       keyboardType: TextInputType.number,

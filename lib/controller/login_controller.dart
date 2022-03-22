@@ -1,23 +1,44 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:yallawashtest/constants/app_constants.dart';
 
-import '../models/ver_code_response_model.dart';
+import '../models/code_response_model.dart';
 
 class LoginController extends GetxController {
   VerificationCodeResponseModel? verificationCodeResponseModel;
   TextEditingController numberController = TextEditingController();
 
-  Future login() async {
+  Future<dynamic> login() async {
     const String baseUrl = "http://178.157.14.40:88";
-    const String getCodeUrl = "/api/users/249991009900";
+    String getCodeUrl = "/api/users/249${numberController.text}";
     Uri serviceUri = Uri.parse(baseUrl + getCodeUrl);
-    http.Response response = await http.get(serviceUri);
-    Map<String, dynamic> responseMap = jsonDecode(response.body);
-    verificationCodeResponseModel =
-        VerificationCodeResponseModel.fromJson(responseMap);
+    try {
+      http.Response response = await http.get(serviceUri);
+      Map<String, dynamic> responseMap = jsonDecode(response.body);
+      verificationCodeResponseModel =
+          VerificationCodeResponseModel.fromJson(responseMap);
+      return verificationCodeResponseModel;
+    } catch (e) {
+      return e;
+    }
+  }
+
+  Future loginResponseChecker() async {
     if (verificationCodeResponseModel != null) {
+      if (verificationCodeResponseModel!.result == "Success") {
+        Get.snackbar(AppConstants.myAppName,
+            verificationCodeResponseModel!.responseMessage ?? "");
+        Timer(
+          const Duration(seconds: 2),
+          () => Get.toNamed("/verification"),
+        );
+      } else {
+        Get.snackbar(AppConstants.myAppName,
+            verificationCodeResponseModel!.responseMessage ?? "");
+      }
     }
   }
 }

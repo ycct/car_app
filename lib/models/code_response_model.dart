@@ -13,5 +13,4 @@ class VerificationCodeResponseModel {
       isCustomerRegistered: json["isCustomerRegistered"],
     );
   }
-
 }

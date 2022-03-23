@@ -18,10 +18,8 @@ class LoginController extends GetxController {
   TextEditingController verifyControllerFourth = TextEditingController();
   String countryCode = "249";
   String verificationCode = "";
-  bool isVerificationButtonEnabled = true;
 
   void clearTextFields() {
-    numberController.clear();
     verifyControllerFirst.clear();
     verifyControllerSecond.clear();
     verifyControllerThird.clear();
@@ -58,7 +56,7 @@ class LoginController extends GetxController {
       } else {
         Get.snackbar(AppConstants.myAppName,
             verificationCodeRequestModel!.responseMessage ?? "",
-            backgroundColor: Colors.blue.shade300, colorText: Colors.white);
+            backgroundColor: Colors.blue.shade300, colorText: Colors.white,);
         await Future.delayed(
           const Duration(
             seconds: 2,
@@ -103,7 +101,9 @@ class LoginController extends GetxController {
         return true;
       } else {
         Get.snackbar(AppConstants.myAppName,
-            verificationCodeResponseModel!.responseMessage ?? "");
+            verificationCodeResponseModel!.responseMessage ?? "",
+            backgroundColor: Colors.blue.shade300, colorText: Colors.white,
+        );
         return false;
       }
     }

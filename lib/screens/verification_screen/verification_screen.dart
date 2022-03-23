@@ -29,12 +29,15 @@ class VerificationScreen extends StatelessWidget {
               child: buildSvgPicture(context),
             ),
             Positioned(
-              bottom: context.dynamicHeight(0.28),
+              bottom: context.dynamicHeight(0.26),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   context.sizedBoxHeightSmall,
-                  buildText(context),
+                  buildText(
+                    context,
+                    AppConstants.verificationCode,
+                  ),
                   context.sizedBoxHeightExtraSmall,
                   Row(
                     children: [
@@ -48,6 +51,19 @@ class VerificationScreen extends StatelessWidget {
                           context, loginController.verifyControllerFourth),
                     ],
                   ),
+                  context.sizedBoxHeightUltraSmall,
+                  Text(
+                    "Please Enter your verification code",
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  context.sizedBoxHeightUltraSmall,
+                  Text(
+                    " + " +
+                        loginController.countryCode +
+                        " " +
+                        loginController.numberController.text,
+                    style: Theme.of(context).textTheme.headline6,
+                  )
                 ],
               ),
             ),
@@ -55,8 +71,11 @@ class VerificationScreen extends StatelessWidget {
               bottom: context.dynamicHeight(0.1),
               child: CustomElevatedButton(
                 onTap: () async {
+                  buildShowDialog(context);
                   loginController.verificationCodeInputGetter();
                   await loginController.verifyUser();
+                  await Future.delayed(const Duration(seconds: 1));
+                  Navigator.pop(context);
                   loginController.userVerificationChecker();
                 },
                 title: AppConstants.verify,
@@ -66,6 +85,17 @@ class VerificationScreen extends StatelessWidget {
         ),
       );
     });
+  }
+
+  buildShowDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return const Center(
+            child: CircularProgressIndicator.adaptive(),
+          );
+        });
   }
 
   SizedBox buildSvgPicture(BuildContext context) {
@@ -78,9 +108,8 @@ class VerificationScreen extends StatelessWidget {
     );
   }
 
-  Text buildText(BuildContext context) {
-    return Text(AppConstants.verificationCode,
-        style: Theme.of(context).textTheme.headline4);
+  Text buildText(BuildContext context, String title) {
+    return Text(title, style: Theme.of(context).textTheme.headline4);
   }
 
   Padding buildTextField(

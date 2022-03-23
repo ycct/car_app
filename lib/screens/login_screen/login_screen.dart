@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                           children: [
                             Expanded(
                               flex: 10,
-                              child: buildCountryCode(context),
+                              child: buildCountryCode(context,loginController),
                             ),
                             const Spacer(),
                             Expanded(
@@ -59,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                         title: AppConstants.verify,
                         onTap: () async {
                           await loginController.login();
-                           loginController.loginResponseChecker();
+                           await loginController.loginResponseChecker();
                         },
                       ),
                     ],
@@ -118,7 +118,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Container buildCountryCode(BuildContext context) {
+  Container buildCountryCode(BuildContext context,LoginController loginController) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Theme.of(context).primaryColor),
@@ -127,7 +127,10 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       child: CountryCodePicker(
-        onChanged: (value) {},
+        onChanged: (value) {
+          var valueString = value.toString();
+          loginController.countryCodePicker(valueString);
+        },
         textStyle: TextStyle(
           fontWeight: FontWeight.normal,
           color: Theme.of(context).primaryColor,
@@ -141,7 +144,8 @@ class LoginScreen extends StatelessWidget {
             15,
           ),
         ),
-        initialSelection: "IN",
+        initialSelection: "SD",
+
       ),
     );
   }
@@ -154,7 +158,7 @@ class LoginScreen extends StatelessWidget {
       maxLines: null,
       keyboardType: TextInputType.number,
       inputFormatters: <TextInputFormatter>[
-        LengthLimitingTextInputFormatter(9),
+        LengthLimitingTextInputFormatter(10),
         FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
       ],
       decoration: InputDecoration(

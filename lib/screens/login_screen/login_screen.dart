@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
             body: Stack(
               alignment: Alignment.center,
               children: [
-                buildPositioned(context),
+                buildBackgroundImage(context),
                 Positioned(
                   bottom: context.dynamicHeight(0.3),
                   child: buildTextColumn(context),
@@ -43,13 +43,15 @@ class LoginScreen extends StatelessWidget {
                           children: [
                             Expanded(
                               flex: 10,
-                              child: buildCountryCode(context,loginController),
+                              child: buildCountryCode(context, loginController),
                             ),
                             const Spacer(),
                             Expanded(
                               flex: 30,
                               child: buildTextFormField(
-                                  context, loginController.numberController),
+                                context,
+                                loginController.numberController,
+                              ),
                             )
                           ],
                         ),
@@ -59,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                         title: AppConstants.verify,
                         onTap: () async {
                           await loginController.login();
-                           await loginController.loginResponseChecker();
+                          await loginController.loginRequestChecker();
                         },
                       ),
                     ],
@@ -108,7 +110,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Positioned buildPositioned(BuildContext context) {
+  Positioned buildBackgroundImage(BuildContext context) {
     return Positioned.fill(
       bottom: -context.dynamicHeight(0.12),
       child: SvgPicture.asset(
@@ -118,7 +120,8 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Container buildCountryCode(BuildContext context,LoginController loginController) {
+  Container buildCountryCode(
+      BuildContext context, LoginController loginController) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Theme.of(context).primaryColor),
@@ -145,7 +148,6 @@ class LoginScreen extends StatelessWidget {
           ),
         ),
         initialSelection: "SD",
-
       ),
     );
   }

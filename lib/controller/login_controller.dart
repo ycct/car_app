@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:yallawashtest/constants/app_constants.dart';
@@ -18,8 +18,17 @@ class LoginController extends GetxController {
   TextEditingController verifyControllerFourth = TextEditingController();
   String countryCode = "249";
   String verificationCode = "";
+  bool isVerificationButtonEnabled = true;
 
-  Future<dynamic> login() async {
+  void clearTextFields() {
+    numberController.clear();
+    verifyControllerFirst.clear();
+    verifyControllerSecond.clear();
+    verifyControllerThird.clear();
+    verifyControllerFourth.clear();
+  }
+
+  Future login() async {
     String getCodeUrl =
         "${Service.userApi}$countryCode${numberController.text}";
     Uri serviceUri = Uri.parse(Service.baseUrl + getCodeUrl);
@@ -28,9 +37,11 @@ class LoginController extends GetxController {
       Map<String, dynamic> responseMap = jsonDecode(response.body);
       verificationCodeRequestModel =
           VerificationCodeRequestModel.fromJson(responseMap);
-      return verificationCodeRequestModel;
     } catch (e) {
-      return e;
+      Get.snackbar(
+        AppConstants.myAppName,
+        e.toString(),
+      );
     }
   }
 
@@ -38,14 +49,21 @@ class LoginController extends GetxController {
     if (verificationCodeRequestModel != null) {
       if (verificationCodeRequestModel!.result == "Success") {
         Get.snackbar(AppConstants.myAppName,
-            verificationCodeRequestModel!.responseMessage ?? "");
+            verificationCodeRequestModel!.responseMessage ?? "",
+            backgroundColor: Colors.blue.shade300, colorText: Colors.white);
         Timer(
-          const Duration(seconds: 2),
+          const Duration(milliseconds: 100),
           () => Get.toNamed("/verification"),
         );
       } else {
         Get.snackbar(AppConstants.myAppName,
-            verificationCodeRequestModel!.responseMessage ?? "");
+            verificationCodeRequestModel!.responseMessage ?? "",
+            backgroundColor: Colors.blue.shade300, colorText: Colors.white);
+        await Future.delayed(
+          const Duration(
+            seconds: 2,
+          ),
+        );
       }
     }
   }
@@ -75,12 +93,12 @@ class LoginController extends GetxController {
     return verificationCodeResponseModel;
   }
 
-  bool userVerificationChecker()  {
+  bool userVerificationChecker() {
     if (verificationCodeResponseModel != null) {
       if (verificationCodeResponseModel!.result == "Success") {
         Timer(
           const Duration(seconds: 1),
-              () => Get.offAllNamed("/verified"),
+          () => Get.offAllNamed("/verified"),
         );
         return true;
       } else {

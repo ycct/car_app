@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:yallawashtest/screens/signup_screen/signup_screen.dart';
 import 'package:yallawashtest/screens/verification_screen/verification_screen.dart';
 import 'package:yallawashtest/screens/verified_screen/verified_screen.dart';
 import '../bindings/bindings.dart';
@@ -29,6 +30,10 @@ class AppRoutes {
     GetPage(
       name: '/verified',
       page: () => const VerifiedScreen(),
+    ),
+    GetPage(
+      name: '/signup',
+      page: () => const SignUpScreen(),
     )
   ];
 }

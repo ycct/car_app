@@ -29,11 +29,15 @@ class AppConstants {
   static const verify = "Verify";
   static const signUp = "Sign Up";
   static const next = "Next";
+  static const done = "Done";
+  static const google = "Google";
+  static const facebook = "Facebook";
   static const verificationCode = "Verification Code";
   static const phoneNumber = "Phone Number";
   static const reSend = "Re-send (30s)";
   static const codeVerifiedSuccessfully = "Code Verified \n Successfully";
   static const registerAnAccount = "Register an account & enjoy the best deals & offers in UAD";
+  static const orConnectThrough = "Or connect through your Social Account";
 
   //Font Sizes
   static const extraLargeFont = 40.0;

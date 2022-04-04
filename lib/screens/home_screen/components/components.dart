@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,13 +14,16 @@ Padding buildCategoryTitle(BuildContext context, String title) {
   );
 }
 
-AppBar buildAppBar(BuildContext context) {
+AppBar buildAppBar(BuildContext context, VoidCallback onTap) {
   return AppBar(
     leadingWidth: context.paddingExtraLargeWidth * 1.5,
-    leading: Icon(
-      Icons.wrap_text_sharp,
-      size: AppConstants.defaultFont,
-      color: Theme.of(context).disabledColor,
+    leading: InkWell(
+      onTap: onTap,
+      child: Icon(
+        Icons.wrap_text_sharp,
+        size: AppConstants.defaultFont,
+        color: Theme.of(context).disabledColor,
+      ),
     ),
     elevation: 0,
     title: Text(

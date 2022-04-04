@@ -63,7 +63,7 @@ class SignUpScreen extends StatelessWidget {
                         child: buildAuthButtons(
                             const Color(0xFF3479EA),
                             AppConstants.facebook,
-                            ImagePaths.facebook,
+                            ImagePaths.facebookLogo,
                             Colors.white),
                       ),
                       context.sizedBoxWidthExtraSmall,
@@ -71,7 +71,7 @@ class SignUpScreen extends StatelessWidget {
                         child: buildAuthButtons(
                             Colors.white,
                             AppConstants.google,
-                            ImagePaths.google,
+                            ImagePaths.googleLogo,
                             Colors.grey),
                       ),
                     ],

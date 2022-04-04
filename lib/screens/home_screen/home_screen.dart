@@ -4,6 +4,7 @@ import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/controller/bottom_bar_controller.dart';
 import 'package:yallawashtest/extensions.dart';
 import 'components/components.dart';
+import 'components/navigation_drawer.dart';
 import 'components/place_holder_listview.dart';
 import 'components/remainin_deals_listview.dart';
 
@@ -12,11 +13,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     return GetBuilder(
       init: BottomNavController(),
       builder: (BottomNavController b) {
         return Scaffold(
-          appBar: buildAppBar(context),
+          key: _scaffoldKey,
+          drawer: const NavigationDrawer(),
+          appBar: buildAppBar(context, () {
+            _scaffoldKey.currentState?.openDrawer();
+          }),
           body: ListView(
             children: [
               ClipPath(
@@ -114,5 +120,4 @@ class HomeScreen extends StatelessWidget {
       },
     );
   }
-
 }

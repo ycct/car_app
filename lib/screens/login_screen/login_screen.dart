@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -38,7 +37,7 @@ class LoginScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(
-                        width: context.dynamicWidth(0.73),
+                        width: context.dynamicWidth(0.8),
                         height: context.dynamicHeight(0.06),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.stretch,

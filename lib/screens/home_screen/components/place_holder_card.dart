@@ -16,6 +16,11 @@ class DetailedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double imageWidthHeight = context.dynamicWidth(0.18);
+    final double buttonHeight = context.dynamicHeight(0.03);
+    final double buttonWidth = context.dynamicWidth(0.4);
+    final double cardDefaultPaddingWidth = context.paddingExtraSmallWidth;
+    final double cardDefaultPaddingHeight = context.paddingExtraSmallHeight;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: context.paddingExtraSmallWidth),
       child: Stack(
@@ -33,22 +38,22 @@ class DetailedCard extends StatelessWidget {
               child: Stack(
                 children: [
                   Positioned(
-                    left: context.dynamicWidth(0.02),
-                    top: context.dynamicHeight(0.01),
-
-
+                    left: cardDefaultPaddingWidth,
+                    top: cardDefaultPaddingHeight,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        buildImage(context),
+                        buildImage(context, imageWidthHeight, imageWidthHeight),
                         context.sizedBoxWidthExtraSmall,
                         buildTextColumn(context)
                       ],
                     ),
                   ),
                   Positioned(
-                    left: context.dynamicWidth(0.02),
-                    top: context.dynamicHeight(0.11),
+                    left: cardDefaultPaddingWidth,
+                    top: cardDefaultPaddingHeight +
+                        imageWidthHeight +
+                        context.paddingUltraSmallWidth,
                     child: buildTextIconRow(
                       context,
                       AppConstants.likesCount,
@@ -56,8 +61,10 @@ class DetailedCard extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    right: 15,
-                    bottom: 40,
+                    right: cardDefaultPaddingWidth,
+                    bottom: cardDefaultPaddingHeight +
+                        buttonHeight +
+                        context.paddingUltraSmallHeight,
                     child: buildTextIconRow(
                       context,
                       AppConstants.daysLeft,
@@ -65,13 +72,14 @@ class DetailedCard extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    right: 10,
-                    bottom: 10,
-                    child: buildElevatedButton(context),
+                    right: cardDefaultPaddingWidth,
+                    bottom: cardDefaultPaddingHeight,
+                    child:
+                        buildElevatedButton(context, buttonWidth, buttonHeight),
                   ),
                   Positioned(
                     bottom: 0,
-                    right: 5,
+                    right: cardDefaultPaddingWidth,
                     child: buildUnderline(context),
                   ),
                 ],
@@ -83,10 +91,10 @@ class DetailedCard extends StatelessWidget {
     );
   }
 
-  Container buildImage(BuildContext context) {
+  Container buildImage(BuildContext context, double width, double height) {
     return Container(
-      height: context.dynamicWidth(0.18),
-      width: context.dynamicWidth(0.18),
+      height: height,
+      width: width,
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
@@ -103,33 +111,40 @@ class DetailedCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        buildCardsText(context, AppConstants.theOfferName,
-            AppConstants.extraSmallFont, FontWeight.bold),
+        buildCardsText(
+            context,
+            AppConstants.theOfferName,
+            Theme.of(context)
+                .textTheme
+                .subtitle1
+                ?.copyWith(fontWeight: FontWeight.bold),),
         context.sizedBoxHeightUltraSmall,
         buildCardsText(context, AppConstants.theOffersDetails,
-            AppConstants.extraSmallFont - 2),
+            Theme.of(context).textTheme.subtitle2),
         context.sizedBoxHeightUltraSmall,
-        buildCardsText(
-            context, AppConstants.viewMore, AppConstants.extraSmallFont - 4)
+        buildCardsText(context, AppConstants.viewMore,
+            Theme.of(context).textTheme.caption)
       ],
     );
   }
 
-  Text buildCardsText(BuildContext context, String title, double fontSize,
-      [FontWeight? fontWeight]) {
+  Text buildCardsText(
+    BuildContext context,
+    String title,
+    TextStyle? style,
+  ) {
     return Text(
       title,
       overflow: TextOverflow.ellipsis,
-      style: context.theme.textTheme.subtitle1!
-          .copyWith(fontWeight: FontWeight.bold, fontSize: fontSize),
+      style: style,
     );
   }
 
-
-  SizedBox buildElevatedButton(BuildContext context) {
+  SizedBox buildElevatedButton(
+      BuildContext context, double width, double height) {
     return SizedBox(
-      height: context.dynamicHeight(0.03),
-      width: context.dynamicWidth(0.4),
+      height: height,
+      width: width,
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -171,5 +186,4 @@ class DetailedCard extends StatelessWidget {
       ],
     );
   }
-
 }

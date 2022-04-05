@@ -13,38 +13,44 @@ class NavigationDrawer extends StatelessWidget {
       child: Material(
         color: const Color(0xFF219DF8),
         child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.symmetric(
             horizontal: context.paddingDefaultWidth,
             vertical: context.paddingLargeHeight,
           ),
           children: <Widget>[
             context.sizedBoxHeightExtraSmall,
-            buildHeader(context,
-                urlImage: AppConstants.profilePhotoUrl,
-                name: 'Jane Doe',
-                location: "UAE, DUBAI"),
+            buildHeader(
+              context,
+              urlImage: AppConstants.profilePhotoUrl,
+              name: AppConstants.janeDoe,
+              location: "UAE, DUBAI",
+            ),
             context.sizedBoxHeightSmall,
             const Divider(
               thickness: 1,
-              color: Colors.white,
             ),
-            buildMenuItem(context, icon: Icons.person, title: 'PROFILE'),
-            buildMenuItem(context, icon: Icons.home, title: 'HOME'),
-            buildMenuItem(context, icon: Icons.settings, title: 'OFFERS'),
             buildMenuItem(context,
-                icon: Icons.production_quantity_limits, title: 'MY PRODUCTS'),
+                icon: Icons.person, title: AppConstants.profile),
             buildMenuItem(context,
-                icon: Icons.autorenew, title: 'REMAINING DEALS'),
-            buildMenuItem(context, icon: Icons.settings, title: 'SETTINGS'),
-            buildMenuItem(context, icon: Icons.logout, title: 'SIGN OUT'),
+                icon: Icons.home, title: AppConstants.home),
             buildMenuItem(context,
-                icon: Icons.favorite_border_outlined, title: 'JOIN THE APP'),
+                icon: Icons.local_offer, title: AppConstants.offers),
+            buildMenuItem(context,
+                icon: Icons.shopping_basket_rounded,
+                title: AppConstants.myProducts),
+            buildMenuItem(context,
+                icon: Icons.autorenew, title: AppConstants.remainingDeals),
+            buildMenuItem(context,
+                icon: Icons.settings, title: AppConstants.settings),
+            buildMenuItem(context,
+                icon: Icons.logout, title: AppConstants.signOut),
+            buildMenuItem(context,
+                icon: Icons.favorite,
+                title: AppConstants.joinTheApp),
             context.sizedBoxHeightDefault,
             context.sizedBoxHeightSmall,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 70.0),
-              child: buildRow(),
-            )
+            buildRow()
           ],
         ),
       ),
@@ -53,6 +59,7 @@ class NavigationDrawer extends StatelessWidget {
 
   Row buildRow() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         SvgPicture.asset(ImagePaths.facebookDrawerIcon),
         const SizedBox(width: 25),
@@ -62,7 +69,6 @@ class NavigationDrawer extends StatelessWidget {
       ],
     );
   }
-
 
   Widget buildHeader(
     BuildContext context, {
@@ -74,8 +80,12 @@ class NavigationDrawer extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            radius: 30,
-            backgroundImage: NetworkImage(urlImage),
+            radius: 32,
+            backgroundColor: Theme.of(context).disabledColor,
+            child: CircleAvatar(
+              radius: 30,
+              backgroundImage: NetworkImage(urlImage),
+            ),
           ),
           context.sizedBoxWidthSmall,
           Column(

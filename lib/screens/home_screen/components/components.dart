@@ -14,7 +14,10 @@ Padding buildCategoryTitle(BuildContext context, String title) {
   );
 }
 
-AppBar buildAppBar(BuildContext context, VoidCallback onTap) {
+AppBar buildAppBar(BuildContext context,
+    {required VoidCallback onTap,
+    required String title,
+    required Widget widget}) {
   return AppBar(
     leadingWidth: context.paddingExtraLargeWidth * 1.5,
     leading: InkWell(
@@ -27,7 +30,7 @@ AppBar buildAppBar(BuildContext context, VoidCallback onTap) {
     ),
     elevation: 0,
     title: Text(
-      AppConstants.home,
+      title,
       style: Theme.of(context)
           .textTheme
           .headline5
@@ -40,20 +43,22 @@ AppBar buildAppBar(BuildContext context, VoidCallback onTap) {
         size: AppConstants.defaultFont,
         color: Theme.of(context).disabledColor,
       ),
-      context.sizedBoxWidthExtraSmall,
-      buildCircleAvatar(context),
+      widget,
       context.sizedBoxWidthSmall,
     ],
   );
 }
 
-CircleAvatar buildCircleAvatar(BuildContext context) {
-  return CircleAvatar(
-    radius: 22,
-    backgroundColor: Theme.of(context).disabledColor,
-    child: const CircleAvatar(
-      radius: 20,
-      backgroundImage: NetworkImage(AppConstants.profilePhotoUrl),
+Padding buildCircleAvatar(BuildContext context) {
+  return Padding(
+    padding: EdgeInsets.only(left: context.paddingExtraSmallWidth),
+    child: CircleAvatar(
+      radius: 22,
+      backgroundColor: Theme.of(context).disabledColor,
+      child: const CircleAvatar(
+        radius: 20,
+        backgroundImage: NetworkImage(AppConstants.profilePhotoUrl),
+      ),
     ),
   );
 }

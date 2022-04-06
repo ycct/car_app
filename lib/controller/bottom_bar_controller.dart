@@ -24,6 +24,13 @@ class BottomNavController extends GetxController {
     Icons.person,
   ];
 
+  final routeNames = <String>[
+    "Home",
+    "Search",
+    "Service",
+    "Profile",
+  ];
+
   AnimatedBottomNavigationBar buildAnimatedBottomNavigationBar(
       BuildContext context) {
     return AnimatedBottomNavigationBar(

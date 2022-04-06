@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:yallawashtest/screens/main_screen/main_screen.dart';
 import 'package:yallawashtest/screens/signup_screen/signup_screen.dart';
 import 'package:yallawashtest/screens/verification_screen/verification_screen.dart';
 import 'package:yallawashtest/screens/verified_screen/verified_screen.dart';
@@ -34,6 +35,10 @@ class AppRoutes {
     GetPage(
       name: '/signup',
       page: () => const SignUpScreen(),
+    ),
+    GetPage(
+      name: '/main',
+      page: () => const MainScreen(),
     )
   ];
 }

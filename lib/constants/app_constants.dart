@@ -4,6 +4,7 @@ class AppConstants {
   static const home = "Home";
   static const profile = "Profile";
   static const offers = "Offers";
+  static const email = "Email";
   static const myProducts = "My Products";
   static const remainingDeals = "Remaining Deals";
   static const settings = "Settings";
@@ -33,6 +34,9 @@ class AppConstants {
   static const verificationCode = "Verification Code";
   static const phoneNumber = "Phone Number";
   static const reSend = "Re-send (30s)";
+  static const janeGmail = "JaneDoe@gmail.com";
+  static const userInformation = "USER INFORMATION";
+  static const accountInformation = "ACCOUNT INFORMATION";
   static const codeVerifiedSuccessfully = "Code Verified \n Successfully";
   static const registerAnAccount = "Register an account & enjoy the best deals & offers in UAD";
   static const orConnectThrough = "Or connect through your Social Account";

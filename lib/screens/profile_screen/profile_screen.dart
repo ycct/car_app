@@ -13,84 +13,173 @@ class ProfileScreen extends StatelessWidget {
           SizedBox(
             child: buildHeaderRow(context),
           ),
-          Container(
-            color: Colors.blue.shade100,
-            width: context.dynamicWidth(1),
-            height: context.dynamicHeight(0.04),
-            child: buildTitle(context, "PERSONAL INFORMATION"),
+          buildTitleContainer(context, "PERSONAL INFORMATION"),
+          context.sizedBoxHeightUltraSmall,
+          buildKeyValueRow(
+            context,
+            key: "Profile ID",
+            value: "512316",
+            iconData: Icons.person,
           ),
-          Column(
+          const Divider(
+            thickness: 1,
+          ),
+          buildKeyValueRow(
+            context,
+            key: "Number",
+            value: "0535 235 12 12",
+            iconData: Icons.phone,
+          ),
+          const Divider(
+            thickness: 1,
+          ),
+          buildKeyValueRow(
+            context,
+            key: "Email",
+            value: "JaneDoe@gmail.com",
+            iconData: Icons.email,
+          ),
+          const Divider(
+            thickness: 1,
+          ),
+          buildKeyValueRow(
+            context,
+            key: "Gender",
+            value: "Female",
+            iconData: Icons.person_pin_circle_rounded,
+          ),
+          context.sizedBoxHeightUltraSmall,
+          buildTitleContainer(context, "ACCOUNT INFORMATION"),
+          context.sizedBoxHeightUltraSmall,
+          buildKeyValueRow(
+            context,
+            key: "Total Points",
+            value: "580",
+            iconData: Icons.star,
+          ),
+          const Divider(
+            thickness: 1,
+          ),
+          buildKeyValueRow(
+            context,
+            key: "Redeem Points",
+            value: "2",
+            iconData: Icons.post_add,
+          ),
+          const Divider(
+            thickness: 1,
+          ),
+          buildKeyValueRow(
+            context,
+            key: "Pending Bookings",
+            value: "8",
+            iconData: Icons.pending_actions,
+          ),
+          const Divider(
+            thickness: 1,
+          ),
+          buildKeyValueRow(
+            context,
+            key: "Point Left to be a VIP",
+            value: "600",
+            iconData: Icons.person_pin_circle_rounded,
+          ),
+          const Divider(
+            thickness: 1,
+          ),
+          context.sizedBoxHeightUltraSmall,
+          const Card(
+            elevation: 2,
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                "Reset Password",
+              ),
+            ),
+          ),
+          const Card(
+            elevation: 2,
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                "Sign Out",
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Container buildTitleContainer(BuildContext context, String title) {
+    return Container(
+        color: Colors.blue.shade50,
+        width: context.dynamicWidth(1),
+        height: context.dynamicHeight(0.04),
+        child: Padding(
+          padding: EdgeInsets.only(
+              top: context.paddingExtraSmallHeight,
+              left: context.paddingSmallWidth),
+          child: Text(
+            title,
+          ),
+        ));
+  }
+
+  Widget buildKeyValueRow(BuildContext context,
+      {required String key,
+      required IconData iconData,
+      required String value}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: context.paddingSmallWidth,
+          ),
+          child: Row(
             children: [
-              buildPadding(context),
-              const Divider(color: Colors.grey),
+              Icon(iconData),
+              context.sizedBoxWidthExtraSmall,
+              Text(key),
             ],
           ),
-        ],
-      ),
+        ),
+        buildValue(context, value: value)
+      ],
     );
   }
 
-  Padding buildPadding(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: context.paddingExtraSmallHeight),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          buildKeyRow(context),
-          buildValue(context),
-        ],
-      ),
-    );
-  }
-
-  Widget buildKeyRow(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: context.paddingSmallWidth,
-      ),
-      child: Row(
-        children: const [
-          Icon(Icons.person),
-          Text("Profile ID"),
-        ],
-      ),
-    );
-  }
-
-  Padding buildValue(BuildContext context) {
+  Padding buildValue(BuildContext context, {required String value}) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: context.paddingSmallWidth),
-      child: const Text("561235"),
-    );
-  }
-
-  Padding buildTitle(BuildContext context, String title) {
-    return Padding(
-      padding: EdgeInsets.only(
-          top: context.paddingExtraSmallHeight,
-          left: context.paddingSmallWidth),
-      child: Text(
-        title,
-      ),
+      child: Text(value),
     );
   }
 
   Widget buildHeaderRow(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          vertical: context.paddingExtraSmallHeight,
+          vertical: context.paddingSmallHeight,
           horizontal: context.paddingSmallWidth),
       child: Row(
         children: [
           buildCircleAvatar(),
           context.sizedBoxWidthDefault,
-          buildColumn(context)
+          buildHeaderTextColumn(context)
         ],
       ),
     );
   }
 
-  Column buildColumn(BuildContext context) {
+  CircleAvatar buildCircleAvatar() {
+    return const CircleAvatar(
+      radius: 37,
+      backgroundImage: NetworkImage(AppConstants.profilePhotoUrl),
+    );
+  }
+
+  Column buildHeaderTextColumn(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -103,13 +192,6 @@ class ProfileScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.caption,
         ),
       ],
-    );
-  }
-
-  CircleAvatar buildCircleAvatar() {
-    return const CircleAvatar(
-      radius: 37,
-      backgroundImage: NetworkImage(AppConstants.profilePhotoUrl),
     );
   }
 }

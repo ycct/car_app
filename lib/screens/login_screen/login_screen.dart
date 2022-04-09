@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/constants/images_paths.dart';
 import 'package:yallawashtest/controller/login_controller.dart';
@@ -34,44 +33,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Positioned(
                   bottom: context.dynamicHeight(0.1),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: context.dynamicWidth(0.8),
-                        height: context.dynamicHeight(0.06),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Expanded(
-                              flex: 10,
-                              child: buildCountryCode(context, loginController),
-                            ),
-                            const Spacer(),
-                            Expanded(
-                              flex: 30,
-                              child: buildTextFormField(
-                                context,
-                                loginController.numberController,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      context.sizedBoxHeightExtraSmall,
-                      CustomElevatedButton(
-                        title: AppConstants.verify,
-                        onTap: () async {
-                          FocusScope.of(context).unfocus();
-                          buildShowDialog(context);
-                          await loginController.login();
-                          await Future.delayed(const Duration(seconds: 1));
-                          Navigator.pop(context);
-                          loginController.loginRequestChecker();
-                          loginController.clearTextFields();
-                        },
-                      ),
-                    ],
-                  ),
+                  child: buildFieldButtonColumn(context, loginController),
                 ),
               ],
             ),
@@ -81,59 +43,89 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  buildShowDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
-        });
-  }
-
   Column buildTextColumn(BuildContext context) {
     return Column(
       children: [
-        buildText(
-          context,
-          AppConstants.welcomeToYallaWash,
-          Theme.of(context).textTheme.headline5?.copyWith(
-                fontSize: AppConstants.defaultFont,
-              ),
-        ),
+        buildHeadline(context, "welcome".tr),
         context.sizedBoxHeightUltraSmall,
-        buildText(
-          context,
-          AppConstants.getTheUltimateOffers,
-          Theme.of(context).textTheme.subtitle1,
-        ),
+        buildSubtitle(context, "getOffers".tr),
         context.sizedBoxHeightLarge,
         context.sizedBoxHeightLarge,
-        buildText(
-          context,
-          AppConstants.verifyYourNumber,
-          Theme.of(context).textTheme.headline5,
-        ),
+        buildHeadline(context, "verifyNumber".tr),
         context.sizedBoxHeightUltraSmall,
-        buildText(
-          context,
-          AppConstants.pleaseEnterYourNumber,
-          Theme.of(context).textTheme.subtitle1,
-        ),
+        buildSubtitle(context, "enterNumber".tr),
         context.sizedBoxHeightSmall,
         context.sizedBoxHeightExtraSmall,
       ],
     );
   }
 
-  Positioned buildBackgroundImage(BuildContext context) {
-    return Positioned.fill(
-      bottom: -context.dynamicHeight(0.12),
-      child: SvgPicture.asset(
-        ImagePaths.backgroundImage,
-        fit: BoxFit.fitWidth,
+  Column buildFieldButtonColumn(
+      BuildContext context, LoginController loginController) {
+    return Column(
+      children: [
+        buildTextField(context, loginController),
+        context.sizedBoxHeightExtraSmall,
+        buildCustomElevatedButton(context, loginController),
+      ],
+    );
+  }
+
+  SizedBox buildTextField(
+      BuildContext context, LoginController loginController) {
+    return SizedBox(
+      width: context.dynamicWidth(0.8),
+      height: context.dynamicHeight(0.06),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            flex: 10,
+            child: buildCountryCode(context, loginController),
+          ),
+          const Spacer(),
+          Expanded(
+            flex: 30,
+            child: buildTextFormField(
+              context,
+              loginController.numberController,
+            ),
+          )
+        ],
       ),
+    );
+  }
+
+  CustomElevatedButton buildCustomElevatedButton(
+      BuildContext context, LoginController loginController) {
+    return CustomElevatedButton(
+        title: "verify".tr,
+        onTap: () async {
+          FocusScope.of(context).unfocus();
+          buildShowDialog(context);
+          await loginController.login();
+          await Future.delayed(const Duration(seconds: 1));
+          Navigator.pop(context);
+          loginController.loginRequestChecker();
+          loginController.clearTextFields();
+        });
+  }
+
+  Text buildHeadline(BuildContext context, String title) {
+    return Text(
+      title,
+      style: Theme.of(context)
+          .textTheme
+          .headline5
+          ?.copyWith(fontSize: AppConstants.defaultFont),
+    );
+  }
+
+  Text buildSubtitle(BuildContext context, String title) {
+    return Text(
+      title,
+      style: Theme.of(context).textTheme.subtitle1,
+      textAlign: TextAlign.center,
     );
   }
 
@@ -184,7 +176,7 @@ class LoginScreen extends StatelessWidget {
         contentPadding: const EdgeInsets.symmetric(
           horizontal: AppConstants.defaultPadding,
         ),
-        labelText: AppConstants.phoneNumber,
+        labelText: "phoneNumber".tr,
         labelStyle: TextStyle(color: Theme.of(context).primaryColor),
         fillColor: Theme.of(context).disabledColor,
         focusedBorder: OutlineInputBorder(
@@ -201,15 +193,24 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Text buildText(
-    BuildContext context,
-    String title,
-    TextStyle? style,
-  ) {
-    return Text(
-      title,
-      textAlign: TextAlign.center,
-      style: style,
+  buildShowDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return const Center(
+            child: CircularProgressIndicator.adaptive(),
+          );
+        });
+  }
+
+  Positioned buildBackgroundImage(BuildContext context) {
+    return Positioned.fill(
+      bottom: -context.dynamicHeight(0.12),
+      child: SvgPicture.asset(
+        ImagePaths.backgroundImage,
+        fit: BoxFit.fitWidth,
+      ),
     );
   }
 }

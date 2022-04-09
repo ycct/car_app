@@ -4,7 +4,7 @@ import 'package:yallawashtest/bindings/bindings.dart';
 import 'package:yallawashtest/routes/app_routes.dart';
 import 'package:yallawashtest/screens/home_screen/home_screen.dart';
 import 'package:yallawashtest/theme/theme_data.dart';
-import 'package:yallawashtest/translations.dart';
+import 'package:yallawashtest/utils/translations.dart';
 
 void main() {
   runApp(const MyApp());

@@ -6,18 +6,14 @@ class PlaceHolderCardsListView extends StatelessWidget {
   final double height;
   final double width;
   final String imageUrl;
-  final String offerName;
-  final String offerDetail;
-  final String? dayLeft;
+
 
   const PlaceHolderCardsListView({
     Key? key,
-    this.dayLeft,
     required this.height,
     required this.width,
     required this.imageUrl,
-    required this.offerName,
-    required this.offerDetail,
+
   }) : super(key: key);
 
   @override

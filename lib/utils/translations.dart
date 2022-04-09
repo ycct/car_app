@@ -39,6 +39,7 @@ class Translation extends Translations {
           "facebook": "Facebook",
           "verifyCode": "Verification Code",
           "phoneNumber": "Phone Number",
+          "pleaseEnter": "Please Enter your verification code",
           "reSend": "Re-send (30s)",
           "janeMail": "JaneDoe@gmail.com",
           "userInfoTitle": "USER INFORMATION",

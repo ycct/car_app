@@ -36,7 +36,7 @@ class VerificationScreen extends StatelessWidget {
                   context.sizedBoxHeightSmall,
                   buildText(
                     context,
-                    AppConstants.verificationCode,
+                    "verifyCode".tr,
                   ),
                   context.sizedBoxHeightExtraSmall,
                   Row(
@@ -53,13 +53,13 @@ class VerificationScreen extends StatelessWidget {
                   ),
                   context.sizedBoxHeightUltraSmall,
                   Text(
-                    "Please Enter your verification code",
+                    "pleaseEnter".tr,
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                   context.sizedBoxHeightUltraSmall,
                   Text(
                     " + " +
-                        loginController.countryCode +
+                        loginController.countryCode  +
                         " " +
                         loginController.numberController.text,
                     style: Theme.of(context).textTheme.headline6,
@@ -69,22 +69,27 @@ class VerificationScreen extends StatelessWidget {
             ),
             Positioned(
               bottom: context.dynamicHeight(0.1),
-              child: CustomElevatedButton(
-                onTap: () async {
-                  buildShowDialog(context);
-                  loginController.verificationCodeInputGetter();
-                  await loginController.verifyUser();
-                  await Future.delayed(const Duration(seconds: 1));
-                  Navigator.pop(context);
-                  loginController.userVerificationChecker();
-                },
-                title: AppConstants.verify,
-              ),
+              child: buildCustomElevatedButton(context, loginController),
             ),
           ],
         ),
       );
     });
+  }
+
+  CustomElevatedButton buildCustomElevatedButton(
+      BuildContext context, LoginController loginController) {
+    return CustomElevatedButton(
+      onTap: () async {
+        buildShowDialog(context);
+        loginController.verificationCodeInputGetter();
+        await loginController.verifyUser();
+        await Future.delayed(const Duration(seconds: 1));
+        Navigator.pop(context);
+        loginController.userVerificationChecker();
+      },
+      title: "verify".tr,
+    );
   }
 
   buildShowDialog(BuildContext context) {

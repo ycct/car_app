@@ -9,6 +9,7 @@ class Translation extends Translations {
           "profile": "Profile",
           "offers": "Offers",
           "email": "Email",
+          "home": "Home",
           "deal": "Deal",
           "myProducts": "My Products",
           "remainingDeals": "Remaining Deals",
@@ -21,7 +22,7 @@ class Translation extends Translations {
           "remainingBalance": "Remaining balance",
           "placeHolder": "Place Holder",
           "totalPoints": "Total Points",
-          "detailsHere" : "Details Here",
+          "detailsHere": "Details Here",
           "continue": "Continue",
           "offerName": "The Offer Name Here",
           "offerDetails": "The Offers Details",
@@ -43,27 +44,35 @@ class Translation extends Translations {
           "userInfoTitle": "USER INFORMATION",
           "accInfoTitle": "ACCOUNT INFORMATION",
           "verifyMessage": "Code Verified \n Successfully",
-          "registerAnAcc": "Register an account & enjoy the best deals & offers in UAD",
+          "registerAnAcc":
+              "Register an account & enjoy the best deals & offers in UAD",
           "orConnect": "Or connect through your Social Account",
-          "bodyText": "Text 2-3 Lines to Find the hot deals & offers around you text 2-3 lines to Find the hot deals offers",
+          "bodyText":
+              "Text 2-3 Lines to Find the hot deals & offers around you text 2-3 lines to Find the hot deals offers",
           "welcome": "Welcome to YallaWash",
           "getOffers": "Get the ultimate offers and deals \n of car washes",
           "verifyNumber": "Verify Your Number",
           "enterNumber": "Please enter your number to verify \n your account",
-
-
-
-
-
-
-
-
-
-
-
         },
         "tr_TR": {
           "hello": "Merhaba",
+          "verifyNumber": "Numaranı Doğrula",
+          "welcome": "YallaWash' a Hoşgeldiniz",
+          "getOffers": "En İyi Aaba Yıkama Tekliflerini ve\n Fırsatlarını Alın",
+          "enterNumber":
+              "Lütfen Telefon Numaranızı Girin ve\n Hesabınızı Doğrulayın",
+          "phoneNumber": "Tel. Numarası",
+          "verify": "Doğrula",
         },
+        "ar_UAE": {
+          "hello": "أهلاً بك",
+          "verifyNumber": "تحقق من رقمك",
+          "welcome": "مرحبا بكم في موقع يلا واش",
+          "getOffers": "احصل على أفضل العروض والصفقات لغسيل السيارات",
+          "enterNumber":
+              "الرجاء إدخال رقمك للتحقق من حسابك",
+          "phoneNumber": "رقم الهاتف",
+          "verify": "تحقق",
+        }
       };
 }

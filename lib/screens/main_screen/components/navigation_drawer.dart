@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/constants/images_paths.dart';
 import 'package:yallawashtest/extensions.dart';
@@ -25,31 +26,24 @@ class NavigationDrawer extends StatelessWidget {
             buildHeader(
               context,
               urlImage: AppConstants.profilePhotoUrl,
-              name: AppConstants.janeDoe,
+              name: "Jane".tr,
               location: "UAE, DUBAI",
             ),
             context.sizedBoxHeightSmall,
             const Divider(
               thickness: 1,
             ),
+            buildMenuItem(context, icon: Icons.person, title: "profile".tr),
+            buildMenuItem(context, icon: Icons.home, title: "home".tr),
+            buildMenuItem(context, icon: Icons.local_offer, title: "offers".tr),
             buildMenuItem(context,
-                icon: Icons.person, title: AppConstants.profile),
+                icon: Icons.shopping_basket_rounded, title: "myProducts".tr),
             buildMenuItem(context,
-                icon: Icons.home, title: AppConstants.home),
+                icon: Icons.autorenew, title: "remainingDeals".tr),
+            buildMenuItem(context, icon: Icons.settings, title: "settings".tr),
+            buildMenuItem(context, icon: Icons.logout, title: "signOut".tr),
             buildMenuItem(context,
-                icon: Icons.local_offer, title: AppConstants.offers),
-            buildMenuItem(context,
-                icon: Icons.shopping_basket_rounded,
-                title: AppConstants.myProducts),
-            buildMenuItem(context,
-                icon: Icons.autorenew, title: AppConstants.remainingDeals),
-            buildMenuItem(context,
-                icon: Icons.settings, title: AppConstants.settings),
-            buildMenuItem(context,
-                icon: Icons.logout, title: AppConstants.signOut),
-            buildMenuItem(context,
-                icon: Icons.favorite,
-                title: AppConstants.joinTheApp),
+                icon: Icons.favorite, title: "joinTheApp".tr),
             context.sizedBoxHeightDefault,
             context.sizedBoxHeightSmall,
             buildRow()
@@ -58,8 +52,6 @@ class NavigationDrawer extends StatelessWidget {
       ),
     );
   }
-
-
 
   Row buildRow() {
     return Row(
@@ -73,7 +65,6 @@ class NavigationDrawer extends StatelessWidget {
       ],
     );
   }
-
 
   Widget buildMenuItem(
     BuildContext context, {

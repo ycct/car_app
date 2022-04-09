@@ -6,6 +6,7 @@ class LightTheme {
   static  Color backgroundColor = Colors.grey.shade50;
 
   static ThemeData lightTheme = ThemeData(
+    appBarTheme: const AppBarTheme(backgroundColor: primaryColor),
     inputDecorationTheme: const InputDecorationTheme(
       hintStyle: TextStyle(
         color: primaryColor,
@@ -21,8 +22,8 @@ class LightTheme {
       headline6: TextStyle(fontWeight: FontWeight.bold),
       subtitle1: TextStyle(letterSpacing: 0),
       subtitle2: TextStyle(letterSpacing: 0),
-      bodyText1: TextStyle(letterSpacing: 0),
-      bodyText2: TextStyle(letterSpacing: 0),
+      bodyText1: TextStyle(letterSpacing: 0,fontWeight: FontWeight.bold),
+      bodyText2: TextStyle(letterSpacing: 0,fontWeight: FontWeight.bold),
       caption: TextStyle(letterSpacing: 0),
       overline: TextStyle(letterSpacing: 0),
     ).apply(

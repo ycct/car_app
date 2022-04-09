@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:yallawashtest/extensions.dart';
-import '../../constants/app_constants.dart';
 import '../../constants/images_paths.dart';
 import '../../widgets/elevated_button.dart';
 
@@ -34,9 +33,9 @@ class VerifiedScreen extends StatelessWidget {
             bottom: context.dynamicHeight(0.10),
             child: CustomElevatedButton(
               onTap: () {
-                Get.offAllNamed("/home");
+                Get.offAllNamed("/signup");
               },
-              title: AppConstants.next,
+              title: "next".tr,
             ),
           ),
         ],
@@ -56,7 +55,7 @@ class VerifiedScreen extends StatelessWidget {
 
   Text buildText(BuildContext context) {
     return Text(
-      AppConstants.codeVerifiedSuccessfully,
+      "verifyMessage".tr,
       style: Theme.of(context)
           .textTheme
           .headline4

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:yallawashtest/extensions.dart';
 import '../../../constants/app_constants.dart';
 import 'remaining_card.dart';
@@ -33,7 +34,7 @@ class RemainingCardsListView extends StatelessWidget {
               myHeight: myHeight,
               myWidth: myWidth,
               title: title,
-              detail: AppConstants.detailsHere,
+              detail: "detailsHere".tr,
             );
           },
         ),

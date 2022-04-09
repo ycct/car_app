@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/extensions.dart';
 
@@ -56,7 +57,7 @@ class DetailedCard extends StatelessWidget {
                         context.paddingUltraSmallWidth,
                     child: buildTextIconRow(
                       context,
-                      AppConstants.likesCount,
+                      "likeCount".tr,
                       Icons.favorite,
                     ),
                   ),
@@ -67,7 +68,7 @@ class DetailedCard extends StatelessWidget {
                         context.paddingUltraSmallHeight,
                     child: buildTextIconRow(
                       context,
-                      AppConstants.daysLeft,
+                      "daysLeft".tr,
                       Icons.update,
                     ),
                   ),
@@ -111,32 +112,18 @@ class DetailedCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        buildCardsText(
-            context,
-            AppConstants.theOfferName,
-            Theme.of(context)
-                .textTheme
-                .subtitle1
-                ?.copyWith(fontWeight: FontWeight.bold),),
+        Text(
+          "offerName".tr,
+          style: Theme.of(context)
+              .textTheme
+              .subtitle1
+              ?.copyWith(fontWeight: FontWeight.bold),
+        ),
         context.sizedBoxHeightUltraSmall,
-        buildCardsText(context, AppConstants.theOffersDetails,
-            Theme.of(context).textTheme.subtitle2),
+        Text("offerDetails".tr, style: Theme.of(context).textTheme.subtitle2),
         context.sizedBoxHeightUltraSmall,
-        buildCardsText(context, AppConstants.viewMore,
-            Theme.of(context).textTheme.caption)
+        Text("viewMore".tr, style: Theme.of(context).textTheme.caption)
       ],
-    );
-  }
-
-  Text buildCardsText(
-    BuildContext context,
-    String title,
-    TextStyle? style,
-  ) {
-    return Text(
-      title,
-      overflow: TextOverflow.ellipsis,
-      style: style,
     );
   }
 
@@ -154,7 +141,7 @@ class DetailedCard extends StatelessWidget {
           ),
         ),
         child: Text(
-          AppConstants.shopNow,
+          "shopNow".tr,
           style: TextStyle(color: Theme.of(context).disabledColor),
         ),
         onPressed: () {},
@@ -167,7 +154,7 @@ class DetailedCard extends StatelessWidget {
       height: 3,
       width: context.dynamicWidth(0.5),
       decoration: BoxDecoration(
-        color: context.theme.primaryColor,
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(
           AppConstants.extraSmallRadius,
         ),
@@ -182,7 +169,7 @@ class DetailedCard extends StatelessWidget {
           icon,
           size: AppConstants.extraSmallFont,
         ),
-        Text(title, style: context.theme.textTheme.subtitle2),
+        Text(title, style: Theme.of(context).textTheme.subtitle2),
       ],
     );
   }

@@ -87,8 +87,8 @@ CarouselSlider buildCarouselSlider() {
   return CarouselSlider.builder(
     itemCount: 5,
     itemBuilder: (context, index, realIndex) {
-      return const Text(
-        AppConstants.bodyText,
+      return Text(
+        "bodyText".tr,
         textAlign: TextAlign.center,
       );
     },

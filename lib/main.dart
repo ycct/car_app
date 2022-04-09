@@ -4,6 +4,7 @@ import 'package:yallawashtest/bindings/bindings.dart';
 import 'package:yallawashtest/routes/app_routes.dart';
 import 'package:yallawashtest/screens/home_screen/home_screen.dart';
 import 'package:yallawashtest/theme/theme_data.dart';
+import 'package:yallawashtest/translations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
         initialBinding: MainBinding(),
         getPages: AppRoutes.routes,
         home: const HomeScreen(),
+        locale: const Locale("en", "US"),
+        fallbackLocale: const Locale('en', 'UK'),
+        translations: Translation(),
         theme: LightTheme.lightTheme);
   }
 }

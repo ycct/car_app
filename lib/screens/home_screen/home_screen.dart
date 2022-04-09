@@ -29,12 +29,12 @@ class HomeScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        AppConstants.totalPoints,
+                        "totalPoints".tr,
                         style: context.textTheme.bodyText1
                             ?.copyWith(color: Theme.of(context).disabledColor),
                       ),
                       Text(
-                        AppConstants.totalPointsValue,
+                        "pointsValue".tr,
                         style: context.textTheme.headline4?.copyWith(
                           color: Theme.of(context).disabledColor,
                         ),
@@ -48,13 +48,13 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        AppConstants.hiJaneDoe,
+                        "hiJane".tr,
                         style: context.textTheme.headline5
                             ?.copyWith(color: Theme.of(context).disabledColor),
                       ),
                       context.sizedBoxHeightMicro,
                       Text(
-                        AppConstants.yourBalance,
+                        "yourBalance".tr,
                         style: context.textTheme.bodyText2
                             ?.copyWith(color: Theme.of(context).disabledColor),
                       ),
@@ -72,29 +72,16 @@ class HomeScreen extends StatelessWidget {
             child: buildCarouselSlider(),
           ),
           context.sizedBoxHeightUltraSmall,
-          buildCategoryTitle(context, AppConstants.remainingDeals),
+          buildCategoryTitle(context, "remainingDeals".tr),
           RemainingCardsListView(
-            title: "Deal",
-            details: "Details Here",
+            title: "deal".tr,
+            details: "detailsHere".tr,
             myWidth: context.dynamicWidth(0.7),
             myHeight: context.dynamicHeight(0.14),
           ),
           context.sizedBoxHeightExtraSmall,
-          buildCategoryTitle(context, AppConstants.placeHolder),
+          buildCategoryTitle(context, "placeHolder".tr),
           PlaceHolderCardsListView(
-            dayLeft: AppConstants.daysLeft,
-            offerName: AppConstants.theOfferName,
-            offerDetail: AppConstants.theOffersDetails,
-            imageUrl: AppConstants.photoUrl,
-            width: context.dynamicWidth(0.75),
-            height: context.dynamicHeight(0.2),
-          ),
-          context.sizedBoxHeightExtraSmall,
-          buildCategoryTitle(context, AppConstants.placeHolder),
-          PlaceHolderCardsListView(
-            dayLeft: AppConstants.daysLeft,
-            offerName: AppConstants.theOfferName,
-            offerDetail: AppConstants.theOffersDetails,
             imageUrl: AppConstants.photoUrl,
             width: context.dynamicWidth(0.75),
             height: context.dynamicHeight(0.2),

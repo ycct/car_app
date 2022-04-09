@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/extensions.dart';
 
@@ -43,7 +44,7 @@ class RemainingCard extends StatelessWidget {
               left: -70,
               top: -12,
               child: CircleAvatar(
-                backgroundColor: context.theme.primaryColor,
+                backgroundColor: Theme.of(context).primaryColor,
                 radius: 95,
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -53,16 +54,17 @@ class RemainingCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        title??"",
-                        style: context.theme.textTheme.headline6?.copyWith(
-                            color: Theme.of(context).disabledColor
-                            ),
+                        title ?? "",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6
+                            ?.copyWith(color: Theme.of(context).disabledColor),
                       ),
                       Text(
                         detail,
-                        style: context.theme.textTheme.overline?.copyWith(
-                          color: context.theme.disabledColor,
-                        ),
+                        style: Theme.of(context).textTheme.overline?.copyWith(
+                              color: Theme.of(context).disabledColor,
+                            ),
                       ),
                       context.sizedBoxHeightExtraSmall,
                       SizedBox(
@@ -75,10 +77,8 @@ class RemainingCard extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {},
-                          child: Text(
-                            AppConstants.continueHere,
-                            style: context.theme.textTheme.overline
-                          ),
+                          child: Text("continue".tr,
+                              style: Theme.of(context).textTheme.overline),
                         ),
                       ),
                     ],

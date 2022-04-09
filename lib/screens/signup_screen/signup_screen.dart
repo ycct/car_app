@@ -24,9 +24,9 @@ class SignUpScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildText(context, 32, AppConstants.signUp),
+                buildText(context, 32, "signUp".tr),
                 context.sizedBoxHeightUltraSmall,
-                buildText(context, 16, AppConstants.registerAnAccount),
+                buildText(context, 16, "registerAnAcc".tr),
               ],
             ),
           ),
@@ -34,52 +34,49 @@ class SignUpScreen extends StatelessWidget {
             left: context.dynamicWidth(0.05),
             right: context.dynamicWidth(0.05),
             bottom: context.dynamicHeight(0.4),
-            child: buildColumn(context),
+            child: buildTextFieldColumn(context),
           ),
           Positioned(
             bottom: context.dynamicHeight(0.17),
             child: Column(
               children: [
-                CustomElevatedButton(
-                  title: AppConstants.done,
-                  onTap: () async {
-                    FocusScope.of(context).unfocus();
-                    buildShowDialog(context);
-                    await Future.delayed(const Duration(seconds: 1));
-                    Navigator.pop(context);
-                    Get.offAllNamed("/home");
-                  },
-                ),
+                buildCustomElevatedButton(context),
                 context.sizedBoxHeightExtraSmall,
-                buildText(context, 16, AppConstants.orConnectThrough),
+                buildText(context, 16, "orConnect".tr),
                 context.sizedBoxHeightExtraSmall,
-                SizedBox(
-                  width: context.dynamicWidth(0.8),
-                  height: context.dynamicHeight(0.06),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Expanded(
-                        child: buildAuthButtons(
-                            const Color(0xFF3479EA),
-                            AppConstants.facebook,
-                            ImagePaths.facebookLogo,
-                            Colors.white),
-                      ),
-                      context.sizedBoxWidthExtraSmall,
-                      Expanded(
-                        child: buildAuthButtons(
-                            Colors.white,
-                            AppConstants.google,
-                            ImagePaths.googleLogo,
-                            Colors.grey),
-                      ),
-                    ],
-                  ),
-                ),
+                buildAuthButtonsRow(context),
               ],
             ),
           )
+        ],
+      ),
+    );
+  }
+
+  Text buildText(BuildContext context, double fontSize, String title) {
+    return Text(
+      title,
+      style:
+          Theme.of(context).textTheme.headline4?.copyWith(fontSize: fontSize),
+    );
+  }
+
+  SizedBox buildAuthButtonsRow(BuildContext context) {
+    return SizedBox(
+      width: context.dynamicWidth(0.8),
+      height: context.dynamicHeight(0.06),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: buildAuthButtons(const Color(0xFF3479EA), "facebook".tr,
+                ImagePaths.facebookLogo, Colors.white),
+          ),
+          context.sizedBoxWidthExtraSmall,
+          Expanded(
+            child: buildAuthButtons(
+                Colors.white, "google".tr, ImagePaths.googleLogo, Colors.grey),
+          ),
         ],
       ),
     );
@@ -105,20 +102,33 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  Column buildColumn(BuildContext context) {
+  CustomElevatedButton buildCustomElevatedButton(BuildContext context) {
+    return CustomElevatedButton(
+      title: "done".tr,
+      onTap: () async {
+        FocusScope.of(context).unfocus();
+        buildShowDialog(context);
+        await Future.delayed(const Duration(seconds: 1));
+        Navigator.pop(context);
+        Get.offAllNamed("/home");
+      },
+    );
+  }
+
+  Column buildTextFieldColumn(BuildContext context) {
     return Column(
       children: [
-        buildRoundedTextFormField(context, true, "Name", true, false),
-        buildRoundedTextFormField(context, false, "Email", false, false),
-        buildRoundedTextFormField(context, false, "Password", false, true),
-        buildRoundedTextFormField(context, false, "Address", false, false),
-        buildRoundedTextFormField(
-            context, true, "Date of Birth (optional) ", false, false),
+        buildRoundedForm(context, true, "Name", true, false),
+        buildRoundedForm(context, false, "Email", false, false),
+        buildRoundedForm(context, false, "Password", false, true),
+        buildRoundedForm(context, false, "Address", false, false),
+        buildRoundedForm(
+            context, true, "Date of Birth(optional)", false, false),
       ],
     );
   }
 
-  TextFormField buildRoundedTextFormField(BuildContext context, bool isRounded,
+  TextFormField buildRoundedForm(BuildContext context, bool isRounded,
       String title, bool isTop, bool isPassword) {
     return TextFormField(
       autocorrect: false,
@@ -166,14 +176,6 @@ class SignUpScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Text buildText(BuildContext context, double fontSize, String title) {
-    return Text(
-      title,
-      style:
-          Theme.of(context).textTheme.headline4?.copyWith(fontSize: fontSize),
     );
   }
 

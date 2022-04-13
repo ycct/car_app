@@ -17,7 +17,7 @@ Padding buildCategoryTitle(BuildContext context, String title) {
 AppBar buildAppBar(BuildContext context,
     {required VoidCallback onTap,
     required String title,
-    required Widget widget}) {
+     Widget? widget}) {
   return AppBar(
     leadingWidth: context.paddingExtraLargeWidth * 1.5,
     leading: InkWell(
@@ -43,7 +43,7 @@ AppBar buildAppBar(BuildContext context,
         size: AppConstants.defaultFont,
         color: Theme.of(context).disabledColor,
       ),
-      widget,
+      widget??const SizedBox(),
       context.sizedBoxWidthSmall,
     ],
   );

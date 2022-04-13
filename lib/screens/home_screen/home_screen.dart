@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/extensions.dart';
+import '../../controller/bottom_bar_controller.dart';
+import 'components/navigation_drawer.dart';
 import 'components/components.dart';
 import 'components/place_holder_listview.dart';
 import 'components/remainin_deals_listview.dart';
@@ -11,83 +13,109 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        children: [
-          ClipPath(
-            clipper: CustomShape(),
-            child: Stack(
-              children: [
-                Container(
-                  width: context.dynamicWidth(1),
-                  height: context.dynamicHeight(0.22),
-                  color: Theme.of(context).primaryColor,
-                ),
-                Positioned(
-                  top: context.paddingExtraLargeWidth,
-                  right: context.paddingSmallWidth,
-                  child: Column(
-                    children: [
-                      Text(
-                        "totalPoints".tr,
-                        style: context.textTheme.bodyText1
-                            ?.copyWith(color: Theme.of(context).disabledColor),
-                      ),
-                      Text(
-                        "pointsValue".tr,
-                        style: context.textTheme.headline4?.copyWith(
-                          color: Theme.of(context).disabledColor,
+    GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+    return GetBuilder(builder: (BottomNavController bottomNavController) {
+      return Scaffold(
+        key: _scaffoldKey,
+        drawer: const NavigationDrawer(),
+        appBar: bottomNavController.initialIndex == 0
+            ? buildAppBar(
+                context,
+                onTap: () {
+                  _scaffoldKey.currentState?.openDrawer();
+                },
+                title: bottomNavController
+                    .routeNames[bottomNavController.initialIndex],
+                widget: bottomNavController.initialIndex == 0
+                    ? buildCircleAvatar(context)
+                    : const SizedBox(),
+              )
+            : null,
+        floatingActionButton: buildFloating(context),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar:
+            bottomNavController.buildAnimatedBottomNavigationBar(context),
+        body: bottomNavController.initialIndex == 0
+            ? ListView(
+                children: [
+                  ClipPath(
+                    clipper: CustomShape(),
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: context.dynamicWidth(1),
+                          height: context.dynamicHeight(0.22),
+                          color: Theme.of(context).primaryColor,
                         ),
-                      ),
-                    ],
+                        Positioned(
+                          top: context.paddingExtraLargeWidth,
+                          right: context.paddingSmallWidth,
+                          child: Column(
+                            children: [
+                              Text(
+                                "totalPoints".tr,
+                                style: context.textTheme.bodyText1?.copyWith(
+                                    color: Theme.of(context).disabledColor),
+                              ),
+                              Text(
+                                "pointsValue".tr,
+                                style: context.textTheme.headline4?.copyWith(
+                                  color: Theme.of(context).disabledColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsets.only(left: context.paddingSmallWidth),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "hiJane".tr,
+                                style: context.textTheme.headline5?.copyWith(
+                                    color: Theme.of(context).disabledColor),
+                              ),
+                              context.sizedBoxHeightMicro,
+                              Text(
+                                "yourBalance".tr,
+                                style: context.textTheme.bodyText2?.copyWith(
+                                    color: Theme.of(context).disabledColor),
+                              ),
+                              context.sizedBoxHeightUltraSmall,
+                              buildRichText(context),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: context.paddingSmallWidth),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "hiJane".tr,
-                        style: context.textTheme.headline5
-                            ?.copyWith(color: Theme.of(context).disabledColor),
-                      ),
-                      context.sizedBoxHeightMicro,
-                      Text(
-                        "yourBalance".tr,
-                        style: context.textTheme.bodyText2
-                            ?.copyWith(color: Theme.of(context).disabledColor),
-                      ),
-                      context.sizedBoxHeightUltraSmall,
-                      buildRichText(context),
-                    ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.paddingLargeWidth),
+                    child: buildCarouselSlider(),
                   ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: context.paddingLargeWidth),
-            child: buildCarouselSlider(),
-          ),
-          context.sizedBoxHeightUltraSmall,
-          buildCategoryTitle(context, "remainingDeals".tr),
-          RemainingCardsListView(
-            title: "deal".tr,
-            details: "detailsHere".tr,
-            myWidth: context.dynamicWidth(0.7),
-            myHeight: context.dynamicHeight(0.14),
-          ),
-          context.sizedBoxHeightExtraSmall,
-          buildCategoryTitle(context, "placeHolder".tr),
-          PlaceHolderCardsListView(
-            imageUrl: AppConstants.photoUrl,
-            width: context.dynamicWidth(0.75),
-            height: context.dynamicHeight(0.2),
-          ),
-        ],
-      ),
-    );
+                  context.sizedBoxHeightUltraSmall,
+                  buildCategoryTitle(context, "remainingDeals".tr),
+                  RemainingCardsListView(
+                    title: "deal".tr,
+                    details: "detailsHere".tr,
+                    myWidth: context.dynamicWidth(0.7),
+                    myHeight: context.dynamicHeight(0.14),
+                  ),
+                  context.sizedBoxHeightExtraSmall,
+                  buildCategoryTitle(context, "placeHolder".tr),
+                  PlaceHolderCardsListView(
+                    imageUrl: AppConstants.photoUrl,
+                    width: context.dynamicWidth(0.75),
+                    height: context.dynamicHeight(0.2),
+                  ),
+                ],
+              )
+            : bottomNavController
+                .myBottomNavRoute[bottomNavController.initialIndex],
+      );
+    });
   }
 }

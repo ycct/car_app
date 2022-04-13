@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/constants/images_paths.dart';
 import 'package:yallawashtest/extensions.dart';
-
 import 'drawer_header.dart';
 
 class NavigationDrawer extends StatelessWidget {
@@ -13,6 +12,7 @@ class NavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+
       child: Material(
         color: const Color(0xFF219DF8),
         child: ListView(
@@ -33,17 +33,17 @@ class NavigationDrawer extends StatelessWidget {
             const Divider(
               thickness: 1,
             ),
-            buildMenuItem(context, icon: Icons.person, title: "profile".tr),
-            buildMenuItem(context, icon: Icons.home, title: "home".tr),
-            buildMenuItem(context, icon: Icons.local_offer, title: "offers".tr),
+            buildMenuItem(context, icon: Icons.person, title: "profile".tr,),
+            buildMenuItem(context, icon: Icons.home, title: "home".tr,),
+            buildMenuItem(context, icon: Icons.local_offer, title: "offers".tr,),
             buildMenuItem(context,
-                icon: Icons.shopping_basket_rounded, title: "myProducts".tr),
+                icon: Icons.shopping_basket_rounded, title: "myProducts".tr,),
             buildMenuItem(context,
-                icon: Icons.autorenew, title: "remainingDeals".tr),
-            buildMenuItem(context, icon: Icons.settings, title: "settings".tr),
-            buildMenuItem(context, icon: Icons.logout, title: "signOut".tr),
+                icon: Icons.autorenew, title: "remainingDeals".tr,),
+            buildMenuItem(context, icon: Icons.settings, title: "settings".tr,),
+            buildMenuItem(context, icon: Icons.logout, title: "signOut".tr,),
             buildMenuItem(context,
-                icon: Icons.favorite, title: "joinTheApp".tr),
+                icon: Icons.favorite, title: "joinTheApp".tr,),
             context.sizedBoxHeightDefault,
             context.sizedBoxHeightSmall,
             buildRow()
@@ -81,7 +81,6 @@ class NavigationDrawer extends StatelessWidget {
         title,
         style: TextStyle(color: defaultColor),
       ),
-      onTap: () {},
     );
   }
 }

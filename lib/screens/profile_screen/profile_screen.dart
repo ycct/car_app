@@ -1,114 +1,129 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:yallawashtest/extensions.dart';
+import 'package:yallawashtest/screens/home_screen/components/components.dart';
 import '../../constants/app_constants.dart';
+import '../../controller/bottom_bar_controller.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        children: [
-          SizedBox(
-            child: buildHeaderRow(context),
-          ),
-          buildTitleContainer(context, "PERSONAL INFORMATION"),
-          context.sizedBoxHeightUltraSmall,
-          buildKeyValueRow(
-            context,
-            key: "Profile ID",
-            value: "512316",
-            iconData: Icons.person,
-          ),
-          const Divider(
-            thickness: 1,
-          ),
-          buildKeyValueRow(
-            context,
-            key: "Number",
-            value: "0535 235 12 12",
-            iconData: Icons.phone,
-          ),
-          const Divider(
-            thickness: 1,
-          ),
-          buildKeyValueRow(
-            context,
-            key: "Email",
-            value: "JaneDoe@gmail.com",
-            iconData: Icons.email,
-          ),
-          const Divider(
-            thickness: 1,
-          ),
-          buildKeyValueRow(
-            context,
-            key: "Gender",
-            value: "Female",
-            iconData: Icons.person_pin_circle_rounded,
-          ),
-          context.sizedBoxHeightUltraSmall,
-          buildTitleContainer(context, "ACCOUNT INFORMATION"),
-          context.sizedBoxHeightUltraSmall,
-          buildKeyValueRow(
-            context,
-            key: "Total Points",
-            value: "580",
-            iconData: Icons.star,
-          ),
-          const Divider(
-            thickness: 1,
-          ),
-          buildKeyValueRow(
-            context,
-            key: "Redeem Points",
-            value: "2",
-            iconData: Icons.post_add,
-          ),
-          const Divider(
-            thickness: 1,
-          ),
-          buildKeyValueRow(
-            context,
-            key: "Pending Bookings",
-            value: "8",
-            iconData: Icons.pending_actions,
-          ),
-          const Divider(
-            thickness: 1,
-          ),
-          buildKeyValueRow(
-            context,
-            key: "Point Left to be a VIP",
-            value: "600",
-            iconData: Icons.person_pin_circle_rounded,
-          ),
-          const Divider(
-            thickness: 1,
-          ),
-          context.sizedBoxHeightUltraSmall,
-          const Card(
-            elevation: 2,
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                "Reset Password",
+    return GetBuilder(builder: (BottomNavController bottomNavController) {
+      return Scaffold(
+        appBar: buildAppBar(context,
+            onTap: () {},
+            title: bottomNavController
+                .routeNames[bottomNavController.initialIndex],
+            widget: const SizedBox()),
+        body: ListView(
+          children: [
+            SizedBox(
+              child: buildHeaderRow(context),
+            ),
+            buildTitleContainer(context, "infoPerson".tr.toUpperCase()),
+            context.sizedBoxHeightUltraSmall,
+            buildKeyValueRow(
+              context,
+              key: "id".tr,
+              value: "512316",
+              iconData: Icons.person,
+            ),
+            const Divider(
+              thickness: 1,
+            ),
+            buildKeyValueRow(
+              context,
+              key: "no".tr,
+              value: "0535 235 12 12",
+              iconData: Icons.phone,
+            ),
+            const Divider(
+              thickness: 1,
+            ),
+            buildKeyValueRow(
+              context,
+              key: "email".tr,
+              value: "janeMail".tr,
+              iconData: Icons.email,
+            ),
+            const Divider(
+              thickness: 1,
+            ),
+            buildKeyValueRow(
+              context,
+              key: "gender".tr,
+              value: "female",
+              iconData: Icons.person_pin_circle_rounded,
+            ),
+            context.sizedBoxHeightUltraSmall,
+            buildTitleContainer(context, "infoAccount".tr.toUpperCase()),
+            context.sizedBoxHeightUltraSmall,
+            buildKeyValueRow(
+              context,
+              key: "totalPoints".tr,
+              value: "580",
+              iconData: Icons.star,
+            ),
+            const Divider(
+              thickness: 1,
+            ),
+            buildKeyValueRow(
+              context,
+              key: "redeem".tr,
+              value: "2",
+              iconData: Icons.post_add,
+            ),
+            const Divider(
+              thickness: 1,
+            ),
+            buildKeyValueRow(
+              context,
+              key: "pending".tr,
+              value: "8",
+              iconData: Icons.pending_actions,
+            ),
+            const Divider(
+              thickness: 1,
+            ),
+            buildKeyValueRow(
+              context,
+              key: "leftPoints".tr,
+              value: "600",
+              iconData: Icons.person_pin_circle_rounded,
+            ),
+            const Divider(
+              thickness: 1,
+            ),
+            context.sizedBoxHeightUltraSmall,
+             Card(
+              elevation: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  "resetPass".tr,
+                ),
               ),
             ),
-          ),
-          const Card(
-            elevation: 2,
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                "Sign Out",
+             Card(
+              elevation: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  "signOut".tr,
+                ),
               ),
-            ),
-          )
-        ],
-      ),
-    );
+            )
+          ],
+        ),
+      );
+    });
   }
 
   Container buildTitleContainer(BuildContext context, String title) {
@@ -188,7 +203,7 @@ class ProfileScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.headline6,
         ),
         Text(
-          "JaneDoe@gmail.com",
+          "janeMail".tr,
           style: Theme.of(context).textTheme.caption,
         ),
       ],

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yallawashtest/extensions.dart';
@@ -18,19 +19,22 @@ class SettingsScreen extends StatelessWidget {
             buildTextIconRow(context, title: "savedAddresses".tr, onTap: () {
               Get.toNamed("/myAddresses");
             }),
-            buildTextIconRow(context, title: "updateMail".tr,onTap: () {
+            buildTextIconRow(context, title: "resetPass".tr, onTap: () {
               Get.toNamed("/resetPassword");
             }),
-            buildTextIconRow(context, title: "resetPass".tr),
+            buildTextIconRow(context, title: "updateMail".tr, onTap: () {
+              Get.toNamed("/updateMail");
+            }),
             context.sizedBoxHeightSmall,
             buildTextSwitchRow(
               context,
               title: 'notifications'.tr,
+              value: true,
             ),
             context.sizedBoxHeightSmall,
             buildTextSwitchRow(
               context,
-              title: 'language'.tr,
+              title: 'language'.tr,value: false
             ),
             buildTextIconRow(context, title: "city".tr, contentText: "Sharjah"),
             context.sizedBoxHeightSmall,
@@ -68,7 +72,7 @@ class SettingsScreen extends StatelessWidget {
                     Text(
                       contentText ?? "",
                       style: TextStyle(
-                        color: Theme.of(context).primaryColor.withOpacity(0.5),
+                        color: Theme.of(context).primaryColorLight,
                       ),
                     ),
                     const Icon(Icons.arrow_forward_rounded),
@@ -82,7 +86,7 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  SizedBox buildTextSwitchRow(BuildContext context, {required String title}) {
+  SizedBox buildTextSwitchRow(BuildContext context, {required String title, bool? value}) {
     return SizedBox(
       width: double.infinity,
       height: context.dynamicHeight(0.06),
@@ -97,11 +101,14 @@ class SettingsScreen extends StatelessWidget {
                 title,
                 style: Theme.of(context).textTheme.subtitle1,
               ),
-              SizedBox(
-                width: context.paddingExtraLargeWidth,
-                child: Switch(
-                  value: true,
-                  onChanged: (_) {},
+              Transform.scale(
+                scale: 0.7,
+                child: SizedBox(
+                  width: context.paddingExtraLargeWidth,
+                  child: CupertinoSwitch(activeColor: Theme.of(context).primaryColor,
+                    value: value??false,
+                    onChanged: (_) {},
+                  ),
                 ),
               )
             ],

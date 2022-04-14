@@ -12,6 +12,7 @@ class LightTheme {
         color: primaryColor,
       ),
     ),
+    primaryColorLight: primaryColor.withOpacity(0.5),
     primarySwatch: Colors.blue,
     primaryColor: primaryColor,
     disabledColor: secondaryColor,

@@ -8,6 +8,7 @@ import '../screens/home_screen/home_screen.dart';
 import '../screens/login_screen/login_screen.dart';
 import '../screens/settings_screen/edit_add_screens/my_addresses_screen.dart';
 import '../screens/settings_screen/edit_add_screens/reset_password_screen.dart';
+import '../screens/settings_screen/edit_add_screens/update_mail_screen.dart';
 import '../screens/settings_screen/settings_screen.dart';
 import '../screens/splash_screen/splash_screen.dart';
 
@@ -54,7 +55,12 @@ class AppRoutes {
     GetPage(
       name: "/resetPassword",
       page: () => const ResetPasswordScreen(),
+    ),
+    GetPage(
+      name: "/updateMail",
+      page: () => const UpdateMailScreen(),
     )
+
 
   ];
 }

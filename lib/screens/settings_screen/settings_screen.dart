@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yallawashtest/extensions.dart';
-import 'package:yallawashtest/screens/home_screen/components/components.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -10,7 +9,6 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context, onTap: () {}, title: "settings".tr),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: context.paddingDefaultHeight),
         child: ListView(

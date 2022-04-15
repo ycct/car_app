@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yallawashtest/extensions.dart';
-import 'package:yallawashtest/screens/home_screen/components/components.dart';
 import '../../constants/app_constants.dart';
 import '../../controller/bottom_bar_controller.dart';
 
@@ -17,11 +16,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return GetBuilder(builder: (BottomNavController bottomNavController) {
       return Scaffold(
-        appBar: buildAppBar(context,
-            onTap: () {},
-            title: bottomNavController
-                .routeNames[bottomNavController.initialIndex],
-            widget: const SizedBox()),
         body: ListView(
           children: [
             SizedBox(

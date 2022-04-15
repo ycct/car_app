@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:yallawashtest/screens/main_screen/main_screen.dart';
 import 'package:yallawashtest/screens/profile_screen/profile_screen.dart';
 import 'package:yallawashtest/screens/signup_screen/signup_screen.dart';
 import 'package:yallawashtest/screens/verification_screen/verification_screen.dart';
@@ -17,6 +18,10 @@ class AppRoutes {
     GetPage(
       name: '/splash',
       page: () => const SplashScreen(),
+    ),
+    GetPage(
+      name: '/main',
+      page: () => const MainScreen(),
     ),
     GetPage(
       name: '/home',
@@ -60,7 +65,5 @@ class AppRoutes {
       name: "/updateMail",
       page: () => const UpdateMailScreen(),
     )
-
-
   ];
 }

@@ -4,17 +4,25 @@ import 'package:get/get.dart';
 import 'package:yallawashtest/screens/profile_screen/profile_screen.dart';
 import 'package:yallawashtest/screens/search_screen/search_screen.dart';
 import 'package:yallawashtest/screens/service_screen/service_screen.dart';
+import 'package:yallawashtest/screens/settings_screen/settings_screen.dart';
 import '../constants/app_constants.dart';
 import '../screens/home_screen/home_screen.dart';
 
 class BottomNavController extends GetxController {
   int initialIndex = 0;
 
+  void jumpToPage(int index) async {
+    closeDrawer();
+    initialIndex = index;
+    update();
+  }
+
   List<Widget> myBottomNavRoute = [
     const HomeScreen(),
     const SearchScreen(),
     const ServiceScreen(),
     const ProfileScreen(),
+    const SettingsScreen()
   ];
 
   final iconList = <IconData>[
@@ -50,5 +58,16 @@ class BottomNavController extends GetxController {
         update();
       },
     );
+  }
+
+  /// drawer açmak için kullanılacak.
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void openDrawer() {
+    scaffoldKey.currentState?.openDrawer();
+  }
+
+  void closeDrawer() async {
+    scaffoldKey.currentState?.openEndDrawer();
   }
 }

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/constants/images_paths.dart';
 import 'package:yallawashtest/extensions.dart';
+import '../../../controller/bottom_bar_controller.dart';
 import 'drawer_header.dart';
 
 class NavigationDrawer extends StatelessWidget {
@@ -11,46 +12,65 @@ class NavigationDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-
-      child: Material(
-        color: const Color(0xFF219DF8),
-        child: ListView(
-          physics: const NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.symmetric(
-            horizontal: context.paddingDefaultWidth,
-            vertical: context.paddingLargeHeight,
+    return Builder(builder: (context) {
+      return Drawer(
+        child: Material(
+          color: const Color(0xFF219DF8),
+          child: ListView(
+            physics: const NeverScrollableScrollPhysics(),
+            padding: EdgeInsets.symmetric(
+              horizontal: context.paddingDefaultWidth,
+              vertical: context.paddingLargeHeight,
+            ),
+            children: <Widget>[
+              context.sizedBoxHeightExtraSmall,
+              buildHeader(
+                context,
+                urlImage: AppConstants.profilePhotoUrl,
+                name: "Jane".tr,
+                location: "UAE, DUBAI",
+              ),
+              context.sizedBoxHeightSmall,
+              const Divider(
+                thickness: 1,
+              ),
+              buildMenuItem(context,
+                  icon: Icons.person,
+                  title: "profile".tr,
+                  index: 3,
+                  ),
+              buildMenuItem(
+                context,
+                icon: Icons.home,
+                title: "home".tr,
+                index: 0,
+              ),
+              buildMenuItem(
+                context,
+                icon: Icons.local_offer,
+                title: "offers".tr,
+                index: 2,
+              ),
+              buildMenuItem(
+                context,
+                icon: Icons.shopping_basket_rounded,
+                title: "myProducts".tr,
+                index: 1,
+              ),
+              buildMenuItem(
+                context,
+                icon: Icons.shopping_basket_rounded,
+                title: "settings".tr,
+                index: 4,
+              ),
+              context.sizedBoxHeightDefault,
+              context.sizedBoxHeightSmall,
+              buildRow()
+            ],
           ),
-          children: <Widget>[
-            context.sizedBoxHeightExtraSmall,
-            buildHeader(
-              context,
-              urlImage: AppConstants.profilePhotoUrl,
-              name: "Jane".tr,
-              location: "UAE, DUBAI",
-            ),
-            context.sizedBoxHeightSmall,
-            const Divider(
-              thickness: 1,
-            ),
-            buildMenuItem(context, icon: Icons.person, title: "profile".tr,),
-            buildMenuItem(context, icon: Icons.home, title: "home".tr,),
-            buildMenuItem(context, icon: Icons.local_offer, title: "offers".tr,),
-            buildMenuItem(context,
-                icon: Icons.shopping_basket_rounded, title: "myProducts".tr,),
-            buildMenuItem(context,
-                icon: Icons.autorenew, title: "remainingDeals".tr,),
-            buildMenuItem(context, icon: Icons.settings, title: "settings".tr,),
-            buildMenuItem(context, icon: Icons.logout, title: "signOut".tr,),
-            buildMenuItem(context,
-                icon: Icons.favorite, title: "joinTheApp".tr,),
-            context.sizedBoxHeightDefault,
-            context.sizedBoxHeightSmall,
-            buildRow()
-          ],
         ),
-      ),
-    );
+      );
+    });
   }
 
   Row buildRow() {
@@ -70,16 +90,23 @@ class NavigationDrawer extends StatelessWidget {
     BuildContext context, {
     required String title,
     required IconData icon,
+    required index,
+    VoidCallback? onTap,
   }) {
     final defaultColor = Theme.of(context).disabledColor;
-    return ListTile(
-      leading: Icon(
-        icon,
-        color: defaultColor,
-      ),
-      title: Text(
-        title,
-        style: TextStyle(color: defaultColor),
+    return InkWell(
+      onTap: () {
+        Get.find<BottomNavController>().jumpToPage(index);
+      },
+      child: ListTile(
+        leading: Icon(
+          icon,
+          color: defaultColor,
+        ),
+        title: Text(
+          title,
+          style: TextStyle(color: defaultColor),
+        ),
       ),
     );
   }

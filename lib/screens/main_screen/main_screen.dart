@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controller/bottom_bar_controller.dart';
 import '../home_screen/components/components.dart';
-import '../home_screen/components/navigation_drawer.dart';
+import '../../widgets/navigation_drawer.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -12,14 +12,13 @@ class MainScreen extends StatelessWidget {
     return GetBuilder(builder: (BottomNavController bottomNavController) {
       return Scaffold(
         key: Get.find<BottomNavController>().scaffoldKey,
-        drawer: const NavigationDrawer(),
+        drawer:  NavigationDrawer(title:"jane".tr,location: "location".tr, ),
         appBar: buildAppBar(
           context,
           onTap: () {
             bottomNavController.openDrawer();
           },
-          title:
-              Get.currentRoute,
+          title: bottomNavController.appBarTitles[bottomNavController.initialIndex],
           widget: bottomNavController.initialIndex == 0
               ? buildCircleAvatar(context)
               : const SizedBox(),
@@ -27,7 +26,7 @@ class MainScreen extends StatelessWidget {
         floatingActionButton: buildFloating(context),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar:
-            bottomNavController.buildAnimatedBottomNavigationBar(context),
+        bottomNavController.buildAnimatedBottomNavigationBar(context),
         body: bottomNavController
             .myBottomNavRoute[bottomNavController.initialIndex],
       );

@@ -1,12 +1,8 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yallawashtest/screens/profile_screen/profile_screen.dart';
-import 'package:yallawashtest/screens/search_screen/search_screen.dart';
-import 'package:yallawashtest/screens/service_screen/service_screen.dart';
-import 'package:yallawashtest/screens/settings_screen/settings_screen.dart';
+import 'package:yallawashtest/models/menu_model.dart';
 import '../constants/app_constants.dart';
-import '../screens/home_screen/home_screen.dart';
 
 class BottomNavController extends GetxController {
   int initialIndex = 0;
@@ -18,11 +14,11 @@ class BottomNavController extends GetxController {
   }
 
   List<Widget> myBottomNavRoute = [
-    const HomeScreen(),
-    const SearchScreen(),
-    const ServiceScreen(),
-    const ProfileScreen(),
-    const SettingsScreen()
+    ...allMenuList.map((e) => e.screen)
+  ];
+
+  List<String> appBarTitles = [
+    ...allMenuList.map((e) => e.text)
   ];
 
   final iconList = <IconData>[
@@ -30,13 +26,6 @@ class BottomNavController extends GetxController {
     Icons.search,
     Icons.car_rental_outlined,
     Icons.person,
-  ];
-
-  final routeNames = <String>[
-    "Home",
-    "Search",
-    "Service",
-    "Profile",
   ];
 
   AnimatedBottomNavigationBar buildAnimatedBottomNavigationBar(

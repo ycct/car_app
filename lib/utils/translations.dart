@@ -86,6 +86,16 @@ class Translation extends Translations {
           "confirmPassword": "Confirm Password",
           "currentPassword": "Current Password",
           "newPassword": "New Password",
+          "location":"UAE, DUBAI",
+          "menu.home":"Home",
+          "menu.profile":"Profile",
+          "menu.offers":"Offers",
+          "menu.myProducts":"My Products",
+          "menu.remainingDeals":"Remaining Deals",
+          "menu.settings":"Settings",
+          "menu.signOut":"Sign Out",
+          "menu.joinTheApp":"Join the App",
+
         },
         "tr_TR": {
           "hello": "Merhaba",

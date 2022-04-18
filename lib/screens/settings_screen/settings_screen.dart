@@ -14,15 +14,9 @@ class SettingsScreen extends StatelessWidget {
         child: ListView(
           children: [
             buildTextIconRow(context, title: 'accInfo'.tr),
-            buildTextIconRow(context, title: "savedAddresses".tr, onTap: () {
-              Get.toNamed("/myAddresses");
-            }),
-            buildTextIconRow(context, title: "resetPass".tr, onTap: () {
-              Get.toNamed("/resetPassword");
-            }),
-            buildTextIconRow(context, title: "updateMail".tr, onTap: () {
-              Get.toNamed("/updateMail");
-            }),
+            buildTextIconRow(context, title: "savedAddresses".tr, routeName: "/myAddresses"),
+            buildTextIconRow(context, title: "resetPass".tr, routeName: "/resetPassword"),
+            buildTextIconRow(context, title: "updateMail".tr, routeName: "/updateMail"),
             context.sizedBoxHeightSmall,
             buildTextSwitchRow(
               context,
@@ -34,7 +28,7 @@ class SettingsScreen extends StatelessWidget {
               context,
               title: 'language'.tr,value: false
             ),
-            buildTextIconRow(context, title: "city".tr, contentText: "Sharjah"),
+            buildTextIconRow(context, title: "city".tr, contentText: "Sharjah",routeName: "/selectEmirate"),
             context.sizedBoxHeightSmall,
             buildTextIconRow(context, title: "invite".tr),
             buildTextIconRow(context, title: "about".tr),
@@ -47,9 +41,9 @@ class SettingsScreen extends StatelessWidget {
   }
 
   Widget buildTextIconRow(BuildContext context,
-      {required String title, String? contentText, VoidCallback? onTap}) {
+      {required String title, String? contentText, VoidCallback? onTap,String? routeName}) {
     return InkWell(
-      onTap: onTap,
+      onTap: (){Get.toNamed(routeName??"");},
       child: SizedBox(
         width: double.infinity,
         height: context.dynamicHeight(0.06),

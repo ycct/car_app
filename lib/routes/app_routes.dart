@@ -5,6 +5,7 @@ import 'package:yallawashtest/screens/signup_screen/signup_screen.dart';
 import 'package:yallawashtest/screens/verification_screen/verification_screen.dart';
 import 'package:yallawashtest/screens/verified_screen/verified_screen.dart';
 import '../bindings/bindings.dart';
+import '../screens/settings_screen/edit_add_screens/select_emirate_screen.dart';
 import '../screens/home_screen/home_screen.dart';
 import '../screens/login_screen/login_screen.dart';
 import '../screens/settings_screen/edit_add_screens/my_addresses_screen.dart';
@@ -64,6 +65,11 @@ class AppRoutes {
     GetPage(
       name: "/updateMail",
       page: () => const UpdateMailScreen(),
+    ),
+    GetPage(
+      name: "/selectEmirate",
+      page: () => const SelectEmirateScreen(),
     )
+
   ];
 }

@@ -10,4 +10,5 @@ class ImagePaths {
   static const facebookDrawerIcon = "assets/icons/face_drawer_icon.svg";
   static const instagramDrawerIcon = "assets/icons/insta_drawer_icon.svg";
   static const twitterDrawerIcon = "assets/icons/twit_drawer_icon.svg";
+  static const brush = "assets/images/brush.svg";
 }

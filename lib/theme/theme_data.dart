@@ -4,6 +4,7 @@ class LightTheme {
   static const Color primaryColor = Colors.blue;
   static const Color secondaryColor = Colors.white;
   static  Color backgroundColor = Colors.grey.shade50;
+  static  Color greyLight = Colors.grey.shade400  ;
 
   static ThemeData lightTheme = ThemeData(
     appBarTheme: const AppBarTheme(backgroundColor: primaryColor),
@@ -16,6 +17,7 @@ class LightTheme {
     primarySwatch: Colors.blue,
     primaryColor: primaryColor,
     disabledColor: secondaryColor,
+    bottomAppBarColor: greyLight,
     scaffoldBackgroundColor: backgroundColor,
     textTheme: const TextTheme(
       headline4: TextStyle(fontWeight: FontWeight.bold),

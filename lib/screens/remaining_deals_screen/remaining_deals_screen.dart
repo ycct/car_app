@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/extensions.dart';
-
 import 'components/booked_tab.dart';
 import 'components/previous_tab.dart';
 
@@ -59,7 +60,8 @@ class _RemainingDealsScreenState extends State<RemainingDealsScreen>
     return Container(
       width: context.dynamicWidth(0.8),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12), color: Colors.white38),
+          borderRadius: BorderRadius.circular(AppConstants.extraSmallRadius),
+          color: Colors.white38),
       child: Column(
         children: [
           Padding(
@@ -69,12 +71,13 @@ class _RemainingDealsScreenState extends State<RemainingDealsScreen>
               controller: tabController,
               labelColor: Theme.of(context).primaryColor,
               indicator: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
+                color: Theme.of(context).disabledColor,
+                borderRadius:
+                    BorderRadius.circular(AppConstants.extraSmallRadius),
               ),
               tabs: [
-                buildTabSection(context, title: "Booked"),
-                buildTabSection(context, title: "Previous"),
+                buildTabSection(context, title: "booked".tr),
+                buildTabSection(context, title: "Previous".tr),
               ],
             ),
           ),

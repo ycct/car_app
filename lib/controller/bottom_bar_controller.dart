@@ -13,13 +13,9 @@ class BottomNavController extends GetxController {
     update();
   }
 
-  List<Widget> myBottomNavRoute = [
-    ...allMenuList.map((e) => e.screen)
-  ];
+  List<Widget> myBottomNavRoute = [...allMenuList.map((e) => e.screen)];
 
-  List<String> appBarTitles = [
-    ...allMenuList.map((e) => e.text)
-  ];
+  List<String> appBarTitles = [...allMenuList.map((e) => e.text)];
 
   final iconList = <IconData>[
     Icons.home_filled,
@@ -36,9 +32,10 @@ class BottomNavController extends GetxController {
       activeColor: Theme.of(context).primaryColor,
       icons: iconList,
       iconSize: AppConstants.defaultFont,
-      inactiveColor: Colors.grey.shade400,
+      inactiveColor: Theme.of(context).bottomAppBarColor,
       activeIndex: initialIndex,
       gapLocation: GapLocation.center,
+      splashColor: Colors.blue,
       notchSmoothness: NotchSmoothness.verySmoothEdge,
       leftCornerRadius: 22,
       rightCornerRadius: 22,
@@ -49,7 +46,6 @@ class BottomNavController extends GetxController {
     );
   }
 
-  /// drawer açmak için kullanılacak.
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   void openDrawer() {

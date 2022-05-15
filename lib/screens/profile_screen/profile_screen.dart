@@ -193,7 +193,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          AppConstants.janeDoe,
+          "jane".tr,
           style: Theme.of(context).textTheme.headline6,
         ),
         Text(

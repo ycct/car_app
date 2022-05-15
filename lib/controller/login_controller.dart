@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:yallawashtest/constants/app_constants.dart';
 import 'package:yallawashtest/models/code_response_model.dart';
 import '../constants/service.dart';
 import '../models/code_request_model.dart';
@@ -37,7 +36,7 @@ class LoginController extends GetxController {
           VerificationCodeRequestModel.fromJson(responseMap);
     } catch (e) {
       Get.snackbar(
-        AppConstants.myAppName,
+        "appName".tr,
         e.toString(),
       );
     }
@@ -46,7 +45,7 @@ class LoginController extends GetxController {
   Future loginRequestChecker() async {
     if (verificationCodeRequestModel != null) {
       if (verificationCodeRequestModel!.result == "Success") {
-        Get.snackbar(AppConstants.myAppName,
+        Get.snackbar("appName".tr,
             verificationCodeRequestModel!.responseMessage ?? "",
             backgroundColor: Colors.blue.shade300, colorText: Colors.white);
         Timer(
@@ -54,7 +53,7 @@ class LoginController extends GetxController {
           () => Get.toNamed("/verification"),
         );
       } else {
-        Get.snackbar(AppConstants.myAppName,
+        Get.snackbar("appName".tr,
             verificationCodeRequestModel!.responseMessage ?? "",
             backgroundColor: Colors.blue.shade300, colorText: Colors.white,);
         await Future.delayed(
@@ -100,7 +99,7 @@ class LoginController extends GetxController {
         );
         return true;
       } else {
-        Get.snackbar(AppConstants.myAppName,
+        Get.snackbar("appName".tr,
             verificationCodeResponseModel!.responseMessage ?? "",
             backgroundColor: Colors.blue.shade300, colorText: Colors.white,
         );

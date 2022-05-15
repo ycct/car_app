@@ -75,11 +75,17 @@ class HomeScreen extends StatelessWidget {
             ),
             context.sizedBoxHeightUltraSmall,
             buildCategoryTitle(context, "remainingDeals".tr),
-            RemainingCardsListView(
-              title: "deal".tr,
-              details: "detailsHere".tr,
-              myWidth: context.dynamicWidth(0.7),
-              myHeight: context.dynamicHeight(0.14),
+            InkWell(
+              onTap: (){
+                Get.find<BottomNavController>().jumpToPage(4);
+              },
+              child: RemainingCardsListView(
+
+                title: "deal".tr,
+                details: "detailsHere".tr,
+                myWidth: context.dynamicWidth(0.7),
+                myHeight: context.dynamicHeight(0.14),
+              ),
             ),
             context.sizedBoxHeightExtraSmall,
             buildCategoryTitle(context, "placeHolder".tr),

@@ -1,12 +1,8 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yallawashtest/screens/profile_screen/profile_screen.dart';
-import 'package:yallawashtest/screens/search_screen/search_screen.dart';
-import 'package:yallawashtest/screens/service_screen/service_screen.dart';
-import 'package:yallawashtest/screens/settings_screen/settings_screen.dart';
+import 'package:yallawashtest/models/menu_model.dart';
 import '../constants/app_constants.dart';
-import '../screens/home_screen/home_screen.dart';
 
 class BottomNavController extends GetxController {
   int initialIndex = 0;
@@ -17,26 +13,15 @@ class BottomNavController extends GetxController {
     update();
   }
 
-  List<Widget> myBottomNavRoute = [
-    const HomeScreen(),
-    const SearchScreen(),
-    const ServiceScreen(),
-    const ProfileScreen(),
-    const SettingsScreen()
-  ];
+  List<Widget> myBottomNavRoute = [...allMenuList.map((e) => e.screen)];
+
+  List<String> appBarTitles = [...allMenuList.map((e) => e.text)];
 
   final iconList = <IconData>[
     Icons.home_filled,
     Icons.search,
     Icons.car_rental_outlined,
     Icons.person,
-  ];
-
-  final routeNames = <String>[
-    "Home",
-    "Search",
-    "Service",
-    "Profile",
   ];
 
   AnimatedBottomNavigationBar buildAnimatedBottomNavigationBar(
@@ -47,9 +32,10 @@ class BottomNavController extends GetxController {
       activeColor: Theme.of(context).primaryColor,
       icons: iconList,
       iconSize: AppConstants.defaultFont,
-      inactiveColor: Colors.grey.shade400,
+      inactiveColor: Theme.of(context).bottomAppBarColor,
       activeIndex: initialIndex,
       gapLocation: GapLocation.center,
+      splashColor: Colors.blue,
       notchSmoothness: NotchSmoothness.verySmoothEdge,
       leftCornerRadius: 22,
       rightCornerRadius: 22,
@@ -60,7 +46,6 @@ class BottomNavController extends GetxController {
     );
   }
 
-  /// drawer açmak için kullanılacak.
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   void openDrawer() {

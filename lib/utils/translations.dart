@@ -5,7 +5,7 @@ class Translation extends Translations {
   Map<String, Map<String, String>> get keys => {
         "en_US": {
           "hello": "Hello",
-          "appName": "YallaWash",
+          "appName": "Car Wash",
           "profile": "Profile",
           "offers": "Offers",
           "email": "Email",
@@ -57,7 +57,7 @@ class Translation extends Translations {
           "orConnect": "Or connect through your Social Account",
           "bodyText":
               "Text 2-3 Lines to Find the hot deals & offers around you text 2-3 lines to Find the hot deals offers",
-          "welcome": "Welcome to YallaWash",
+          "welcome": "Welcome to Car Wash",
           "getOffers": "Get the ultimate offers and deals \n of car washes",
           "verifyNumber": "Verify Your Number",
           "enterNumber": "Please enter your number to verify \n your account",
@@ -113,15 +113,5 @@ class Translation extends Translations {
           "phoneNumber": "Tel. Numarası",
           "verify": "Doğrula",
         },
-        "ar_UAE": {
-          "hello": "أهلاً بك",
-          "verifyNumber": "تحقق من رقمك",
-          "welcome": "مرحبا بكم في موقع يلا واش",
-          "getOffers": "احصل على أفضل العروض والصفقات لغسيل السيارات",
-          "enterNumber":
-              "الرجاء إدخال رقمك للتحقق من حسابك",
-          "phoneNumber": "رقم الهاتف",
-          "verify": "تحقق",
-        }
       };
 }

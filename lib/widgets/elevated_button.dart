@@ -20,7 +20,7 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? context.dynamicWidth(0.8),
-      height: height??context.dynamicHeight(0.06),
+      height: height ?? context.dynamicHeight(0.06),
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -32,7 +32,7 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed: onTap,
         child: Text(
           title ?? "",
-          style: Theme.of(context).textTheme.headline6?.copyWith(color: Theme.of(context).disabledColor),
+          style: context.headline6?.copyWith(color: context.disabledColor),
         ),
       ),
     );

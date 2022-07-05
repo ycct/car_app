@@ -69,9 +69,9 @@ class _RemainingDealsScreenState extends State<RemainingDealsScreen>
             child: TabBar(
               indicatorColor: Colors.transparent,
               controller: tabController,
-              labelColor: Theme.of(context).primaryColor,
+              labelColor: context.primaryColor,
               indicator: BoxDecoration(
-                color: Theme.of(context).disabledColor,
+                color: context.disabledColor,
                 borderRadius:
                     BorderRadius.circular(AppConstants.extraSmallRadius),
               ),
@@ -95,7 +95,7 @@ class _RemainingDealsScreenState extends State<RemainingDealsScreen>
 
   Container buildTabBackground(BuildContext context) {
     return Container(
-      color: Theme.of(context).primaryColor,
+      color: context.primaryColor,
       width: context.dynamicWidth(1),
       height: context.dynamicHeight(0.08),
     );

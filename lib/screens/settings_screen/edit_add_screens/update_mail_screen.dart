@@ -34,8 +34,8 @@ Card buildCard(BuildContext context,{String? title}) {
             horizontal: AppConstants.defaultPadding,
           ),
           labelText: title??"",
-          labelStyle: TextStyle(color: Theme.of(context).primaryColorLight),
-          fillColor: Theme.of(context).disabledColor,
+          labelStyle: TextStyle(color: context.primaryColorLight),
+          fillColor: context.disabledColor,
         )
 
     ),

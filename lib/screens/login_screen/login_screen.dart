@@ -114,9 +114,7 @@ class LoginScreen extends StatelessWidget {
   Text buildHeadline(BuildContext context, String title) {
     return Text(
       title,
-      style: Theme.of(context)
-          .textTheme
-          .headline5
+      style: context          .headline5
           ?.copyWith(fontSize: AppConstants.defaultFont),
     );
   }
@@ -124,7 +122,7 @@ class LoginScreen extends StatelessWidget {
   Text buildSubtitle(BuildContext context, String title) {
     return Text(
       title,
-      style: Theme.of(context).textTheme.subtitle1,
+      style: context.subtitle1,
       textAlign: TextAlign.center,
     );
   }
@@ -133,7 +131,7 @@ class LoginScreen extends StatelessWidget {
       BuildContext context, LoginController loginController) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Theme.of(context).primaryColor),
+        border: Border.all(color: context.primaryColor),
         borderRadius: BorderRadius.circular(
           AppConstants.largeRadius,
         ),
@@ -145,10 +143,10 @@ class LoginScreen extends StatelessWidget {
         },
         textStyle: TextStyle(
           fontWeight: FontWeight.normal,
-          color: Theme.of(context).primaryColor,
+          color: context.primaryColor,
         ),
         padding: const EdgeInsets.all(0),
-        backgroundColor: Theme.of(context).disabledColor,
+        backgroundColor: context.disabledColor,
         showCountryOnly: false,
         showFlag: false,
         boxDecoration: BoxDecoration(
@@ -177,16 +175,16 @@ class LoginScreen extends StatelessWidget {
           horizontal: AppConstants.defaultPadding,
         ),
         labelText: "phoneNumber".tr,
-        labelStyle: TextStyle(color: Theme.of(context).primaryColor),
-        fillColor: Theme.of(context).disabledColor,
+        labelStyle: TextStyle(color: context.primaryColor),
+        fillColor: context.disabledColor,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppConstants.largeRadius),
-          borderSide: BorderSide(color: Theme.of(context).primaryColor),
+          borderSide: BorderSide(color: context.primaryColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppConstants.largeRadius),
           borderSide: BorderSide(
-            color: Theme.of(context).primaryColor,
+            color: context.primaryColor,
           ),
         ),
       ),

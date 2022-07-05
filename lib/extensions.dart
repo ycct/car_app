@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 extension ContextExtension on BuildContext {
+
   double dynamicHeight(double value) => MediaQuery.of(this).size.height * value;
 
   double dynamicWidth(double value) => MediaQuery.of(this).size.width * value;
+
+
+  ScaffoldMessengerState get scaffold =>  ScaffoldMessenger.of(this);
 
   TextStyle? get headline4 => Theme.of(this).textTheme.headline4;
 
@@ -26,6 +30,8 @@ extension ContextExtension on BuildContext {
   TextStyle? get overLine => Theme.of(this).textTheme.overline;
 
   Color get primaryColor => Theme.of(this).primaryColor;
+
+  Color get scaffoldBackgroundColor => Theme.of(this).scaffoldBackgroundColor;
 
   Color get disabledColor => Theme.of(this).disabledColor;
 

@@ -54,7 +54,7 @@ class VerificationScreen extends StatelessWidget {
                   context.sizedBoxHeightUltraSmall,
                   Text(
                     "pleaseEnter".tr,
-                    style: Theme.of(context).textTheme.bodyText1,
+                    style: context.bodyText1,
                   ),
                   context.sizedBoxHeightUltraSmall,
                   Text(
@@ -62,7 +62,7 @@ class VerificationScreen extends StatelessWidget {
                         loginController.countryCode  +
                         " " +
                         loginController.numberController.text,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: context.headline6,
                   )
                 ],
               ),
@@ -114,7 +114,7 @@ class VerificationScreen extends StatelessWidget {
   }
 
   Text buildText(BuildContext context, String title) {
-    return Text(title, style: Theme.of(context).textTheme.headline4);
+    return Text(title, style: context.headline4);
   }
 
   Padding buildTextField(
@@ -122,7 +122,7 @@ class VerificationScreen extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: context.paddingExtraSmallWidth),
       child: CircleAvatar(
-        backgroundColor: Colors.blue.shade100,
+        backgroundColor: context.primaryColor.withOpacity(0.1),
         radius: context.dynamicWidth(0.09),
         child: TextFormField(
           controller: controller,

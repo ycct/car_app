@@ -1,6 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yallawashtest/extensions.dart';
 import 'package:yallawashtest/models/menu_model.dart';
 import '../constants/app_constants.dart';
 
@@ -29,10 +30,10 @@ class BottomNavController extends GetxController {
     return AnimatedBottomNavigationBar(
       height: Get.height * 0.12,
       elevation: 20,
-      activeColor: Theme.of(context).primaryColor,
+      activeColor: context.primaryColor,
       icons: iconList,
       iconSize: AppConstants.defaultFont,
-      inactiveColor: Theme.of(context).bottomAppBarColor,
+      inactiveColor: context.bottomAppBarColor,
       activeIndex: initialIndex,
       gapLocation: GapLocation.center,
       splashColor: Colors.blue,

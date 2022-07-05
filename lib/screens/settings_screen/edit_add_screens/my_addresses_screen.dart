@@ -39,7 +39,7 @@ class MyAddresses extends StatelessWidget {
                   Text(
                     "addressNo2".tr,
                     style: TextStyle(
-                      color: Theme.of(context).primaryColorLight,
+                      color: context.primaryColorLight,
                     ),
                   ),
                 ],
@@ -49,7 +49,7 @@ class MyAddresses extends StatelessWidget {
                   Text(
                     "detailsHere".tr,
                     style: TextStyle(
-                        color: Theme.of(context).primaryColorLight),
+                        color: context.primaryColorLight),
                   ),
                   const Icon(Icons.arrow_forward_rounded)
                 ],

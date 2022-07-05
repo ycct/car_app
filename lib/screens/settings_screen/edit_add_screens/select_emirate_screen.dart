@@ -55,7 +55,7 @@ class SelectEmirateScreen extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: Theme.of(context).textTheme.subtitle1,
+                  style: context.subtitle1,
                 ),
                 isSelected ? const Icon(Icons.done_all) : const SizedBox(),
               ],

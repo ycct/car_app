@@ -27,7 +27,7 @@ class DetailedCard extends StatelessWidget {
       child: Stack(
         children: [
           Card(
-            color: Theme.of(context).disabledColor,
+            color: context.disabledColor,
             shape: RoundedRectangleBorder(
               borderRadius:
                   BorderRadius.circular(AppConstants.extraSmallRadius),
@@ -114,15 +114,12 @@ class DetailedCard extends StatelessWidget {
       children: [
         Text(
           "offerName".tr,
-          style: Theme.of(context)
-              .textTheme
-              .subtitle1
-              ?.copyWith(fontWeight: FontWeight.bold),
+          style: context.subtitle1?.copyWith(fontWeight: FontWeight.bold),
         ),
         context.sizedBoxHeightUltraSmall,
-        Text("offerDetails".tr, style: Theme.of(context).textTheme.subtitle2),
+        Text("offerDetails".tr, style: context.subtitle2),
         context.sizedBoxHeightUltraSmall,
-        Text("viewMore".tr, style: Theme.of(context).textTheme.caption)
+        Text("viewMore".tr, style: context.caption)
       ],
     );
   }
@@ -142,7 +139,7 @@ class DetailedCard extends StatelessWidget {
         ),
         child: Text(
           "shopNow".tr,
-          style: TextStyle(color: Theme.of(context).disabledColor),
+          style: TextStyle(color: context.disabledColor),
         ),
         onPressed: () {},
       ),
@@ -154,7 +151,7 @@ class DetailedCard extends StatelessWidget {
       height: 3,
       width: context.dynamicWidth(0.5),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
+        color: context.primaryColor,
         borderRadius: BorderRadius.circular(
           AppConstants.extraSmallRadius,
         ),
@@ -169,7 +166,7 @@ class DetailedCard extends StatelessWidget {
           icon,
           size: AppConstants.extraSmallFont,
         ),
-        Text(title, style: Theme.of(context).textTheme.subtitle2),
+        Text(title, style: context.textTheme.subtitle2),
       ],
     );
   }

@@ -64,7 +64,7 @@ class NavigationDrawer extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 32,
-            backgroundColor: Theme.of(context).disabledColor,
+            backgroundColor: context.disabledColor,
             child: CircleAvatar(
               radius: 30,
               backgroundImage: NetworkImage(urlImage),
@@ -76,17 +76,13 @@ class NavigationDrawer extends StatelessWidget {
             children: [
               Text(
                 name,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline5
-                    ?.copyWith(color: Theme.of(context).disabledColor),
+                style:
+                    context.headline5?.copyWith(color: context.disabledColor),
               ),
               Text(
                 location,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1
-                    ?.copyWith(color: Theme.of(context).disabledColor),
+                style: context.subtitle1
+                    ?.copyWith(color: context.disabledColor),
               )
             ],
           )
@@ -102,7 +98,7 @@ class NavigationDrawer extends StatelessWidget {
     required index,
     VoidCallback? onTap,
   }) {
-    final defaultColor = Theme.of(context).disabledColor;
+    final defaultColor = context.disabledColor;
     return InkWell(
       onTap: () {
         Get.find<BottomNavController>().jumpToPage(index);

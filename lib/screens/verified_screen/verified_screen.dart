@@ -54,11 +54,6 @@ class VerifiedScreen extends StatelessWidget {
   }
 
   Text buildText(BuildContext context) {
-    return Text(
-      "verifyMessage".tr,
-      style: Theme.of(context)
-          .textTheme
-          .headline4
-    );
+    return Text("verifyMessage".tr, style: context.headline4);
   }
 }

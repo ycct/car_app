@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
                   Container(
                     width: context.dynamicWidth(1),
                     height: context.dynamicHeight(0.22),
-                    color: Theme.of(context).primaryColor,
+                    color: context.primaryColor,
                   ),
                   Positioned(
                     top: context.paddingExtraLargeWidth,
@@ -32,13 +32,13 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text(
                           "totalPoints".tr,
-                          style: context.textTheme.bodyText1?.copyWith(
-                              color: Theme.of(context).disabledColor),
+                          style: context.bodyText1
+                              ?.copyWith(color: context.disabledColor),
                         ),
                         Text(
                           "pointsValue".tr,
-                          style: context.textTheme.headline4?.copyWith(
-                            color: Theme.of(context).disabledColor,
+                          style: context.headline4?.copyWith(
+                            color: context.disabledColor,
                           ),
                         ),
                       ],
@@ -51,14 +51,14 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text(
                           "hiJane".tr,
-                          style: context.textTheme.headline5?.copyWith(
-                              color: Theme.of(context).disabledColor),
+                          style: context.headline5?.copyWith(
+                              color: context.disabledColor),
                         ),
                         context.sizedBoxHeightMicro,
                         Text(
                           "yourBalance".tr,
-                          style: context.textTheme.bodyText2?.copyWith(
-                              color: Theme.of(context).disabledColor),
+                          style: context.bodyText2
+                              ?.copyWith(color: context.disabledColor),
                         ),
                         context.sizedBoxHeightUltraSmall,
                         buildRichText(context),
@@ -76,11 +76,10 @@ class HomeScreen extends StatelessWidget {
             context.sizedBoxHeightUltraSmall,
             buildCategoryTitle(context, "remainingDeals".tr),
             InkWell(
-              onTap: (){
+              onTap: () {
                 Get.find<BottomNavController>().jumpToPage(4);
               },
               child: RemainingCardsListView(
-
                 title: "deal".tr,
                 details: "detailsHere".tr,
                 myWidth: context.dynamicWidth(0.7),

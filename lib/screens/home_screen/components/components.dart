@@ -25,23 +25,22 @@ AppBar buildAppBar(BuildContext context,
       child: Icon(
         Icons.wrap_text_sharp,
         size: AppConstants.defaultFont,
-        color: Theme.of(context).disabledColor,
+        color: context.disabledColor,
       ),
     ),
     elevation: 0,
     title: Text(
       title,
-      style: Theme.of(context)
-          .textTheme
+      style: context
           .headline5
-          ?.copyWith(color: Theme.of(context).disabledColor),
+          ?.copyWith(color: context.disabledColor),
     ),
     centerTitle: true,
     actions: [
       Icon(
         Icons.shopping_bag,
         size: AppConstants.defaultFont,
-        color: Theme.of(context).disabledColor,
+        color: context.disabledColor,
       ),
       widget??const SizedBox(),
       context.sizedBoxWidthSmall,
@@ -54,7 +53,7 @@ Padding buildCircleAvatar(BuildContext context) {
     padding: EdgeInsets.only(left: context.paddingExtraSmallWidth),
     child: CircleAvatar(
       radius: 22,
-      backgroundColor: Theme.of(context).disabledColor,
+      backgroundColor: context.disabledColor,
       child: const CircleAvatar(
         radius: 20,
         backgroundImage: NetworkImage(AppConstants.profilePhotoUrl),
@@ -76,7 +75,7 @@ Padding buildFloating(BuildContext context) {
           size: AppConstants.largeFont,
         ),
         elevation: 5,
-        backgroundColor: Theme.of(context).disabledColor,
+        backgroundColor: context.disabledColor,
         onPressed: () {},
       ),
     ),
@@ -107,15 +106,15 @@ RichText buildRichText(BuildContext context) {
         TextSpan(
           text: "0.",
           style: context.textTheme.headline4
-              ?.copyWith(color: Theme.of(context).disabledColor),
+              ?.copyWith(color: context.disabledColor),
         ),
         TextSpan(
           text: "00",
-          style: TextStyle(color: Theme.of(context).disabledColor),
+          style: TextStyle(color: context.disabledColor),
         ),
         TextSpan(
           text: " AED",
-          style: TextStyle(color: Theme.of(context).disabledColor),
+          style: TextStyle(color: context.disabledColor),
         ),
       ],
     ),

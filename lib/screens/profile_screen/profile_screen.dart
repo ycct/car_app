@@ -194,11 +194,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         Text(
           "jane".tr,
-          style: Theme.of(context).textTheme.headline6,
+          style: context.headline6,
         ),
         Text(
           "janeMail".tr,
-          style: Theme.of(context).textTheme.caption,
+          style: context.caption,
         ),
       ],
     );

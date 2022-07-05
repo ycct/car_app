@@ -56,8 +56,7 @@ class SignUpScreen extends StatelessWidget {
   Text buildText(BuildContext context, double fontSize, String title) {
     return Text(
       title,
-      style:
-          Theme.of(context).textTheme.headline4?.copyWith(fontSize: fontSize),
+      style: context.headline4?.copyWith(fontSize: fontSize),
     );
   }
 
@@ -138,10 +137,10 @@ class SignUpScreen extends StatelessWidget {
       decoration: InputDecoration(
         hintText: title,
         hintStyle: TextStyle(
-          color: Theme.of(context).primaryColor.withOpacity(0.4),
+          color: context.primaryColor.withOpacity(0.4),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Theme.of(context).primaryColor),
+          borderSide: BorderSide(color: context.primaryColor),
           borderRadius: isRounded
               ? isTop
                   ? const BorderRadius.only(
@@ -172,7 +171,7 @@ class SignUpScreen extends StatelessWidget {
                     )
               : const BorderRadius.only(),
           borderSide: BorderSide(
-            color: Theme.of(context).primaryColor,
+            color: context.primaryColor,
           ),
         ),
       ),

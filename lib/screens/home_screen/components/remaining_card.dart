@@ -44,7 +44,7 @@ class RemainingCard extends StatelessWidget {
               left: -70,
               top: -12,
               child: CircleAvatar(
-                backgroundColor: Theme.of(context).primaryColor,
+                backgroundColor: context.primaryColor,
                 radius: 95,
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -55,16 +55,14 @@ class RemainingCard extends StatelessWidget {
                     children: [
                       Text(
                         title ?? "",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6
-                            ?.copyWith(color: Theme.of(context).disabledColor),
+                        style: context.headline6
+                            ?.copyWith(color: context.disabledColor),
                       ),
                       Text(
                         detail,
-                        style: Theme.of(context).textTheme.overline?.copyWith(
-                              color: Theme.of(context).disabledColor,
-                            ),
+                        style: context.overLine?.copyWith(
+                          color: context.disabledColor,
+                        ),
                       ),
                       context.sizedBoxHeightExtraSmall,
                       SizedBox(
@@ -73,12 +71,12 @@ class RemainingCard extends StatelessWidget {
                         child: ElevatedButton(
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).disabledColor,
+                              context.disabledColor,
                             ),
                           ),
                           onPressed: () {},
                           child: Text("continue".tr,
-                              style: Theme.of(context).textTheme.overline),
+                              style: context.textTheme.overline),
                         ),
                       ),
                     ],

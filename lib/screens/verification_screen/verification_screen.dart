@@ -39,31 +39,12 @@ class VerificationScreen extends StatelessWidget {
                     "verifyCode".tr,
                   ),
                   context.sizedBoxHeightExtraSmall,
-                  Row(
-                    children: [
-                      buildTextField(
-                          context, loginController.verifyControllerFirst),
-                      buildTextField(
-                          context, loginController.verifyControllerSecond),
-                      buildTextField(
-                          context, loginController.verifyControllerThird),
-                      buildTextField(
-                          context, loginController.verifyControllerFourth),
-                    ],
-                  ),
                   context.sizedBoxHeightUltraSmall,
                   Text(
                     "pleaseEnter".tr,
                     style: context.bodyText1,
                   ),
                   context.sizedBoxHeightUltraSmall,
-                  Text(
-                    " + " +
-                        loginController.countryCode  +
-                        " " +
-                        loginController.numberController.text,
-                    style: context.headline6,
-                  )
                 ],
               ),
             ),
@@ -82,11 +63,11 @@ class VerificationScreen extends StatelessWidget {
     return CustomElevatedButton(
       onTap: () async {
         buildShowDialog(context);
-        loginController.verificationCodeInputGetter();
-        await loginController.verifyUser();
-        await Future.delayed(const Duration(seconds: 1));
-        Navigator.pop(context);
-        loginController.userVerificationChecker();
+        // loginController.verificationCodeInputGetter();
+        // await loginController.verifyUser();
+        // await Future.delayed(const Duration(seconds: 1));
+        // Navigator.pop(context);
+        // loginController.userVerificationChecker();
       },
       title: "verify".tr,
     );

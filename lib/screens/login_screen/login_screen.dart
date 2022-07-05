@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -88,7 +87,6 @@ class LoginScreen extends StatelessWidget {
             flex: 30,
             child: buildTextFormField(
               context,
-              loginController.numberController,
             ),
           )
         ],
@@ -103,19 +101,18 @@ class LoginScreen extends StatelessWidget {
         onTap: () async {
           FocusScope.of(context).unfocus();
           buildShowDialog(context);
-          await loginController.login();
-          await Future.delayed(const Duration(seconds: 1));
-          Navigator.pop(context);
-          loginController.loginRequestChecker();
-          loginController.clearTextFields();
+          // await loginController.login();
+          // await Future.delayed(const Duration(seconds: 1));
+          // Navigator.pop(context);
+          // loginController.loginRequestChecker();
+          // loginController.clearTextFields();
         });
   }
 
   Text buildHeadline(BuildContext context, String title) {
     return Text(
       title,
-      style: context          .headline5
-          ?.copyWith(fontSize: AppConstants.defaultFont),
+      style: context.headline5?.copyWith(fontSize: AppConstants.defaultFont),
     );
   }
 
@@ -160,9 +157,10 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget buildTextFormField(
-      BuildContext context, TextEditingController controller) {
+    BuildContext context,
+  ) {
     return TextFormField(
-      controller: controller,
+      // controller: controller,
       expands: true,
       maxLines: null,
       keyboardType: TextInputType.number,

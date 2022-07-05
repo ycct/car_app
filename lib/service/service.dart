@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../models/code_request_model.dart';
-import '../models/code_response_model.dart';
 import '../widgets/custom_snackbar.dart';
 
 class ServiceConst {
@@ -12,10 +11,8 @@ class ServiceConst {
 
 class WebService {
   VerificationCodeRequestModel? verificationCodeRequestModel;
-  VerificationCodeResponseModel? verificationCodeResponseModel;
 
-  Future<List<VerificationCodeRequestModel>> fetchData(int quantity) async {
-    List<VerificationCodeRequestModel> list = [];
+  Future<VerificationCodeRequestModel?> fetchData() async {
     try {
       String getCodeUrl = ServiceConst.userApi;
       Uri serviceUri = Uri.parse(ServiceConst.baseUrl + getCodeUrl);
@@ -26,8 +23,8 @@ class WebService {
     } catch (e) {
       CustomSnackBar.showErrorMessage(e);
       debugPrint(e.toString());
-      return [];
+      return null;
     }
-    return list;
+    return verificationCodeRequestModel;
   }
 }

@@ -67,7 +67,7 @@
 │   ├── routes
 │   │   ├── app_routes
 │   │ 
-│   ├── models
+│   ├── screens
 │   │   ├── home_screen
 │   │   ├── login_screen
 │   │   ├── main_screen

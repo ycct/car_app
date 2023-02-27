@@ -136,3 +136,7 @@ The design pattern of the project is [MVC](https://en.wikipedia.org/wiki/Modelâ€
 
 
 
+https://user-images.githubusercontent.com/35145117/221587723-12e6b8ed-0f18-4d1c-8e3e-36bc9e374149.mp4
+
+
+
